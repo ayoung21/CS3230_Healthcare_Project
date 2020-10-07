@@ -37,5 +37,30 @@ namespace Healthcare_System.DAL
                 return count;
             }
         }
+
+        public static void Register(string username, string email, string password)
+        {
+            string query = "INSERT INTO users(username, email, password) VALUES(@username, @email, @password)";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
+            {
+                cmd.Parameters.Add("@username", MySqlDbType.VarChar);
+                cmd.Parameters["@username"].Value = username;
+
+                cmd.Parameters.Add("@email", MySqlDbType.VarChar);
+                cmd.Parameters["@email"].Value = email;
+
+                cmd.Parameters.Add("@password", MySqlDbType.TinyText);
+                cmd.Parameters["@password"].Value = password;
+
+                cmd.Connection = DbConnection.GetConnection();
+
+                cmd.Connection.Open();
+                int testing = cmd.ExecuteNonQuery();
+                cmd.Connection.Close();
+
+                Console.WriteLine("REGISTER: " + testing);
+            }
+        }
     }
 }

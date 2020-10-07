@@ -23,3 +23,4 @@ C:\Users\csuser\Desktop\CS3230_Healthcare_Project\Healthcare System\Healthcare S
 C:\Users\csuser\Desktop\CS3230_Healthcare_Project\Healthcare System\Healthcare System\obj\Debug\Healthcare System.exe.config
 C:\Users\csuser\Desktop\CS3230_Healthcare_Project\Healthcare System\Healthcare System\obj\Debug\Healthcare_System.LoginForm.resources
 C:\Users\csuser\Desktop\CS3230_Healthcare_Project\Healthcare System\Healthcare System\obj\Debug\Healthcare System.csproj.CopyComplete
+C:\Users\csuser\Desktop\CS3230_Healthcare_Project\Healthcare System\Healthcare System\obj\Debug\Healthcare_System.formRegister.resources

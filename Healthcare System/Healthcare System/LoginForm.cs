@@ -24,5 +24,11 @@ namespace Healthcare_System
             string password = this.textBoxPassword.Text;
             Console.WriteLine($"AUTHENTICATE: {UserDAL.Authenticate(email, password)}");
         }
+
+        private void labelRegister_Click(object sender, EventArgs e)
+        {
+            var registerForm = new formRegister();
+            registerForm.Show();
+        }
     }
 }
