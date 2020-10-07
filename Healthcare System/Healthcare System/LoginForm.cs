@@ -7,14 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Healthcare_System.DAL;
 
 namespace Healthcare_System
 {
-    public partial class formLogin : Form
+    public partial class LoginForm : Form
     {
-        public formLogin()
+        public LoginForm()
         {
             InitializeComponent();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            string email = this.textBoxUsername.Text;
+            string password = this.textBoxPassword.Text;
+            Console.WriteLine($"AUTHENTICATE: {UserDAL.Authenticate(email, password)}");
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Healthcare_System
 {
-    partial class formLogin
+    partial class LoginForm
     {
         /// <summary>
         /// Required designer variable.
@@ -60,6 +60,7 @@
             this.btnLogin.TabIndex = 1;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // textBoxUsername
             // 
@@ -124,7 +125,7 @@
             this.pictureBoxAccountIcon.TabIndex = 7;
             this.pictureBoxAccountIcon.TabStop = false;
             // 
-            // formLogin
+            // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -138,7 +139,7 @@
             this.Controls.Add(this.textBoxUsername);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.panel1);
-            this.Name = "formLogin";
+            this.Name = "LoginForm";
             this.Text = "Healthcare System";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
