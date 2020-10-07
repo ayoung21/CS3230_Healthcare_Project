@@ -52,7 +52,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL\Configuration.cs" />
     <Compile Include="DAL\DbConnection.cs" />
     <Compile Include="DAL\UserDAL.cs" />
     <Compile Include="LoginForm.cs">
