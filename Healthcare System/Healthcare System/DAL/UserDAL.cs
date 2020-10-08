@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Healthcare_System.Model;
@@ -38,7 +39,44 @@ namespace Healthcare_System.DAL
             }
         }
 
-        public static void Register(string username, string email, string password)
+
+        /// <summary>Registers the specified username.</summary>
+        /// <param name="username">The username.</param>
+        /// <param name="email">The email.</param>
+        /// <param name="password">The password.</param>
+        /// <returns>True if registration is successful; else otherwise.</returns>
+        public static bool Register(string username, string email, string password)
+        {
+            if (doesUserExist(username))
+            {
+                return false;
+            }
+
+            registerUser(username, email, password);
+            return true;
+        }
+
+        private static bool doesUserExist(string username)
+        {
+            string query = "SELECT count(*) FROM users WHERE username = @username";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
+            {
+                cmd.Parameters.Add("@username", MySqlDbType.VarChar);
+                cmd.Parameters["@username"].Value = username;
+
+                cmd.Connection = DbConnection.GetConnection();
+
+                cmd.Connection.Open();
+
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                cmd.Connection.Close();
+                return (count > 0) ? true : false;
+            }
+        }
+
+        private static void registerUser(string username, string email, string password)
         {
             string query = "INSERT INTO users(username, email, password) VALUES(@username, @email, @password)";
 

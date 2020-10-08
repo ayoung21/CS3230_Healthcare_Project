@@ -23,7 +23,9 @@ namespace Healthcare_System
             var username = this.textBoxUsername.Text;
             var email = this.textBoxEmail.Text;
             var password = this.textBoxPassword.Text;
-            UserDAL.Register(username, email, password);
+            bool result = UserDAL.Register(username, email, password);
+
+            Console.WriteLine("Register Successful? " + result);
         }
     }
 }

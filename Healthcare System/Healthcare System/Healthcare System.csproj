@@ -60,6 +60,7 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Messages\UIMessages.cs" />
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserRoles.cs" />

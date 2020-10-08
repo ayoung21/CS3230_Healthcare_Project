@@ -39,6 +39,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.labelRegister = new System.Windows.Forms.Label();
+            this.labelErrorMessages = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.SuspendLayout();
@@ -46,7 +47,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.MidnightBlue;
-            this.panel1.Location = new System.Drawing.Point(57, 215);
+            this.panel1.Location = new System.Drawing.Point(57, 170);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(250, 1);
             this.panel1.TabIndex = 0;
@@ -55,7 +56,7 @@
             // 
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(57, 313);
+            this.btnLogin.Location = new System.Drawing.Point(57, 339);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(250, 50);
             this.btnLogin.TabIndex = 1;
@@ -67,7 +68,7 @@
             // 
             this.textBoxUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxUsername.Location = new System.Drawing.Point(91, 185);
+            this.textBoxUsername.Location = new System.Drawing.Point(91, 140);
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(216, 24);
             this.textBoxUsername.TabIndex = 3;
@@ -76,7 +77,7 @@
             // 
             this.textBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPassword.Location = new System.Drawing.Point(91, 248);
+            this.textBoxPassword.Location = new System.Drawing.Point(91, 203);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(216, 24);
             this.textBoxPassword.TabIndex = 5;
@@ -85,7 +86,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.MidnightBlue;
-            this.panel2.Location = new System.Drawing.Point(57, 278);
+            this.panel2.Location = new System.Drawing.Point(57, 233);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(250, 1);
             this.panel2.TabIndex = 4;
@@ -109,7 +110,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Healthcare_System.Properties.Resources.lock_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(57, 244);
+            this.pictureBox1.Location = new System.Drawing.Point(57, 199);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(31, 28);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -119,7 +120,7 @@
             // pictureBoxAccountIcon
             // 
             this.pictureBoxAccountIcon.Image = global::Healthcare_System.Properties.Resources.user_icon;
-            this.pictureBoxAccountIcon.Location = new System.Drawing.Point(57, 181);
+            this.pictureBoxAccountIcon.Location = new System.Drawing.Point(57, 136);
             this.pictureBoxAccountIcon.Name = "pictureBoxAccountIcon";
             this.pictureBoxAccountIcon.Size = new System.Drawing.Size(31, 28);
             this.pictureBoxAccountIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -137,12 +138,24 @@
             this.labelRegister.Text = "Register";
             this.labelRegister.Click += new System.EventHandler(this.labelRegister_Click);
             // 
+            // labelErrorMessages
+            // 
+            this.labelErrorMessages.AutoSize = true;
+            this.labelErrorMessages.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelErrorMessages.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorMessages.Location = new System.Drawing.Point(54, 256);
+            this.labelErrorMessages.Name = "labelErrorMessages";
+            this.labelErrorMessages.Size = new System.Drawing.Size(51, 20);
+            this.labelErrorMessages.TabIndex = 10;
+            this.labelErrorMessages.Text = "label2";
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(367, 450);
+            this.Controls.Add(this.labelErrorMessages);
             this.Controls.Add(this.labelRegister);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBoxAccountIcon);
@@ -173,6 +186,7 @@
         private System.Windows.Forms.PictureBox pictureBoxAccountIcon;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label labelRegister;
+        private System.Windows.Forms.Label labelErrorMessages;
     }
 }
 
