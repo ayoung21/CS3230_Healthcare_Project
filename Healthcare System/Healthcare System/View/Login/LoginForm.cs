@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Healthcare_System.DAL;
 using Healthcare_System.Messages;
+using Healthcare_System.View;
 
 namespace Healthcare_System
 {
@@ -18,17 +19,18 @@ namespace Healthcare_System
         public LoginForm()
         {
             InitializeComponent();
+            this.openRegisterIfNoAdministrator();
             this.errorMessages = new List<string>();
             this.labelErrorMessages.Hide();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string email = this.textBoxUsername.Text;
+            string username = this.textBoxUsername.Text;
             string password = this.textBoxPassword.Text;
 
             this.errorMessages.Clear();
-            this.validateEmail(email);
+            this.validateEmail(username);
             this.validatePassword(password);
 
 
@@ -40,10 +42,13 @@ namespace Healthcare_System
             else
             {
                 this.errorMessages.Clear();
-                int result = UserDAL.Authenticate(email, password);
+                int result = AccountDAL.Authenticate(username, password);
                 if (result == 1)
                 {
-                    // TODO: Login and display next page
+                    Wrapper wrapper = new Wrapper(username, this);
+                    this.textBoxUsername.Clear();
+                    this.textBoxPassword.Clear();
+                    wrapper.ShowDialog();
                 }
                 else
                 {
@@ -53,11 +58,13 @@ namespace Healthcare_System
             }
         }
 
-        private void labelRegister_Click(object sender, EventArgs e)
+        private void openRegisterIfNoAdministrator()
         {
-            var registerForm = new formRegister();
-            this.Hide();
-            registerForm.Show();
+            if (AdministratorDAL.GetNumberAdministrators() == 0)
+            {
+                var registerForm = new RegisterForm(this);
+                registerForm.ShowDialog();
+            }
         }
 
         private void validateEmail(string email)

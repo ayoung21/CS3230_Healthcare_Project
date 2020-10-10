@@ -53,36 +53,50 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="DAL\DbConnection.cs_TEMPLATE" />
+    <Compile Include="DAL\AdministratorDAL.cs" />
     <Compile Include="DAL\DbConnection.cs" />
+    <Compile Include="DAL\AccountDAL.cs" />
+    <Compile Include="DAL\Helpers.cs" />
+    <Compile Include="DAL\NurseDAL.cs" />
+    <Compile Include="DAL\PatientDAL.cs" />
     <Compile Include="DAL\UserDAL.cs" />
-    <Compile Include="View\Wrapper.cs">
+    <Compile Include="View\MainApp\ManagePatient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Wrapper.Designer.cs">
-      <DependentUpon>Wrapper.cs</DependentUpon>
+    <Compile Include="View\MainApp\ManagePatient.Designer.cs">
+      <DependentUpon>ManagePatient.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\LoginForm.cs">
+    <Compile Include="View\MainApp\MainApp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\LoginForm.Designer.cs">
+    <Compile Include="View\MainApp\MainApp.Designer.cs">
+      <DependentUpon>MainApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Login\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Messages\UIMessages.cs" />
     <Compile Include="Model\Address.cs" />
-    <Compile Include="Model\User.cs" />
-    <Compile Include="Model\UserRoles.cs" />
+    <Compile Include="Model\Person.cs" />
+    <Compile Include="Model\PersonRoles.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\Register.cs">
+    <Compile Include="View\Login\Register.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Register.Designer.cs">
+    <Compile Include="View\Login\Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\Wrapper.resx">
-      <DependentUpon>Wrapper.cs</DependentUpon>
+    <EmbeddedResource Include="View\MainApp\ManagePatient.resx">
+      <DependentUpon>ManagePatient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\LoginForm.resx">
+    <EmbeddedResource Include="View\MainApp\MainApp.resx">
+      <DependentUpon>MainApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -95,7 +109,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="View\Register.resx">
+    <EmbeddedResource Include="View\Login\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

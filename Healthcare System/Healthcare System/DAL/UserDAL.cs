@@ -1,100 +1,122 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using Healthcare_System.Model;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
+using System;
 
 namespace Healthcare_System.DAL
 {
     static class UserDAL
     {
-
-        /// <summary>Authenticates the specified email.</summary>
-        /// <param name="username">The username.</param>
-        /// <param name="password">The password.</param>
-        /// <returns></returns>
-        public static int Authenticate(string username, string password)
+        public static int Register(string firstName, string lastName, string city, string state, 
+            int zip, string phone, DateTime dob, string gender, string address1, string address2)
         {
-            string query = "SELECT count(*) FROM account WHERE username = @username AND password = @password";
+            string query = "INSERT INTO user(first_name, last_name, address_line1, address_line2, city, " +
+                "state, zip, phone, dob, gender) VALUES(@first_name, @last_name, @address1, @address2, @city, " +
+                "@state, @zip, @phone, @dob, @gender); SELECT LAST_INSERT_ID();";
 
             using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
             {
-                cmd.Parameters.Add("@username", MySqlDbType.VarChar);
-                cmd.Parameters["@username"].Value = username;
+                cmd.Parameters.Add("@first_name", MySqlDbType.VarChar);
+                cmd.Parameters["@first_name"].Value = firstName;
 
-                cmd.Parameters.Add("@password", MySqlDbType.TinyText);
-                cmd.Parameters["@password"].Value = password;
+                cmd.Parameters.Add("@last_name", MySqlDbType.VarChar);
+                cmd.Parameters["@last_name"].Value = lastName;
+
+                cmd.Parameters.Add("@address1", MySqlDbType.VarChar);
+                cmd.Parameters["@address1"].Value = address1;
+
+                cmd.Parameters.Add("@address2", MySqlDbType.VarChar);
+                cmd.Parameters["@address2"].Value = address2;
+
+                cmd.Parameters.Add("@city", MySqlDbType.VarChar);
+                cmd.Parameters["@city"].Value = city;
+
+                cmd.Parameters.Add("@state", MySqlDbType.VarChar);
+                cmd.Parameters["@state"].Value = state;
+
+                cmd.Parameters.Add("@zip", MySqlDbType.Int32);
+                cmd.Parameters["@zip"].Value = zip;
+
+                cmd.Parameters.Add("@phone", MySqlDbType.VarChar);
+                cmd.Parameters["@phone"].Value = phone;
+
+                cmd.Parameters.Add("@dob", MySqlDbType.Date);
+                cmd.Parameters["@dob"].Value = dob;
+
+                cmd.Parameters.Add("@gender", MySqlDbType.VarChar);
+                cmd.Parameters["@gender"].Value = gender;
+
+                cmd.Connection = DbConnection.GetConnection();
+
+                cmd.Connection.Open();
+                object queryResult = cmd.ExecuteScalar();
+                int generatedPk = Convert.ToInt32(queryResult);
+                cmd.Connection.Close();
+
+                return generatedPk;
+            }
+        }
+
+        public static string GetFirstName(int userId)
+        {
+            string query = "SELECT first_name FROM user WHERE user_id = @userId;";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
+            {
+                cmd.Parameters.Add("@userId", MySqlDbType.Int32);
+                cmd.Parameters["@userId"].Value = userId;
 
                 cmd.Connection = DbConnection.GetConnection();
 
                 cmd.Connection.Open();
 
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
-                
+                object queryResult = cmd.ExecuteScalar();
+                string firstName = (queryResult == DBNull.Value) ? null : Convert.ToString(queryResult);
                 cmd.Connection.Close();
-                return count;
+
+                return firstName;
             }
         }
 
-
-        /// <summary>Registers the specified username.</summary>
-        /// <param name="username">The username.</param>
-        /// <param name="email">The email.</param>
-        /// <param name="password">The password.</param>
-        /// <returns>True if registration is successful; else otherwise.</returns>
-        public static bool Register(string username, string password)
+        public static string GetLastName(int userId)
         {
-            if (doesUserExist(username))
-            {
-                return false;
-            }
-
-            registerUser(username, password);
-            return true;
-        }
-
-        private static bool doesUserExist(string username)
-        {
-            string query = "SELECT count(*) FROM account WHERE username = @username";
+            string query = "SELECT last_name FROM user WHERE user_id = @userId;";
 
             using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
             {
-                cmd.Parameters.Add("@username", MySqlDbType.VarChar);
-                cmd.Parameters["@username"].Value = username;
+                cmd.Parameters.Add("@userId", MySqlDbType.Int32);
+                cmd.Parameters["@userId"].Value = userId;
 
                 cmd.Connection = DbConnection.GetConnection();
 
                 cmd.Connection.Open();
 
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
-
+                object queryResult = cmd.ExecuteScalar();
+                string lastName = (queryResult == DBNull.Value) ? null : Convert.ToString(queryResult);
                 cmd.Connection.Close();
-                return (count > 0) ? true : false;
+
+                return lastName;
             }
         }
 
-        private static void registerUser(string username, string password)
+        public static string GetFullName(int userId)
         {
-            string query = "INSERT INTO account VALUES(@username, @password)";
+            string query = "SELECT first_name, last_name FROM user WHERE user_id = @userId;";
 
             using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
             {
-                cmd.Parameters.Add("@username", MySqlDbType.VarChar);
-                cmd.Parameters["@username"].Value = username;
-
-                cmd.Parameters.Add("@password", MySqlDbType.TinyText);
-                cmd.Parameters["@password"].Value = password;
+                cmd.Parameters.Add("@userId", MySqlDbType.Int32);
+                cmd.Parameters["@userId"].Value = userId;
 
                 cmd.Connection = DbConnection.GetConnection();
 
                 cmd.Connection.Open();
-                int testing = cmd.ExecuteNonQuery();
+
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+                dataReader.Read();
+                string firstName = (dataReader["first_name"] == DBNull.Value) ? null : Convert.ToString(dataReader["first_name"]);
+                string lastName = (dataReader["last_name"] == DBNull.Value) ? null : Convert.ToString(dataReader["last_name"]);
                 cmd.Connection.Close();
 
-                Console.WriteLine("REGISTER: " + testing);
+                return firstName + " " + lastName;
             }
         }
     }

@@ -3,10 +3,11 @@
     /// <summary>
     ///     Defines the user roles for the application
     /// </summary>
-    enum UserRoles
+    public enum PersonRoles
     {
         Administrator,
         Doctor,
-        Nurse
+        Nurse,
+        Patient
     }
 }

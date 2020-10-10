@@ -3,13 +3,22 @@
     /// <summary>
     ///     Class to create an address for a user of the application
     /// </summary>
-    internal class Address
+    public class Address
     {
         /// <summary>
         ///     Gets or sets the street address.
         /// </summary>
         /// <value>The street address.</value>
         public string StreetAddress { get; set; }
+
+
+        /// <summary>
+        ///     Gets or sets the address line 2.
+        /// </summary>
+        /// <value>
+        /// The address line 2.
+        /// </value>
+        public string AddressLine2 { get; set; }
 
         /// <summary>
         ///     Gets or sets the city.

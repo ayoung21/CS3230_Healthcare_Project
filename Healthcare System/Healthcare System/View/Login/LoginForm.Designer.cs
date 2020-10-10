@@ -38,7 +38,6 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
-            this.labelRegister = new System.Windows.Forms.Label();
             this.labelErrorMessages = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
@@ -127,17 +126,6 @@
             this.pictureBoxAccountIcon.TabIndex = 7;
             this.pictureBoxAccountIcon.TabStop = false;
             // 
-            // labelRegister
-            // 
-            this.labelRegister.AutoSize = true;
-            this.labelRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRegister.Location = new System.Drawing.Point(143, 410);
-            this.labelRegister.Name = "labelRegister";
-            this.labelRegister.Size = new System.Drawing.Size(69, 20);
-            this.labelRegister.TabIndex = 9;
-            this.labelRegister.Text = "Register";
-            this.labelRegister.Click += new System.EventHandler(this.labelRegister_Click);
-            // 
             // labelErrorMessages
             // 
             this.labelErrorMessages.AutoSize = true;
@@ -154,9 +142,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(367, 450);
+            this.ClientSize = new System.Drawing.Size(367, 412);
             this.Controls.Add(this.labelErrorMessages);
-            this.Controls.Add(this.labelRegister);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBoxAccountIcon);
             this.Controls.Add(this.label1);
@@ -186,7 +173,6 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.PictureBox pictureBoxAccountIcon;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label labelRegister;
         private System.Windows.Forms.Label labelErrorMessages;
     }
 }
