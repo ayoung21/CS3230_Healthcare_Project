@@ -95,5 +95,10 @@ namespace Healthcare_System
             this.labelErrorMessages.Text = errors;
             this.labelErrorMessages.Show();
         }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

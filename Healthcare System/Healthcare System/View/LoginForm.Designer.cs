@@ -167,6 +167,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "LoginForm";
             this.Text = "Healthcare System";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.ResumeLayout(false);

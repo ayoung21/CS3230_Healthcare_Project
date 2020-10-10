@@ -13,17 +13,17 @@ namespace Healthcare_System.DAL
     {
 
         /// <summary>Authenticates the specified email.</summary>
-        /// <param name="email">The email.</param>
+        /// <param name="username">The username.</param>
         /// <param name="password">The password.</param>
         /// <returns></returns>
-        public static int Authenticate(string email, string password)
+        public static int Authenticate(string username, string password)
         {
-            string query = "SELECT count(*) FROM users WHERE email = @email AND password = @password";
+            string query = "SELECT count(*) FROM account WHERE username = @username AND password = @password";
 
             using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
             {
-                cmd.Parameters.Add("@email", MySqlDbType.VarChar);
-                cmd.Parameters["@email"].Value = email;
+                cmd.Parameters.Add("@username", MySqlDbType.VarChar);
+                cmd.Parameters["@username"].Value = username;
 
                 cmd.Parameters.Add("@password", MySqlDbType.TinyText);
                 cmd.Parameters["@password"].Value = password;
@@ -45,20 +45,20 @@ namespace Healthcare_System.DAL
         /// <param name="email">The email.</param>
         /// <param name="password">The password.</param>
         /// <returns>True if registration is successful; else otherwise.</returns>
-        public static bool Register(string username, string email, string password)
+        public static bool Register(string username, string password)
         {
             if (doesUserExist(username))
             {
                 return false;
             }
 
-            registerUser(username, email, password);
+            registerUser(username, password);
             return true;
         }
 
         private static bool doesUserExist(string username)
         {
-            string query = "SELECT count(*) FROM users WHERE username = @username";
+            string query = "SELECT count(*) FROM account WHERE username = @username";
 
             using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
             {
@@ -76,17 +76,14 @@ namespace Healthcare_System.DAL
             }
         }
 
-        private static void registerUser(string username, string email, string password)
+        private static void registerUser(string username, string password)
         {
-            string query = "INSERT INTO users(username, email, password) VALUES(@username, @email, @password)";
+            string query = "INSERT INTO account VALUES(@username, @password)";
 
             using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
             {
                 cmd.Parameters.Add("@username", MySqlDbType.VarChar);
                 cmd.Parameters["@username"].Value = username;
-
-                cmd.Parameters.Add("@email", MySqlDbType.VarChar);
-                cmd.Parameters["@email"].Value = email;
 
                 cmd.Parameters.Add("@password", MySqlDbType.TinyText);
                 cmd.Parameters["@password"].Value = password;

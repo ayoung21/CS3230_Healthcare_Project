@@ -21,9 +21,8 @@ namespace Healthcare_System
         private void btnRegister_Click(object sender, EventArgs e)
         {
             var username = this.textBoxUsername.Text;
-            var email = this.textBoxEmail.Text;
             var password = this.textBoxPassword.Text;
-            bool result = UserDAL.Register(username, email, password);
+            bool result = UserDAL.Register(username, password);
 
             Console.WriteLine("Register Successful? " + result);
         }
