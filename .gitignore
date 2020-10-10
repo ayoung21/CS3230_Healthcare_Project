@@ -5,3 +5,6 @@
 /Healthcare System/Healthcare System/DAL/Configuration.cs
 **/DbConnection.cs
 /Healthcare System/Healthcare System/DAL/DbConnection.cs
+/Healthcare System/Healthcare System/bin/*
+/Healthcare System/Healthcare System/obj/*
+**/.vs
