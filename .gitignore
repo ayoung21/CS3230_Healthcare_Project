@@ -3,4 +3,5 @@
 ################################################################################
 
 /Healthcare System/Healthcare System/DAL/Configuration.cs
+**/DbConnection.cs
 /Healthcare System/Healthcare System/DAL/DbConnection.cs
