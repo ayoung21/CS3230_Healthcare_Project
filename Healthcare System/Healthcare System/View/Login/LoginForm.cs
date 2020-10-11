@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Healthcare_System.DAL;
 using Healthcare_System.Messages;
+using Healthcare_System.Validation;
 using Healthcare_System.View;
 
 namespace Healthcare_System

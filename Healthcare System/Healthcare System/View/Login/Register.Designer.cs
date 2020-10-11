@@ -53,6 +53,7 @@
             this.comboBoxGender = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxPhone = new System.Windows.Forms.TextBox();
+            this.labelErrorMessages = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxUsername
@@ -92,7 +93,7 @@
             // btnRegister
             // 
             this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegister.Location = new System.Drawing.Point(84, 499);
+            this.btnRegister.Location = new System.Drawing.Point(83, 729);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(243, 40);
             this.btnRegister.TabIndex = 12;
@@ -127,6 +128,7 @@
             this.textBoxZip.Name = "textBoxZip";
             this.textBoxZip.Size = new System.Drawing.Size(217, 20);
             this.textBoxZip.TabIndex = 8;
+            this.textBoxZip.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxZip_KeyPress);
             // 
             // textBoxAddress2
             // 
@@ -242,6 +244,7 @@
             // 
             // comboBoxStates
             // 
+            this.comboBoxStates.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxStates.FormattingEnabled = true;
             this.comboBoxStates.Items.AddRange(new object[] {
             "AL",
@@ -301,6 +304,7 @@
             // 
             // comboBoxGender
             // 
+            this.comboBoxGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxGender.FormattingEnabled = true;
             this.comboBoxGender.Items.AddRange(new object[] {
             "Male",
@@ -328,11 +332,23 @@
             this.textBoxPhone.Size = new System.Drawing.Size(217, 20);
             this.textBoxPhone.TabIndex = 9;
             // 
-            // formRegister
+            // labelErrorMessages
+            // 
+            this.labelErrorMessages.AutoSize = true;
+            this.labelErrorMessages.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelErrorMessages.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorMessages.Location = new System.Drawing.Point(17, 486);
+            this.labelErrorMessages.Name = "labelErrorMessages";
+            this.labelErrorMessages.Size = new System.Drawing.Size(51, 20);
+            this.labelErrorMessages.TabIndex = 27;
+            this.labelErrorMessages.Text = "label2";
+            // 
+            // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(417, 569);
+            this.ClientSize = new System.Drawing.Size(417, 781);
+            this.Controls.Add(this.labelErrorMessages);
             this.Controls.Add(this.textBoxPhone);
             this.Controls.Add(this.comboBoxGender);
             this.Controls.Add(this.label1);
@@ -358,7 +374,7 @@
             this.Controls.Add(this.usernameLabel);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxUsername);
-            this.Name = "formRegister";
+            this.Name = "RegisterForm";
             this.Text = "Register";
             this.Load += new System.EventHandler(this.formRegister_Load);
             this.ResumeLayout(false);
@@ -393,5 +409,6 @@
         private System.Windows.Forms.ComboBox comboBoxGender;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxPhone;
+        private System.Windows.Forms.Label labelErrorMessages;
     }
 }
