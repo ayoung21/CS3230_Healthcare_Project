@@ -14,7 +14,8 @@ namespace Healthcare_System
 {
     public partial class RegisterForm : Form
     {
-        private LoginForm loginForm;
+        // private LoginForm loginForm;
+        private bool initialAdminExists;
         private string username;
         private string password;
         private string firstName;
@@ -28,23 +29,42 @@ namespace Healthcare_System
         private DateTime dob;
         private string gender;
 
+        public Form LoginForm { get; set; }
+
         private IList<string> errorMessages;
 
-        public RegisterForm(LoginForm loginForm)
+        public RegisterForm()
         {
             InitializeComponent();
+            this.initialAdminExists = false;
             this.labelErrorMessages.Hide();
             this.errorMessages = new List<string>();
-            this.loginForm = loginForm;
-            this.loginForm.Hide();
+            // this.loginForm = loginForm;
+
+            LoginForm?.Hide();
+
+
+            if (AdministratorDAL.GetNumberAdministrators() > 0)
+            {
+                this.initialAdminExists = true;
+                this.textBoxUsername.Hide();
+                this.textBoxPassword.Hide();
+
+                this.usernameLabel.Hide();
+                this.passwordLabel.Hide();
+            }
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
             this.errorMessages.Clear();
-            
-            this.username = this.textBoxUsername.Text;
-            this.password = this.textBoxPassword.Text;
+
+            if (!this.initialAdminExists)
+            {
+                this.username = this.textBoxUsername.Text;
+                this.password = this.textBoxPassword.Text;
+            }
+
             this.firstName = this.textBoxFirstName.Text;
             this.lastName = this.textBoxLastName.Text;
             this.address1 = this.textBoxAddress1.Text;
@@ -52,7 +72,7 @@ namespace Healthcare_System
             this.city = this.textBoxCity.Text;
             this.state = (this.comboBoxStates.SelectedItem == null) ? "" : this.comboBoxStates.SelectedItem.ToString();
             this.zip = (String.IsNullOrEmpty(this.textBoxZip.Text) || this.textBoxZip.Text.Length != 5) ? Constants.Constants.INVALID_ZIP : Int32.Parse(this.textBoxZip.Text);
-            this.phone = this.textBoxPhone.Text;
+            this.phone = (String.IsNullOrEmpty(this.textBoxPhone.Text) || this.textBoxPhone.Text.Length != 10) ? "" : this.textBoxPhone.Text;
             this.dob = this.dateTimePicker.Value;
             this.gender = (this.comboBoxGender.SelectedItem == null) ? "" : this.comboBoxGender.SelectedItem.ToString();
 
@@ -70,19 +90,32 @@ namespace Healthcare_System
             }
             else
             {
-                int userId = UserDAL.Register(firstName, lastName, city, state, zip, phone, dob, gender, address1, address2);
-                bool accountRegistrationSuccess = AccountDAL.Register(username, password);
-                bool administratorRegistrationSuccess = AdministratorDAL.Register(userId, username);
+                if (!this.initialAdminExists)
+                {
 
-                bool registrationSuccess = accountRegistrationSuccess && administratorRegistrationSuccess;
+                    int userId = UserDAL.Register(firstName, lastName, city, state, zip, phone, dob, gender, address1,
+                        address2);
+                    bool accountRegistrationSuccess = AccountDAL.Register(username, password);
+                    bool administratorRegistrationSuccess = AdministratorDAL.Register(userId, username);
 
-                Console.WriteLine("Register Successful? " + registrationSuccess + " " + userId.ToString());
+                    bool registrationSuccess = accountRegistrationSuccess && administratorRegistrationSuccess;
+
+                    Console.WriteLine("Register Successful? " + registrationSuccess + " " + userId.ToString());
+                }
+                else
+                {
+                    int userId = UserDAL.Register(firstName, lastName, city, state, zip, phone, dob, gender, address1, address2);
+                    bool patientRegistrationSuccess = PatientDAL.Register(userId);
+                }
 
                 this.labelErrorMessages.Hide();
+                /*
                 if (accountRegistrationSuccess)
                 {
                     this.Close();
                 }
+                */
+                this.Close();
             }
             
 
@@ -95,8 +128,12 @@ namespace Healthcare_System
 
         private void validateFields()
         {
-            this.validateUsername();
-            this.validatePassword();
+            if (!this.initialAdminExists)
+            {
+                this.validateUsername();
+                this.validatePassword();
+            }
+
             this.validateFirstName();
             this.validateLastName();
             this.validateStreetAddress();
@@ -172,7 +209,7 @@ namespace Healthcare_System
 
         private void validatePhone()
         {
-            if (String.IsNullOrEmpty(this.phone.Trim()))
+            if (String.IsNullOrEmpty(this.gender.Trim()))
             {
                 this.errorMessages.Add(UIMessages.INVALID_PHONE);
             }
@@ -199,6 +236,15 @@ namespace Healthcare_System
         }
 
         private void textBoxZip_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verify that the pressed key isn't CTRL or any non-numeric digit
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Verify that the pressed key isn't CTRL or any non-numeric digit
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))

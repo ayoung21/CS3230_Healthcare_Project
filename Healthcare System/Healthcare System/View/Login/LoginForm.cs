@@ -63,7 +63,11 @@ namespace Healthcare_System
         {
             if (AdministratorDAL.GetNumberAdministrators() == 0)
             {
-                var registerForm = new RegisterForm(this);
+                // var registerForm = new RegisterForm(this);
+                var registerForm = new RegisterForm()
+                {
+                    LoginForm = this
+                };
                 registerForm.ShowDialog();
             }
         }

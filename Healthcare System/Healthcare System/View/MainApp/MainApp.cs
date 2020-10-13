@@ -50,8 +50,10 @@ namespace Healthcare_System.View
 
         private void buttonAddPerson_Click(object sender, EventArgs e)
         {
-            ManagePatient managePersonForm = new ManagePatient(true);
-            managePersonForm.ShowDialog();
+            // ManagePatient managePersonForm = new ManagePatient(true);
+            // managePersonForm.ShowDialog();
+            RegisterForm registerForm = new RegisterForm();
+            registerForm.ShowDialog();
         }
 
         private void Wrapper_FormClosing(object sender, FormClosingEventArgs e)
