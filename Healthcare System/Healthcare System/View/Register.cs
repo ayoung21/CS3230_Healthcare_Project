@@ -14,7 +14,6 @@ namespace Healthcare_System
 {
     public partial class RegisterForm : Form
     {
-        // private LoginForm loginForm;
         private bool initialAdminExists;
         private string username;
         private string password;
@@ -39,7 +38,6 @@ namespace Healthcare_System
             this.initialAdminExists = false;
             this.labelErrorMessages.Hide();
             this.errorMessages = new List<string>();
-            // this.loginForm = loginForm;
 
             LoginForm?.Hide();
 
@@ -109,16 +107,8 @@ namespace Healthcare_System
                 }
 
                 this.labelErrorMessages.Hide();
-                /*
-                if (accountRegistrationSuccess)
-                {
-                    this.Close();
-                }
-                */
                 this.Close();
             }
-            
-
         }
 
         private void formRegister_Load(object sender, EventArgs e)

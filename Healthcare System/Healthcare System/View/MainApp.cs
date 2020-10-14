@@ -1,5 +1,5 @@
 ﻿using Healthcare_System.DAL;
-using Healthcare_System.View.MainApp;
+using Healthcare_System.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,7 +17,6 @@ namespace Healthcare_System.View
         private LoginForm loginForm;
         private int userId;
         private bool isNurse;
-        private bool isAdministrator;
 
         public Wrapper(string username, LoginForm loginForm)
         {
@@ -25,7 +24,6 @@ namespace Healthcare_System.View
             this.loginForm.Hide();
             InitializeComponent();
             this.isNurse = Helpers.IsUsernameInTable(username, NurseDAL.tableName);
-            this.isAdministrator = Helpers.IsUsernameInTable(username, AdministratorDAL.tableName);
 
             if (this.isNurse)
             {
@@ -50,8 +48,6 @@ namespace Healthcare_System.View
 
         private void buttonAddPerson_Click(object sender, EventArgs e)
         {
-            // ManagePatient managePersonForm = new ManagePatient(true);
-            // managePersonForm.ShowDialog();
             RegisterForm registerForm = new RegisterForm();
             registerForm.ShowDialog();
         }

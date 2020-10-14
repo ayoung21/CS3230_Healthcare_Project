@@ -62,22 +62,16 @@
     <Compile Include="DAL\PatientDAL.cs" />
     <Compile Include="DAL\UserDAL.cs" />
     <Compile Include="Validation\FormValidation.cs" />
-    <Compile Include="View\MainApp\ManagePatient.cs">
+    <Compile Include="View\MainApp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\MainApp\ManagePatient.Designer.cs">
-      <DependentUpon>ManagePatient.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\MainApp\MainApp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\MainApp\MainApp.Designer.cs">
+    <Compile Include="View\MainApp.Designer.cs">
       <DependentUpon>MainApp.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Login\LoginForm.cs">
+    <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Login\LoginForm.Designer.cs">
+    <Compile Include="View\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Messages\UIMessages.cs" />
@@ -86,19 +80,16 @@
     <Compile Include="Model\PersonRoles.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\Login\Register.cs">
+    <Compile Include="View\Register.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Login\Register.Designer.cs">
+    <Compile Include="View\Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\MainApp\ManagePatient.resx">
-      <DependentUpon>ManagePatient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\MainApp\MainApp.resx">
+    <EmbeddedResource Include="View\MainApp.resx">
       <DependentUpon>MainApp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Login\LoginForm.resx">
+    <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -111,7 +102,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="View\Login\Register.resx">
+    <EmbeddedResource Include="View\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
