@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Healthcare_System.DAL;
 using Healthcare_System.Messages;
+using Healthcare_System.Model;
 
 namespace Healthcare_System
 {
@@ -12,7 +13,6 @@ namespace Healthcare_System
     /// <seealso cref="System.Windows.Forms.Form" />
     public partial class RegisterForm : Form
     {
-        private bool initialAdminExists;
         private string username;
         private string password;
         private string firstName;
@@ -25,28 +25,30 @@ namespace Healthcare_System
         private string phone;
         private DateTime dob;
         private string gender;
+        private PersonRoles roleRegisteringFor;
 
         public Form LoginForm { get; set; }
 
         private IList<string> errorMessages;
 
         /// <summary>
-            /// Initializes a new instance of the <see cref="RegisterForm"/> class.
-            /// Shows username and password fields if the form is being opened to register the initial admin account.
+        ///     Initializes a new instance of the <see cref="RegisterForm" /> class.
+        ///     Shows username and password fields if the form is being opened to register the initial admin account.
         /// </summary>
-        public RegisterForm()
+        /// <param name="role">The role.</param>
+        /// <exception cref="ArgumentOutOfRangeException">This form only supports registering administrators and patients</exception>
+        public RegisterForm(PersonRoles roleRegisteringFor = PersonRoles.Patient)
         {
             InitializeComponent();
-            this.initialAdminExists = false;
             this.labelErrorMessages.Hide();
             this.errorMessages = new List<string>();
+            this.roleRegisteringFor = roleRegisteringFor;
 
             LoginForm?.Hide();
 
 
-            if (AdministratorDAL.GetNumberAdministrators() > 0)
+            if (this.roleRegisteringFor == PersonRoles.Patient)
             {
-                this.initialAdminExists = true;
                 this.textBoxUsername.Hide();
                 this.textBoxPassword.Hide();
 
@@ -59,7 +61,7 @@ namespace Healthcare_System
         {
             this.errorMessages.Clear();
 
-            if (!this.initialAdminExists)
+            if (this.roleRegisteringFor == PersonRoles.Administrator)
             {
                 this.username = this.textBoxUsername.Text;
                 this.password = this.textBoxPassword.Text;
@@ -90,7 +92,7 @@ namespace Healthcare_System
             }
             else
             {
-                if (!this.initialAdminExists)
+                if (this.roleRegisteringFor == PersonRoles.Administrator)
                 {
 
                     int userId = UserDAL.Register(firstName, lastName, city, state, zip, phone, dob, gender, address1,
@@ -120,7 +122,7 @@ namespace Healthcare_System
 
         private void validateFields()
         {
-            if (!this.initialAdminExists)
+            if (this.roleRegisteringFor == PersonRoles.Patient)
             {
                 this.validateUsername();
                 this.validatePassword();

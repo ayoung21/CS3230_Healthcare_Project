@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Healthcare_System.DAL;
 using Healthcare_System.Messages;
+using Healthcare_System.Model;
 using Healthcare_System.View;
 
 namespace Healthcare_System
@@ -65,8 +66,7 @@ namespace Healthcare_System
         {
             if (AdministratorDAL.GetNumberAdministrators() == 0)
             {
-                // var registerForm = new RegisterForm(this);
-                var registerForm = new RegisterForm()
+                var registerForm = new RegisterForm(PersonRoles.Administrator)
                 {
                     LoginForm = this
                 };
