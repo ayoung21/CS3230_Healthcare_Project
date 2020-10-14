@@ -1,21 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using Healthcare_System.Model;
 using MySql.Data.MySqlClient;
 
 namespace Healthcare_System.DAL
 {
+    /// <summary>
+    /// Manages actions on the account table
+    /// </summary>
     static class AccountDAL
     {
 
         /// <summary>Authenticates the specified username.</summary>
         /// <param name="username">The username.</param>
         /// <param name="password">The password.</param>
-        /// <returns></returns>
+        /// <returns>1 if the username and password are validated, 0 if not</returns>
         public static int Authenticate(string username, string password)
         {
             string query = "SELECT COUNT(*) FROM account WHERE username = @username AND password = @password";
@@ -44,7 +41,7 @@ namespace Healthcare_System.DAL
         /// <param name="username">The username.</param>
         /// <param name="email">The email.</param>
         /// <param name="password">The password.</param>
-        /// <returns>True if registration is successful; else otherwise.</returns>
+        /// <returns>True if registration is successful; false otherwise.</returns>
         public static bool Register(string username, string password)
         {
             if (doesUserExist(username))

@@ -1,6 +1,6 @@
 ﻿namespace Healthcare_System.View
 {
-    partial class Wrapper
+    partial class MainApp
     {
         /// <summary>
         /// Required designer variable.

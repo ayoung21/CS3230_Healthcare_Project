@@ -4,6 +4,10 @@ using System.Collections.Generic;
 
 namespace Healthcare_System.DAL
 {
+
+    /// <summary>
+    /// Helper methods used in various DAL classes
+    /// </summary>
     static class Helpers
     {
         private static bool isTableNameAllowed(string tableName)
@@ -16,6 +20,16 @@ namespace Healthcare_System.DAL
             return allowedTables.Contains(tableName);
         }
 
+
+        /// <summary>
+        ///     Determines whether the specified userId is in the specified table.
+        /// </summary>
+        /// <param name="userId">The userId to look for.</param>
+        /// <param name="table">The table to look in.</param>
+        /// <returns>
+        ///   <c>true</c> if the userId is in the specified table; otherwise, <c>false</c>.
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException">table name is invalid</exception>
         public static bool IsUserIdInTable(int userId, string table)
         {
             if (!isTableNameAllowed(table))
@@ -39,6 +53,16 @@ namespace Healthcare_System.DAL
             }
         }
 
+
+        /// <summary>
+        ///     Determines whether the specified username is in the specified table.
+        /// </summary>
+        /// <param name="username">The username to check for.</param>
+        /// <param name="table">The table to check in.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified username is in the specified table; otherwise, <c>false</c>.
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException">table name is invalid</exception>
         public static bool IsUsernameInTable(string username, string table)
         {
             if (!isTableNameAllowed(table))
@@ -62,6 +86,14 @@ namespace Healthcare_System.DAL
             }
         }
 
+
+        /// <summary>
+        ///     Gets the userId that corresponds with the given username
+        /// </summary>
+        /// <param name="username">The username that corresponds with the userId.</param>
+        /// <param name="table">The table to look in.</param>
+        /// <returns>the userId</returns>
+        /// <exception cref="ArgumentOutOfRangeException">table name is invalid</exception>
         public static int GetUserIdFromTable (string username, string table)
         {
             if (!isTableNameAllowed(table))

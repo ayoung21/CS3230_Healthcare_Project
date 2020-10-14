@@ -1,24 +1,25 @@
 ﻿using Healthcare_System.DAL;
-using Healthcare_System.View;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Healthcare_System.View
 {
-    public partial class Wrapper : Form
+    /// <summary>
+    /// Controller for the main app wrapper.
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
+    public partial class MainApp : Form
     {
         private LoginForm loginForm;
         private int userId;
         private bool isNurse;
 
-        public Wrapper(string username, LoginForm loginForm)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainApp"/> class.
+        /// </summary>
+        /// <param name="username">The username.</param>
+        /// <param name="loginForm">The login form.</param>
+        public MainApp(string username, LoginForm loginForm)
         {
             this.loginForm = loginForm;
             this.loginForm.Hide();

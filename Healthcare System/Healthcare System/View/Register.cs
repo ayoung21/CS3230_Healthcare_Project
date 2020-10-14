@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Healthcare_System.DAL;
 using Healthcare_System.Messages;
 
 namespace Healthcare_System
 {
+    /// <summary>
+    /// Controller for the registration form.
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class RegisterForm : Form
     {
         private bool initialAdminExists;
@@ -32,6 +30,10 @@ namespace Healthcare_System
 
         private IList<string> errorMessages;
 
+        /// <summary>
+            /// Initializes a new instance of the <see cref="RegisterForm"/> class.
+            /// Shows username and password fields if the form is being opened to register the initial admin account.
+        /// </summary>
         public RegisterForm()
         {
             InitializeComponent();

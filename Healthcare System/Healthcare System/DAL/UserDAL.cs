@@ -3,8 +3,25 @@ using System;
 
 namespace Healthcare_System.DAL
 {
+    /// <summary>
+    /// Manages actrions on the user table.
+    /// </summary>
     static class UserDAL
     {
+        /// <summary>
+        ///     Registers a new user.
+        /// </summary>
+        /// <param name="firstName">The first name.</param>
+        /// <param name="lastName">The last name.</param>
+        /// <param name="city">The city.</param>
+        /// <param name="state">The state.</param>
+        /// <param name="zip">The zip.</param>
+        /// <param name="phone">The phone.</param>
+        /// <param name="dob">The dob.</param>
+        /// <param name="gender">The gender.</param>
+        /// <param name="address1">The address1.</param>
+        /// <param name="address2">The address2.</param>
+        /// <returns>The generated userId for the new user</returns>
         public static int Register(string firstName, string lastName, string city, string state, 
             int zip, string phone, DateTime dob, string gender, string address1, string address2)
         {
@@ -48,13 +65,18 @@ namespace Healthcare_System.DAL
 
                 cmd.Connection.Open();
                 object queryResult = cmd.ExecuteScalar();
-                int generatedPk = Convert.ToInt32(queryResult);
+                int generatedUserId = Convert.ToInt32(queryResult);
                 cmd.Connection.Close();
 
-                return generatedPk;
+                return generatedUserId;
             }
         }
 
+        /// <summary>
+        /// Gets the first name of the specified userId.
+        /// </summary>
+        /// <param name="userId">The userId.</param>
+        /// <returns>the first name of the specified userId</returns>
         public static string GetFirstName(int userId)
         {
             string query = "SELECT first_name FROM user WHERE user_id = @userId;";
@@ -76,6 +98,11 @@ namespace Healthcare_System.DAL
             }
         }
 
+        /// <summary>
+        /// Gets the last name of the specified userId.
+        /// </summary>
+        /// <param name="userId">The userId.</param>
+        /// <returns>the last name of the specified userId</returns>
         public static string GetLastName(int userId)
         {
             string query = "SELECT last_name FROM user WHERE user_id = @userId;";
@@ -97,6 +124,11 @@ namespace Healthcare_System.DAL
             }
         }
 
+        /// <summary>
+        ///     Gets the full name (first last) of the specified userId.
+        /// </summary>
+        /// <param name="userId">The userId.</param>
+        /// <returns>the full name name of the specified userId</returns>
         public static string GetFullName(int userId)
         {
             string query = "SELECT first_name, last_name FROM user WHERE user_id = @userId;";

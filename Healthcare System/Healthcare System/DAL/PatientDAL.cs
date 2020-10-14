@@ -1,16 +1,22 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Healthcare_System.DAL
 {
+    /// <summary>
+    /// Manages actions on the patient table.
+    /// </summary>
     class PatientDAL
     {
         public static readonly string tableName = "patient";
 
+        /// <summary>
+        ///     Registers a new patient.
+        /// </summary>
+        /// <param name="userId">The userId in the user table to make a patient account for.</param>
+        /// <returns>
+        ///     True if successful; false if the userId already exists in the patient table
+        ///     or another issue occured
+        /// </returns>
         public static bool Register(int userId)
         {
             if (Helpers.IsUserIdInTable(userId, tableName))

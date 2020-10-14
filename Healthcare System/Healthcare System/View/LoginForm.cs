@@ -1,22 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Healthcare_System.DAL;
 using Healthcare_System.Messages;
-using Healthcare_System.Validation;
 using Healthcare_System.View;
 
 namespace Healthcare_System
 {
+    /// <summary>
+    /// Controller for the login form
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class LoginForm : Form
     {
         private IList<string> errorMessages;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoginForm"/> class.
+        /// Opens the administrator registration form if an admin account has not been set up yet.
+        /// </summary>
         public LoginForm()
         {
             InitializeComponent();
@@ -46,7 +48,7 @@ namespace Healthcare_System
                 int result = AccountDAL.Authenticate(username, password);
                 if (result == 1)
                 {
-                    Wrapper wrapper = new Wrapper(username, this);
+                    MainApp wrapper = new MainApp(username, this);
                     this.textBoxUsername.Clear();
                     this.textBoxPassword.Clear();
                     wrapper.ShowDialog();

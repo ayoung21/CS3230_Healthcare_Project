@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 
 // Make a copy of this file names DbConnection.cs and add the credentials below
 
 
 namespace Healthcare_System.DAL
 {
+    /// <summary>
+    /// Manages the DB connection info
+    /// </summary>
     public static class DbConnection
     {
         private static string username = "";
@@ -17,6 +15,10 @@ namespace Healthcare_System.DAL
         private static string ipAddress = "";
         private static string CONNECTION_STRING = $"server={ipAddress}; port=3306; uid={username}; pwd={password};database={username};";
 
+        /// <summary>
+        ///     Gets the DB connection.
+        /// </summary>
+        /// <returns>the DB connection</returns>
         public static MySqlConnection GetConnection()
         {
             return new MySqlConnection(CONNECTION_STRING);
