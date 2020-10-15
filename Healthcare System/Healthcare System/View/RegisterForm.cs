@@ -122,7 +122,7 @@ namespace Healthcare_System
 
         private void validateFields()
         {
-            if (this.roleRegisteringFor == PersonRoles.Patient)
+            if (this.roleRegisteringFor != PersonRoles.Patient)
             {
                 this.validateUsername();
                 this.validatePassword();
