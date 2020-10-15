@@ -17,7 +17,7 @@ namespace Healthcare_System.DAL
         {
             string query = "SELECT COUNT(*) FROM account WHERE username = @username AND password = @password";
 
-            using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
+            using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection())) //TODO create variable for connection so connection will be closed automatically
             {
                 cmd.Parameters.Add("@username", MySqlDbType.VarChar);
                 cmd.Parameters["@username"].Value = username;
