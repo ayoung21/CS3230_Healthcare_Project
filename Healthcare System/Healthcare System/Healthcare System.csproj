@@ -61,6 +61,7 @@
     <Compile Include="DAL\NurseDAL.cs" />
     <Compile Include="DAL\PatientDAL.cs" />
     <Compile Include="DAL\UserDAL.cs" />
+    <Compile Include="Model\Gender.cs" />
     <Compile Include="Validation\FormValidation.cs" />
     <Compile Include="View\MainApp.cs">
       <SubType>Form</SubType>

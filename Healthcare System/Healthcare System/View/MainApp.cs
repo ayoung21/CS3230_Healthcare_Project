@@ -1,4 +1,5 @@
 ﻿using Healthcare_System.DAL;
+using Healthcare_System.Model;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -36,6 +37,16 @@ namespace Healthcare_System.View
             }
 
             this.loggedInUser.Text = $"Hello, {UserDAL.GetFullName(this.userId)}! ({username})";
+
+            this.initializeColumnHeaders();
+        }
+
+        private void initializeColumnHeaders()
+        {
+            this.listViewPatients.Columns.Add("Last Name", 100);
+            this.listViewPatients.Columns.Add("First Name", 100);
+            this.listViewPatients.Columns.Add("Date of Birth", 100);
+            this.listViewPatients.Columns.Add("Patient ID", 60);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -71,10 +82,14 @@ namespace Healthcare_System.View
             if (this.dateTimePickerDob.Checked)
                 dob = this.dateTimePickerDob.Value;
 
-            List<int> matchingUserIds = PatientDAL.GetSearchResults(this.textBoxLastName.Text, this.textBoxFirstName.Text, dob);
-            foreach (int id in matchingUserIds)
+            List<Person> matches = PatientDAL.GetSearchResults(this.textBoxLastName.Text, this.textBoxFirstName.Text, dob);
+
+            this.listViewPatients.Items.Clear();
+
+            foreach(Person person in matches)
             {
-                Console.WriteLine("ID" + id.ToString());
+                ListViewItem row = new ListViewItem(new[] {person.LastName, person.FirstName, person.DateOfBirth.ToString(), person.PatientID.ToString()});
+                this.listViewPatients.Items.Add(row);
             }
         }
     }

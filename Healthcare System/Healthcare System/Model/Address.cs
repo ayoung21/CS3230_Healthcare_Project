@@ -36,6 +36,6 @@
         ///     Gets or sets the zip code.
         /// </summary>
         /// <value>The zip code.</value>
-        public string Zip { get; set; }
+        public int Zip { get; set; }
     }
 }

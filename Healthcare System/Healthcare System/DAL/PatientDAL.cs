@@ -45,33 +45,36 @@ namespace Healthcare_System.DAL
             return Helpers.IsUserIdInTable(userId, tableName);
         }
 
-        public static List<int> GetSearchResults(string lastName, string firstName, DateTime? dob)
+        public static List<Person> GetSearchResults(string lastName, string firstName, DateTime? dob)
         {
             if (string.IsNullOrEmpty(lastName) && string.IsNullOrEmpty(firstName) && dob == null)
                 throw new ArgumentException("At least one parameter is required to search");
 
-            StringBuilder query = new StringBuilder("SELECT u.user_id FROM user u, patient p WHERE u.user_id = p.user_id");
+            StringBuilder query = new StringBuilder("SELECT u.user_id, u.first_name, u.last_name, u.address_line1, " +
+                "u.address_line2, u.city, u.state, u.zip, u.phone, u.dob, u.gender, p.patient_id " +
+                "FROM user u, patient p WHERE u.user_id = p.user_id");
+
             if (!string.IsNullOrEmpty(lastName))
-                query.Append(" AND u.last_name = @lastName");
+                query.Append(" AND u.last_name LIKE @lastName");
             if (!string.IsNullOrEmpty(firstName))
-                query.Append(" AND u.first_name = @firstName");
+                query.Append(" AND u.first_name LIKE @firstName");
             if (dob != null)
                 query.Append(" AND dob = @dob");
             query.Append(";");
 
-            List<int> matchingUserIds = new List<int>();
+            List<Person> matches = new List<Person>();
 
             using (MySqlCommand cmd = new MySqlCommand(query.ToString(), DbConnection.GetConnection()))
             {
                 if (!string.IsNullOrEmpty(lastName))
                 {
                     cmd.Parameters.Add("@lastName", MySqlDbType.VarChar);
-                    cmd.Parameters["@lastName"].Value = lastName;
+                    cmd.Parameters["@lastName"].Value = $"%{lastName.Trim()}%";
                 }
                 if (!string.IsNullOrEmpty(firstName))
                 {
                     cmd.Parameters.Add("@firstName", MySqlDbType.VarChar);
-                    cmd.Parameters["@firstName"].Value = firstName;
+                    cmd.Parameters["@firstName"].Value = $"%{firstName.Trim()}%";
                 }
                 if (dob != null)
                 {
@@ -90,14 +93,34 @@ namespace Healthcare_System.DAL
                     while (dataReader.Read())
                     {
                         int userId = (dataReader["user_id"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["user_id"]);
-                        matchingUserIds.Add(userId);
+                        Address address = new Address()
+                        {
+                            StreetAddress = (dataReader["address_line1"] == DBNull.Value) ? default : Convert.ToString(dataReader["address_line1"]),
+                            AddressLine2 = (dataReader["address_line2"] == DBNull.Value) ? default : Convert.ToString(dataReader["address_line2"]),
+                            City = (dataReader["city"] == DBNull.Value) ? default : Convert.ToString(dataReader["city"]),
+                            State = (dataReader["state"] == DBNull.Value) ? default : Convert.ToString(dataReader["state"]),
+                            Zip = (dataReader["zip"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["zip"])
+                        };
+
+                        Person patient = new Person(userId)
+                        {
+                            FirstName = (dataReader["first_name"] == DBNull.Value) ? default : Convert.ToString(dataReader["first_name"]),
+                            LastName = (dataReader["last_name"] == DBNull.Value) ? default : Convert.ToString(dataReader["last_name"]),
+                            Address = address,
+                            Phone = (dataReader["phone"] == DBNull.Value) ? default : Convert.ToString(dataReader["phone"]),
+                            DateOfBirth = (dataReader["dob"] == DBNull.Value) ? default : Convert.ToDateTime(dataReader["dob"]),
+                            Gender = GenderHelper.GenderStringToEnum((dataReader["gender"] == DBNull.Value) ? default : Convert.ToString(dataReader["gender"]))
+                        };
+                        patient.AddRole(PersonRoles.Patient);
+                        patient.PatientID = (dataReader["patient_id"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["patient_id"]);
+                        matches.Add(patient);
                     }
                     
                 }
                 
                 cmd.Connection.Close();
 
-                return matchingUserIds;
+                return matches;
             }
         }
     }
