@@ -1,5 +1,6 @@
 ﻿using Healthcare_System.DAL;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Healthcare_System.View
@@ -61,6 +62,20 @@ namespace Healthcare_System.View
         private void buttonDeletePatient_Click(object sender, EventArgs e)
         {
             //TODO handle deleting patients (must make sure patient has no appointments)
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("SEARCH");
+            DateTime? dob = null;
+            if (this.dateTimePickerDob.Checked)
+                dob = this.dateTimePickerDob.Value;
+
+            List<int> matchingUserIds = PatientDAL.GetSearchResults(this.textBoxLastName.Text, this.textBoxFirstName.Text, dob);
+            foreach (int id in matchingUserIds)
+            {
+                Console.WriteLine("ID" + id.ToString());
+            }
         }
     }
 }

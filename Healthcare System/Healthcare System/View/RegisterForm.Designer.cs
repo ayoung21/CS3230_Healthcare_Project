@@ -59,7 +59,7 @@
             // textBoxUsername
             // 
             this.textBoxUsername.Location = new System.Drawing.Point(233, 30);
-            this.textBoxUsername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxUsername.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(288, 22);
             this.textBoxUsername.TabIndex = 0;
@@ -67,7 +67,7 @@
             // textBoxPassword
             // 
             this.textBoxPassword.Location = new System.Drawing.Point(233, 78);
-            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(288, 22);
             this.textBoxPassword.TabIndex = 1;
@@ -98,7 +98,7 @@
             // 
             this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegister.Location = new System.Drawing.Point(110, 898);
-            this.btnRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRegister.Margin = new System.Windows.Forms.Padding(4);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(324, 50);
             this.btnRegister.TabIndex = 12;
@@ -109,7 +109,7 @@
             // textBoxFirstName
             // 
             this.textBoxFirstName.Location = new System.Drawing.Point(233, 126);
-            this.textBoxFirstName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxFirstName.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(288, 22);
             this.textBoxFirstName.TabIndex = 2;
@@ -117,7 +117,7 @@
             // textBoxLastName
             // 
             this.textBoxLastName.Location = new System.Drawing.Point(233, 174);
-            this.textBoxLastName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxLastName.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(288, 22);
             this.textBoxLastName.TabIndex = 3;
@@ -125,7 +125,7 @@
             // textBoxAddress1
             // 
             this.textBoxAddress1.Location = new System.Drawing.Point(233, 226);
-            this.textBoxAddress1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxAddress1.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxAddress1.Name = "textBoxAddress1";
             this.textBoxAddress1.Size = new System.Drawing.Size(288, 22);
             this.textBoxAddress1.TabIndex = 4;
@@ -133,7 +133,7 @@
             // textBoxZip
             // 
             this.textBoxZip.Location = new System.Drawing.Point(233, 412);
-            this.textBoxZip.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxZip.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxZip.Name = "textBoxZip";
             this.textBoxZip.Size = new System.Drawing.Size(288, 22);
             this.textBoxZip.TabIndex = 8;
@@ -142,7 +142,7 @@
             // textBoxAddress2
             // 
             this.textBoxAddress2.Location = new System.Drawing.Point(233, 274);
-            this.textBoxAddress2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxAddress2.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxAddress2.Name = "textBoxAddress2";
             this.textBoxAddress2.Size = new System.Drawing.Size(288, 22);
             this.textBoxAddress2.TabIndex = 5;
@@ -150,17 +150,18 @@
             // textBoxCity
             // 
             this.textBoxCity.Location = new System.Drawing.Point(233, 324);
-            this.textBoxCity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxCity.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxCity.Name = "textBoxCity";
             this.textBoxCity.Size = new System.Drawing.Size(288, 22);
             this.textBoxCity.TabIndex = 6;
             // 
             // dateTimePicker
             // 
+            this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker.Location = new System.Drawing.Point(233, 510);
-            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(247, 22);
+            this.dateTimePicker.Size = new System.Drawing.Size(126, 22);
             this.dateTimePicker.TabIndex = 10;
             // 
             // dobLabel
@@ -319,7 +320,7 @@
             "WI",
             "WY"});
             this.comboBoxStates.Location = new System.Drawing.Point(233, 368);
-            this.comboBoxStates.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxStates.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxStates.Name = "comboBoxStates";
             this.comboBoxStates.Size = new System.Drawing.Size(68, 24);
             this.comboBoxStates.TabIndex = 7;
@@ -332,7 +333,7 @@
             "Male",
             "Female"});
             this.comboBoxGender.Location = new System.Drawing.Point(233, 550);
-            this.comboBoxGender.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxGender.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxGender.Name = "comboBoxGender";
             this.comboBoxGender.Size = new System.Drawing.Size(112, 24);
             this.comboBoxGender.TabIndex = 11;
@@ -351,7 +352,7 @@
             // textBoxPhone
             // 
             this.textBoxPhone.Location = new System.Drawing.Point(233, 466);
-            this.textBoxPhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxPhone.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPhone.MaxLength = 10;
             this.textBoxPhone.Name = "textBoxPhone";
             this.textBoxPhone.Size = new System.Drawing.Size(288, 22);
@@ -401,7 +402,7 @@
             this.Controls.Add(this.usernameLabel);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxUsername);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RegisterForm";
             this.Text = "Register";
             this.Load += new System.EventHandler(this.formRegister_Load);
