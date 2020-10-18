@@ -45,11 +45,12 @@ namespace Healthcare_System.Model
         public IList<PersonRoles> Roles { get; }
 
         /// <summary>
-        ///     Gets or sets the doctor identifier.
+        /// Gets or sets the doctor identifier.
         /// </summary>
         /// <value>
-        ///     The doctor identifier.
+        /// The doctor identifier.
         /// </value>
+        /// <exception cref="ArgumentException">Cannot set Doctor ID for non doctor</exception>
         public int? DoctorId
         {
             get
