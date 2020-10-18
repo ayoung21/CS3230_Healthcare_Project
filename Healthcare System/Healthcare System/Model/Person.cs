@@ -35,11 +35,13 @@ namespace Healthcare_System.Model
         /// <summary>
         ///     Gets or sets the phone number.
         /// </summary>
-        /// <value>
-        /// The phone number.
-        /// </value>
+        /// <value>The phone number.</value>
         public int Phone { get; set; }
 
+        /// <summary>
+        ///     Gets the person's roles.
+        /// </summary>
+        /// <value>The roles.</value>
         public IList<PersonRoles> Roles { get; }
 
         /// <summary>
