@@ -60,7 +60,13 @@ namespace Healthcare_System.Model
                     return null;
             }
 
-            set => DoctorId = value;
+            set
+            {
+                if (!this.Roles.Contains(PersonRoles.Doctor))
+                    throw new ArgumentException("Cannot set Doctor ID for non doctor");
+
+                this.DoctorId = value;
+            }
         }
 
         /// <summary>
