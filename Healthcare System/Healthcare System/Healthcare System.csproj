@@ -55,8 +55,8 @@
     <None Include="DAL\DbConnection.cs_TEMPLATE" />
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="DAL\AdministratorDAL.cs" />
-    <Compile Include="DAL\DbConnection.cs" />
     <Compile Include="DAL\AccountDAL.cs" />
+    <Compile Include="DAL\DbConnection.cs" />
     <Compile Include="DAL\Helpers.cs" />
     <Compile Include="DAL\NurseDAL.cs" />
     <Compile Include="DAL\PatientDAL.cs" />

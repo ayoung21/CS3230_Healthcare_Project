@@ -123,5 +123,88 @@ namespace Healthcare_System.DAL
                 return matches;
             }
         }
+
+        public static string GetPatientUserId(int patient_id)
+        {
+            string query = "SELECT user_id FROM patient WHERE patient_id = @patient_id;";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
+            {
+                cmd.Parameters.Add("@patient_id", MySqlDbType.Int32);
+                cmd.Parameters["@patient_id"].Value = patient_id;
+
+                cmd.Connection = DbConnection.GetConnection();
+
+                cmd.Connection.Open();
+
+                object queryResult = cmd.ExecuteScalar();
+                string firstName = (queryResult == DBNull.Value) ? null : Convert.ToString(queryResult);
+                cmd.Connection.Close();
+
+                return firstName;
+            }
+        }
+
+        public static Person GetPatient(int user_id, int patient_id)
+        {
+            string query = "SELECT * FROM user WHERE user_id = @user_id;";
+
+            Person result = null;
+
+            using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
+            {
+                cmd.Parameters.Add("@user_id", MySqlDbType.Int32);
+                cmd.Parameters["@user_id"].Value = user_id;
+
+                cmd.Connection = DbConnection.GetConnection();
+
+                cmd.Connection.Open();
+
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                if (dataReader.HasRows)
+                {
+
+                    while (dataReader.Read())
+                    {
+
+                        int userId = (dataReader["user_id"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["user_id"]);
+                        Address address = new Address()
+                        {
+                            StreetAddress = (dataReader["address_line1"] == DBNull.Value) ? default : Convert.ToString(dataReader["address_line1"]),
+                            AddressLine2 = (dataReader["address_line2"] == DBNull.Value) ? default : Convert.ToString(dataReader["address_line2"]),
+                            City = (dataReader["city"] == DBNull.Value) ? default : Convert.ToString(dataReader["city"]),
+                            State = (dataReader["state"] == DBNull.Value) ? default : Convert.ToString(dataReader["state"]),
+                            Zip = (dataReader["zip"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["zip"])
+                        };
+
+                        Person patient = new Person(userId)
+                        {
+                            FirstName = (dataReader["first_name"] == DBNull.Value) ? default : Convert.ToString(dataReader["first_name"]),
+                            LastName = (dataReader["last_name"] == DBNull.Value) ? default : Convert.ToString(dataReader["last_name"]),
+                            Address = address,
+                            Phone = (dataReader["phone"] == DBNull.Value) ? default : Convert.ToString(dataReader["phone"]),
+                            DateOfBirth = (dataReader["dob"] == DBNull.Value) ? default : Convert.ToDateTime(dataReader["dob"]),
+                            Gender = GenderHelper.GenderStringToEnum((dataReader["gender"] == DBNull.Value) ? default : Convert.ToString(dataReader["gender"]))
+                        };
+                        patient.AddRole(PersonRoles.Patient);
+                        patient.PatientID = patient_id;
+
+                        result = patient;
+                    }
+
+                }
+
+                /*
+                object queryResult = cmd.ExecuteScalar();
+                string result = (queryResult == DBNull.Value) ? null : Convert.ToString(queryResult);
+                cmd.Connection.Close();
+
+                return result;
+                */
+            }
+
+            return result;
+        }
     }
 }

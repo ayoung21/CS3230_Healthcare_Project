@@ -39,6 +39,8 @@ namespace Healthcare_System.View
             this.loggedInUser.Text = $"Hello, {UserDAL.GetFullName(this.userId)}! ({username})";
 
             this.initializeColumnHeaders();
+
+            this.listViewPatients.FullRowSelect = true;
         }
 
         private void initializeColumnHeaders()
@@ -90,6 +92,31 @@ namespace Healthcare_System.View
             {
                 ListViewItem row = new ListViewItem(new[] {person.LastName, person.FirstName, person.DateOfBirth.ToString(), person.PatientID.ToString()});
                 this.listViewPatients.Items.Add(row);
+            }
+        }
+
+        private void buttonEditPatient_Click(object sender, EventArgs e)
+        {
+            var isPatientSelected = (this.listViewPatients.SelectedItems.Count > 0) ? true : false;
+
+            if (isPatientSelected)
+            {
+                // Get patient id
+                var patientId = int.Parse(this.listViewPatients.SelectedItems[0].SubItems[3].Text);
+
+                // Get patient user id
+                var userId = int.Parse(PatientDAL.GetPatientUserId(patientId));
+
+                // Get patient info
+                var patientInfo = PatientDAL.GetPatient(userId, patientId);
+
+                // Open multi-purpose register form
+                // RegisterForm registerForm = new RegisterForm();
+                // registerForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please select a patient if you wish to edit.");
             }
         }
     }
