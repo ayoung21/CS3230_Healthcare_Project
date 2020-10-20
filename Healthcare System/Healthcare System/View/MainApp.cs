@@ -79,7 +79,11 @@ namespace Healthcare_System.View
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("SEARCH");
+            this.search();
+        }
+
+        private void search()
+        {
             DateTime? dob = null;
             if (this.dateTimePickerDob.Checked)
                 dob = this.dateTimePickerDob.Value;
@@ -88,9 +92,9 @@ namespace Healthcare_System.View
 
             this.listViewPatients.Items.Clear();
 
-            foreach(Person person in matches)
+            foreach (Person person in matches)
             {
-                ListViewItem row = new ListViewItem(new[] {person.LastName, person.FirstName, person.DateOfBirth.ToString(), person.PatientID.ToString()});
+                ListViewItem row = new ListViewItem(new[] { person.LastName, person.FirstName, person.DateOfBirth.ToString(), person.PatientID.ToString() });
                 this.listViewPatients.Items.Add(row);
             }
         }
@@ -111,8 +115,10 @@ namespace Healthcare_System.View
                 var patientInfo = PatientDAL.GetPatient(userId, patientId);
 
                 // Open multi-purpose register form
-                // RegisterForm registerForm = new RegisterForm();
-                // registerForm.ShowDialog();
+                RegisterForm registerForm = new RegisterForm(patientInfo);
+                registerForm.ShowDialog();
+
+                this.search();
             }
             else
             {

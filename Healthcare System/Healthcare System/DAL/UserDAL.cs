@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using Healthcare_System.Model;
 
 namespace Healthcare_System.DAL
 {
@@ -152,6 +153,69 @@ namespace Healthcare_System.DAL
                 cmd.Connection.Close();
 
                 return firstName + " " + lastName;
+            }
+        }
+
+        public static bool UpdateUser(Person person)
+        {
+            var first_name = person.FirstName;
+            var last_name = person.LastName;
+            var address_line1 = person.Address.StreetAddress;
+            var address_line2 = person.Address.AddressLine2;
+            var city = person.Address.City;
+            var state = person.Address.State;
+            var zip = person.Address.Zip;
+            var phone = person.Phone;
+            var dob = person.DateOfBirth;
+            var gender = person.Gender.ToString();
+            var user_id = person.UserId;
+
+            string query = "UPDATE user SET first_name = @first_name, last_name = @last_name, address_line1 = @address_line1, address_line2 = @address_line2, city = @city, state = @state, zip = @zip, phone = @phone, dob = @dob, gender = @gender WHERE user_id = @user_id;";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
+            {
+                cmd.Parameters.Add("@first_name", MySqlDbType.VarChar);
+                cmd.Parameters["@first_name"].Value = first_name;
+
+                cmd.Parameters.Add("@last_name", MySqlDbType.VarChar);
+                cmd.Parameters["@last_name"].Value = last_name;
+
+                cmd.Parameters.Add("@address_line1", MySqlDbType.VarChar);
+                cmd.Parameters["@address_line1"].Value = address_line1;
+
+                cmd.Parameters.Add("@address_line2", MySqlDbType.VarChar);
+                cmd.Parameters["@address_line2"].Value = address_line2;
+
+                cmd.Parameters.Add("@city", MySqlDbType.VarChar);
+                cmd.Parameters["@city"].Value = city;
+
+                cmd.Parameters.Add("@state", MySqlDbType.VarChar);
+                cmd.Parameters["@state"].Value = state;
+
+                cmd.Parameters.Add("@zip", MySqlDbType.Int32);
+                cmd.Parameters["@zip"].Value = zip;
+
+                cmd.Parameters.Add("@phone", MySqlDbType.VarChar);
+                cmd.Parameters["@phone"].Value = phone;
+
+                cmd.Parameters.Add("@dob", MySqlDbType.Date);
+                cmd.Parameters["@dob"].Value = dob;
+
+                cmd.Parameters.Add("@gender", MySqlDbType.VarChar);
+                cmd.Parameters["@gender"].Value = gender;
+
+                cmd.Parameters.Add("@user_id", MySqlDbType.Int32);
+                cmd.Parameters["@user_id"].Value = user_id;
+
+
+                cmd.Connection = DbConnection.GetConnection();
+
+                cmd.Connection.Open();
+                int result = cmd.ExecuteNonQuery();
+                
+                cmd.Connection.Close();
+
+                return (result == 1);
             }
         }
     }
