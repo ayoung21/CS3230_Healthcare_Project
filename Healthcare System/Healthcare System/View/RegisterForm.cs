@@ -38,9 +38,9 @@ namespace Healthcare_System
 
         private IList<string> errorMessages;
 
-        private FormType? formType;
+        private FormType formType;
 
-        private Person? person;
+        private Person person;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="RegisterForm" /> class.
@@ -57,6 +57,7 @@ namespace Healthcare_System
 
             LoginForm?.Hide();
 
+            this.formType = FormType.Register;
 
             if (this.roleRegisteringFor == PersonRoles.Patient)
             {
