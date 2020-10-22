@@ -24,7 +24,7 @@ namespace Healthcare_System.DAL
         /// <param name="address2">The address2.</param>
         /// <returns>The generated userId for the new user</returns>
         public static int Register(string firstName, string lastName, string city, string state, 
-            int zip, string phone, DateTime dob, string gender, string address1, string address2)
+            int zip, string phone, DateTime dob, Gender gender, string address1, string address2)
         {
             string query = "INSERT INTO user(first_name, last_name, address_line1, address_line2, city, " +
                 "state, zip, phone, dob, gender) VALUES(@first_name, @last_name, @address1, @address2, @city, " +

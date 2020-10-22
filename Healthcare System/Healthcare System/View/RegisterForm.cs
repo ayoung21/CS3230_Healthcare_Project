@@ -31,7 +31,7 @@ namespace Healthcare_System
         private int zip;
         private string phone;
         private DateTime dob;
-        private string gender;
+        private Gender gender;
         private PersonRoles roleRegisteringFor;
 
         public Form LoginForm { get; set; }
@@ -103,7 +103,7 @@ namespace Healthcare_System
             this.textBoxZip.Text = person.Address.Zip.ToString();
             this.textBoxPhone.Text = person.Phone;
             this.dateTimePicker.Value = person.DateOfBirth;
-            this.comboBoxGender.SelectedItem = (person.Gender == Gender.MALE) ? "Male" : "Female";
+            this.comboBoxGender.SelectedItem = (person.Gender == Gender.M) ? "Male" : "Female";
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -141,8 +141,8 @@ namespace Healthcare_System
                 person.Phone = this.phone;
                 person.DateOfBirth = this.dateTimePicker.Value;
                 person.Gender = (this.comboBoxGender.SelectedItem.ToString().ToUpper().Equals("MALE"))
-                    ? Gender.MALE
-                    : Gender.FEMALE;
+                    ? Gender.M
+                    : Gender.F;
                 var isSuccessful = UserDAL.UpdateUser(person);
 
                 if (isSuccessful)
@@ -163,7 +163,6 @@ namespace Healthcare_System
             this.zip = (String.IsNullOrEmpty(this.textBoxZip.Text) || this.textBoxZip.Text.Length != 5) ? Constants.Constants.INVALID_ZIP : Int32.Parse(this.textBoxZip.Text);
             this.phone = (String.IsNullOrEmpty(this.textBoxPhone.Text) || this.textBoxPhone.Text.Length != 10) ? "" : this.textBoxPhone.Text;
             this.dob = this.dateTimePicker.Value;
-            this.gender = (this.comboBoxGender.SelectedItem == null) ? "" : this.comboBoxGender.SelectedItem.ToString();
         }
 
         private void register()
@@ -312,10 +311,12 @@ namespace Healthcare_System
 
         private void validateGender()
         {
-            if (String.IsNullOrEmpty(this.gender.Trim()))
-            {
+            if (this.comboBoxGender.SelectedItem == null)
                 this.errorMessages.Add(UIMessages.INVALID_GENDER);
-            }
+            else if (this.comboBoxGender.SelectedItem.ToString() == "MALE")
+                this.gender = Gender.M;
+            else
+                this.gender = Gender.F;
         }
 
         private void displayErrorMessages()
