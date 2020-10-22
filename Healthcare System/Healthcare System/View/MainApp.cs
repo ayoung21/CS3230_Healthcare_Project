@@ -94,7 +94,7 @@ namespace Healthcare_System.View
 
             foreach (Person person in matches)
             {
-                ListViewItem row = new ListViewItem(new[] { person.LastName, person.FirstName, person.DateOfBirth.ToString(), person.PatientID.ToString() });
+                ListViewItem row = new ListViewItem(new[] { person.LastName, person.FirstName, person.DateOfBirth.ToShortDateString(), person.PatientID.ToString() });
                 this.listViewPatients.Items.Add(row);
             }
         }
