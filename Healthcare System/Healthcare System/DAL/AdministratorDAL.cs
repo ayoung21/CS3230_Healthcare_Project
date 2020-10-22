@@ -33,19 +33,19 @@ namespace Healthcare_System.DAL
 
             string query = $"INSERT INTO {tableName} VALUES(@userId, @username);";
 
-            using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
+            using (MySqlConnection connection = DbConnection.GetConnection())
             {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
                 cmd.Parameters.Add("@userId", MySqlDbType.Int32);
                 cmd.Parameters["@userId"].Value = userId;
 
                 cmd.Parameters.Add("@username", MySqlDbType.VarChar);
                 cmd.Parameters["@username"].Value = username;
 
-                cmd.Connection = DbConnection.GetConnection();
-
-                cmd.Connection.Open();
+                connection.Open();
                 cmd.ExecuteNonQuery();
-                cmd.Connection.Close();
+                connection.Close();
             }
 
             return Helpers.IsUserIdInTable(userId, tableName);
@@ -59,13 +59,13 @@ namespace Healthcare_System.DAL
         {
             string query = $"SELECT COUNT(user_id) FROM {tableName};";
 
-            using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
+            using (MySqlConnection connection = DbConnection.GetConnection())
             {
-                cmd.Connection = DbConnection.GetConnection();
+                MySqlCommand cmd = new MySqlCommand(query, connection);
 
-                cmd.Connection.Open();
+                connection.Open();
                 int count = Convert.ToInt32(cmd.ExecuteScalar());
-                cmd.Connection.Close();
+                connection.Close();
                 return count;
             }
         }

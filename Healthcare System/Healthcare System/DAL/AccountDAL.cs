@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
 
 namespace Healthcare_System.DAL
@@ -17,21 +18,21 @@ namespace Healthcare_System.DAL
         {
             string query = "SELECT COUNT(*) FROM account WHERE username = @username AND password = @password";
 
-            using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection())) //TODO create variable for connection so connection will be closed automatically
+            using (MySqlConnection connection = DbConnection.GetConnection())
             {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
                 cmd.Parameters.Add("@username", MySqlDbType.VarChar);
                 cmd.Parameters["@username"].Value = username;
 
                 cmd.Parameters.Add("@password", MySqlDbType.TinyText);
                 cmd.Parameters["@password"].Value = password;
 
-                cmd.Connection = DbConnection.GetConnection();
-
-                cmd.Connection.Open();
+                connection.Open();
 
                 int count = Convert.ToInt32(cmd.ExecuteScalar());
-                
-                cmd.Connection.Close();
+
+                connection.Close();
                 return count;
             }
         }
@@ -57,18 +58,18 @@ namespace Healthcare_System.DAL
         {
             string query = "SELECT count(*) FROM account WHERE username = @username";
 
-            using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
+            using (MySqlConnection connection = DbConnection.GetConnection())
             {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
                 cmd.Parameters.Add("@username", MySqlDbType.VarChar);
                 cmd.Parameters["@username"].Value = username;
 
-                cmd.Connection = DbConnection.GetConnection();
-
-                cmd.Connection.Open();
+                connection.Open();
 
                 int count = Convert.ToInt32(cmd.ExecuteScalar());
 
-                cmd.Connection.Close();
+                connection.Close();
                 return count > 0;
             }
         }
@@ -77,19 +78,19 @@ namespace Healthcare_System.DAL
         {
             string query = "INSERT INTO account VALUES(@username, @password)";
 
-            using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
+            using (MySqlConnection connection = DbConnection.GetConnection())
             {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
                 cmd.Parameters.Add("@username", MySqlDbType.VarChar);
                 cmd.Parameters["@username"].Value = username;
 
                 cmd.Parameters.Add("@password", MySqlDbType.TinyText);
                 cmd.Parameters["@password"].Value = password;
 
-                cmd.Connection = DbConnection.GetConnection();
-
-                cmd.Connection.Open();
+                connection.Open();
                 cmd.ExecuteNonQuery();
-                cmd.Connection.Close();
+                connection.Close();
             }
         }
     }

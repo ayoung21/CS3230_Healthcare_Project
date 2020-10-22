@@ -30,16 +30,16 @@ namespace Healthcare_System.DAL
 
             string query = $"INSERT INTO {tableName}(user_id) VALUES(@userId);";
 
-            using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
+            using (MySqlConnection connection = DbConnection.GetConnection())
             {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
                 cmd.Parameters.Add("@userId", MySqlDbType.Int32);
                 cmd.Parameters["@userId"].Value = userId;
 
-                cmd.Connection = DbConnection.GetConnection();
-
-                cmd.Connection.Open();
+                connection.Open();
                 cmd.ExecuteNonQuery();
-                cmd.Connection.Close();
+                connection.Close();
             }
 
             return Helpers.IsUserIdInTable(userId, tableName);
@@ -64,8 +64,10 @@ namespace Healthcare_System.DAL
 
             List<Person> matches = new List<Person>();
 
-            using (MySqlCommand cmd = new MySqlCommand(query.ToString(), DbConnection.GetConnection()))
+            using (MySqlConnection connection = DbConnection.GetConnection())
             {
+                MySqlCommand cmd = new MySqlCommand(query.ToString(), connection);
+
                 if (!string.IsNullOrEmpty(lastName))
                 {
                     cmd.Parameters.Add("@lastName", MySqlDbType.VarChar);
@@ -82,9 +84,7 @@ namespace Healthcare_System.DAL
                     cmd.Parameters["@dob"].Value = dob;
                 }
 
-                cmd.Connection = DbConnection.GetConnection();
-
-                cmd.Connection.Open();
+                connection.Open();
 
                 MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -118,7 +118,7 @@ namespace Healthcare_System.DAL
                     
                 }
                 
-                cmd.Connection.Close();
+                connection.Close();
 
                 return matches;
             }
@@ -128,18 +128,18 @@ namespace Healthcare_System.DAL
         {
             string query = "SELECT user_id FROM patient WHERE patient_id = @patient_id;";
 
-            using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
+            using (MySqlConnection connection = DbConnection.GetConnection())
             {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
                 cmd.Parameters.Add("@patient_id", MySqlDbType.Int32);
                 cmd.Parameters["@patient_id"].Value = patient_id;
 
-                cmd.Connection = DbConnection.GetConnection();
-
-                cmd.Connection.Open();
+                connection.Open();
 
                 object queryResult = cmd.ExecuteScalar();
                 string firstName = (queryResult == DBNull.Value) ? null : Convert.ToString(queryResult);
-                cmd.Connection.Close();
+                connection.Close();
 
                 return firstName;
             }
@@ -151,14 +151,14 @@ namespace Healthcare_System.DAL
 
             Person result = null;
 
-            using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
+            using (MySqlConnection connection = DbConnection.GetConnection())
             {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
                 cmd.Parameters.Add("@user_id", MySqlDbType.Int32);
                 cmd.Parameters["@user_id"].Value = user_id;
 
-                cmd.Connection = DbConnection.GetConnection();
-
-                cmd.Connection.Open();
+                connection.Open();
 
                 MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -195,13 +195,6 @@ namespace Healthcare_System.DAL
 
                 }
 
-                /*
-                object queryResult = cmd.ExecuteScalar();
-                string result = (queryResult == DBNull.Value) ? null : Convert.ToString(queryResult);
-                cmd.Connection.Close();
-
-                return result;
-                */
             }
 
             return result;
