@@ -35,7 +35,7 @@ namespace Healthcare_System.DAL
 
             using (MySqlConnection connection = DbConnection.GetConnection())
             {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                using MySqlCommand cmd = new MySqlCommand(query, connection);
 
                 cmd.Parameters.Add("@userId", MySqlDbType.Int32);
                 cmd.Parameters["@userId"].Value = userId;
@@ -61,7 +61,7 @@ namespace Healthcare_System.DAL
 
             using (MySqlConnection connection = DbConnection.GetConnection())
             {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                using MySqlCommand cmd = new MySqlCommand(query, connection);
 
                 connection.Open();
                 int count = Convert.ToInt32(cmd.ExecuteScalar());

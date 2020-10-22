@@ -32,7 +32,7 @@ namespace Healthcare_System.DAL
 
             using (MySqlConnection connection = DbConnection.GetConnection())
             {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                using MySqlCommand cmd = new MySqlCommand(query, connection);
 
                 cmd.Parameters.Add("@userId", MySqlDbType.Int32);
                 cmd.Parameters["@userId"].Value = userId;
@@ -66,7 +66,7 @@ namespace Healthcare_System.DAL
 
             using (MySqlConnection connection = DbConnection.GetConnection())
             {
-                MySqlCommand cmd = new MySqlCommand(query.ToString(), connection);
+                using MySqlCommand cmd = new MySqlCommand(query.ToString(), connection);
 
                 if (!string.IsNullOrEmpty(lastName))
                 {
@@ -130,7 +130,7 @@ namespace Healthcare_System.DAL
 
             using (MySqlConnection connection = DbConnection.GetConnection())
             {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                using MySqlCommand cmd = new MySqlCommand(query, connection);
 
                 cmd.Parameters.Add("@patient_id", MySqlDbType.Int32);
                 cmd.Parameters["@patient_id"].Value = patient_id;
@@ -153,7 +153,7 @@ namespace Healthcare_System.DAL
 
             using (MySqlConnection connection = DbConnection.GetConnection())
             {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                using MySqlCommand cmd = new MySqlCommand(query, connection);
 
                 cmd.Parameters.Add("@user_id", MySqlDbType.Int32);
                 cmd.Parameters["@user_id"].Value = user_id;

@@ -33,8 +33,10 @@ namespace Healthcare_System.DAL
             //before insertion, begin transaction
             //after all insertions, check if any errors occured. If no errors, manually commit operations to DB.
             //if there is an error, just go back (nothing will be done to DB)
-            using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
+            using (MySqlConnection connection = DbConnection.GetConnection())
             {
+                using MySqlCommand cmd = new MySqlCommand(query, connection);
+
                 cmd.Parameters.Add("@first_name", MySqlDbType.VarChar);
                 cmd.Parameters["@first_name"].Value = firstName;
 
@@ -65,12 +67,10 @@ namespace Healthcare_System.DAL
                 cmd.Parameters.Add("@gender", MySqlDbType.VarChar);
                 cmd.Parameters["@gender"].Value = gender;
 
-                cmd.Connection = DbConnection.GetConnection();
-
-                cmd.Connection.Open();
+                connection.Open();
                 object queryResult = cmd.ExecuteScalar();
                 int generatedUserId = Convert.ToInt32(queryResult);
-                cmd.Connection.Close();
+                connection.Close();
 
                 return generatedUserId;
             }
@@ -85,18 +85,18 @@ namespace Healthcare_System.DAL
         {
             string query = "SELECT first_name FROM user WHERE user_id = @userId;";
 
-            using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
+            using (MySqlConnection connection = DbConnection.GetConnection())
             {
+                using MySqlCommand cmd = new MySqlCommand(query, connection);
+
                 cmd.Parameters.Add("@userId", MySqlDbType.Int32);
                 cmd.Parameters["@userId"].Value = userId;
 
-                cmd.Connection = DbConnection.GetConnection();
-
-                cmd.Connection.Open();
+                connection.Open();
 
                 object queryResult = cmd.ExecuteScalar();
                 string firstName = (queryResult == DBNull.Value) ? null : Convert.ToString(queryResult);
-                cmd.Connection.Close();
+                connection.Close();
 
                 return firstName;
             }
@@ -111,18 +111,18 @@ namespace Healthcare_System.DAL
         {
             string query = "SELECT last_name FROM user WHERE user_id = @userId;";
 
-            using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
+            using (MySqlConnection connection = DbConnection.GetConnection())
             {
+                using MySqlCommand cmd = new MySqlCommand(query, connection);
+
                 cmd.Parameters.Add("@userId", MySqlDbType.Int32);
                 cmd.Parameters["@userId"].Value = userId;
 
-                cmd.Connection = DbConnection.GetConnection();
-
-                cmd.Connection.Open();
+                connection.Open();
 
                 object queryResult = cmd.ExecuteScalar();
                 string lastName = (queryResult == DBNull.Value) ? null : Convert.ToString(queryResult);
-                cmd.Connection.Close();
+                connection.Close();
 
                 return lastName;
             }
@@ -137,20 +137,20 @@ namespace Healthcare_System.DAL
         {
             string query = "SELECT first_name, last_name FROM user WHERE user_id = @userId;";
 
-            using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
+            using (MySqlConnection connection = DbConnection.GetConnection())
             {
+                using MySqlCommand cmd = new MySqlCommand(query, connection);
+
                 cmd.Parameters.Add("@userId", MySqlDbType.Int32);
                 cmd.Parameters["@userId"].Value = userId;
 
-                cmd.Connection = DbConnection.GetConnection();
-
-                cmd.Connection.Open();
+                connection.Open();
 
                 MySqlDataReader dataReader = cmd.ExecuteReader();
                 dataReader.Read();
                 string firstName = (dataReader["first_name"] == DBNull.Value) ? null : Convert.ToString(dataReader["first_name"]);
                 string lastName = (dataReader["last_name"] == DBNull.Value) ? null : Convert.ToString(dataReader["last_name"]);
-                cmd.Connection.Close();
+                connection.Close();
 
                 return firstName + " " + lastName;
             }
@@ -172,8 +172,10 @@ namespace Healthcare_System.DAL
 
             string query = "UPDATE user SET first_name = @first_name, last_name = @last_name, address_line1 = @address_line1, address_line2 = @address_line2, city = @city, state = @state, zip = @zip, phone = @phone, dob = @dob, gender = @gender WHERE user_id = @user_id;";
 
-            using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.GetConnection()))
+            using (MySqlConnection connection = DbConnection.GetConnection())
             {
+                using MySqlCommand cmd = new MySqlCommand(query, connection);
+
                 cmd.Parameters.Add("@first_name", MySqlDbType.VarChar);
                 cmd.Parameters["@first_name"].Value = first_name;
 
@@ -207,15 +209,12 @@ namespace Healthcare_System.DAL
                 cmd.Parameters.Add("@user_id", MySqlDbType.Int32);
                 cmd.Parameters["@user_id"].Value = user_id;
 
-
-                cmd.Connection = DbConnection.GetConnection();
-
-                cmd.Connection.Open();
+                connection.Open();
                 int result = cmd.ExecuteNonQuery();
                 
-                cmd.Connection.Close();
+                connection.Close();
 
-                return (result == 1);
+                return result == 1;
             }
         }
     }

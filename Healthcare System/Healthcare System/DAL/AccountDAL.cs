@@ -20,7 +20,7 @@ namespace Healthcare_System.DAL
 
             using (MySqlConnection connection = DbConnection.GetConnection())
             {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                using MySqlCommand cmd = new MySqlCommand(query, connection);
 
                 cmd.Parameters.Add("@username", MySqlDbType.VarChar);
                 cmd.Parameters["@username"].Value = username;
@@ -60,7 +60,7 @@ namespace Healthcare_System.DAL
 
             using (MySqlConnection connection = DbConnection.GetConnection())
             {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                using MySqlCommand cmd = new MySqlCommand(query, connection);
 
                 cmd.Parameters.Add("@username", MySqlDbType.VarChar);
                 cmd.Parameters["@username"].Value = username;
@@ -80,7 +80,7 @@ namespace Healthcare_System.DAL
 
             using (MySqlConnection connection = DbConnection.GetConnection())
             {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                using MySqlCommand cmd = new MySqlCommand(query, connection);
 
                 cmd.Parameters.Add("@username", MySqlDbType.VarChar);
                 cmd.Parameters["@username"].Value = username;
