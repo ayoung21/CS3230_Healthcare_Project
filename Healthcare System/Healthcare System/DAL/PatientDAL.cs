@@ -47,9 +47,6 @@ namespace Healthcare_System.DAL
 
         public static List<Person> GetSearchResults(string lastName, string firstName, DateTime? dob)
         {
-            if (string.IsNullOrEmpty(lastName) && string.IsNullOrEmpty(firstName) && dob == null)
-                throw new ArgumentException("At least one parameter is required to search");
-
             StringBuilder query = new StringBuilder("SELECT u.user_id, u.first_name, u.last_name, u.address_line1, " +
                 "u.address_line2, u.city, u.state, u.zip, u.phone, u.dob, u.gender, p.patient_id " +
                 "FROM user u, patient p WHERE u.user_id = p.user_id");
