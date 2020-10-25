@@ -53,11 +53,10 @@
             // 
             this.appComponents.Controls.Add(this.tabPatients);
             this.appComponents.Controls.Add(this.tabAppointments);
-            this.appComponents.Location = new System.Drawing.Point(18, 62);
-            this.appComponents.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.appComponents.Location = new System.Drawing.Point(12, 41);
             this.appComponents.Name = "appComponents";
             this.appComponents.SelectedIndex = 0;
-            this.appComponents.Size = new System.Drawing.Size(1907, 1009);
+            this.appComponents.Size = new System.Drawing.Size(1271, 656);
             this.appComponents.TabIndex = 0;
             // 
             // tabPatients
@@ -74,11 +73,10 @@
             this.tabPatients.Controls.Add(this.buttonEditPatient);
             this.tabPatients.Controls.Add(this.buttonDeletePatient);
             this.tabPatients.Controls.Add(this.buttonAddPatient);
-            this.tabPatients.Location = new System.Drawing.Point(4, 29);
-            this.tabPatients.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPatients.Location = new System.Drawing.Point(4, 22);
             this.tabPatients.Name = "tabPatients";
-            this.tabPatients.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPatients.Size = new System.Drawing.Size(1899, 976);
+            this.tabPatients.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPatients.Size = new System.Drawing.Size(1263, 630);
             this.tabPatients.TabIndex = 0;
             this.tabPatients.Text = "Patients";
             this.tabPatients.UseVisualStyleBackColor = true;
@@ -87,20 +85,20 @@
             // 
             this.listViewPatients.AllowColumnReorder = true;
             this.listViewPatients.HideSelection = false;
-            this.listViewPatients.Location = new System.Drawing.Point(24, 62);
-            this.listViewPatients.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.listViewPatients.Location = new System.Drawing.Point(16, 40);
+            this.listViewPatients.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.listViewPatients.Name = "listViewPatients";
-            this.listViewPatients.Size = new System.Drawing.Size(1622, 805);
+            this.listViewPatients.Size = new System.Drawing.Size(1083, 525);
             this.listViewPatients.TabIndex = 21;
             this.listViewPatients.UseCompatibleStateImageBehavior = false;
             this.listViewPatients.View = System.Windows.Forms.View.Details;
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(854, 14);
-            this.buttonSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonSearch.Location = new System.Drawing.Point(569, 9);
+            this.buttonSearch.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(84, 29);
+            this.buttonSearch.Size = new System.Drawing.Size(56, 19);
             this.buttonSearch.TabIndex = 20;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = true;
@@ -110,72 +108,73 @@
             // 
             this.dateTimePickerDob.Checked = false;
             this.dateTimePickerDob.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDob.Location = new System.Drawing.Point(683, 15);
-            this.dateTimePickerDob.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dateTimePickerDob.Location = new System.Drawing.Point(455, 10);
+            this.dateTimePickerDob.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dateTimePickerDob.Name = "dateTimePickerDob";
             this.dateTimePickerDob.ShowCheckBox = true;
-            this.dateTimePickerDob.Size = new System.Drawing.Size(147, 26);
+            this.dateTimePickerDob.Size = new System.Drawing.Size(99, 20);
             this.dateTimePickerDob.TabIndex = 19;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(634, 21);
+            this.label3.Location = new System.Drawing.Point(423, 14);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 20);
+            this.label3.Size = new System.Drawing.Size(30, 13);
             this.label3.TabIndex = 18;
             this.label3.Text = "DOB";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(316, 21);
+            this.label2.Location = new System.Drawing.Point(211, 14);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 20);
+            this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 17;
             this.label2.Text = "First Name";
             // 
             // textBoxFirstName
             // 
-            this.textBoxFirstName.Location = new System.Drawing.Point(405, 18);
-            this.textBoxFirstName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxFirstName.Location = new System.Drawing.Point(270, 12);
+            this.textBoxFirstName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.textBoxFirstName.Name = "textBoxFirstName";
-            this.textBoxFirstName.Size = new System.Drawing.Size(167, 26);
+            this.textBoxFirstName.Size = new System.Drawing.Size(113, 20);
             this.textBoxFirstName.TabIndex = 16;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 21);
+            this.label1.Location = new System.Drawing.Point(13, 14);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 20);
+            this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 15;
             this.label1.Text = "Last Name";
             // 
             // textBoxLastName
             // 
-            this.textBoxLastName.Location = new System.Drawing.Point(109, 18);
-            this.textBoxLastName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxLastName.Location = new System.Drawing.Point(73, 12);
+            this.textBoxLastName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.textBoxLastName.Name = "textBoxLastName";
-            this.textBoxLastName.Size = new System.Drawing.Size(167, 26);
+            this.textBoxLastName.Size = new System.Drawing.Size(113, 20);
             this.textBoxLastName.TabIndex = 14;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1683, 199);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Location = new System.Drawing.Point(1122, 129);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(165, 35);
+            this.button1.Size = new System.Drawing.Size(110, 23);
             this.button1.TabIndex = 3;
             this.button1.Text = "Add Appointment";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // buttonEditPatient
             // 
-            this.buttonEditPatient.Location = new System.Drawing.Point(1683, 108);
-            this.buttonEditPatient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonEditPatient.Location = new System.Drawing.Point(1122, 70);
             this.buttonEditPatient.Name = "buttonEditPatient";
-            this.buttonEditPatient.Size = new System.Drawing.Size(165, 35);
+            this.buttonEditPatient.Size = new System.Drawing.Size(110, 23);
             this.buttonEditPatient.TabIndex = 2;
             this.buttonEditPatient.Text = "Edit Patient";
             this.buttonEditPatient.UseVisualStyleBackColor = true;
@@ -183,10 +182,9 @@
             // 
             // buttonDeletePatient
             // 
-            this.buttonDeletePatient.Location = new System.Drawing.Point(1683, 154);
-            this.buttonDeletePatient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonDeletePatient.Location = new System.Drawing.Point(1122, 100);
             this.buttonDeletePatient.Name = "buttonDeletePatient";
-            this.buttonDeletePatient.Size = new System.Drawing.Size(165, 35);
+            this.buttonDeletePatient.Size = new System.Drawing.Size(110, 23);
             this.buttonDeletePatient.TabIndex = 1;
             this.buttonDeletePatient.Text = "Delete Patient";
             this.buttonDeletePatient.UseVisualStyleBackColor = true;
@@ -194,10 +192,9 @@
             // 
             // buttonAddPatient
             // 
-            this.buttonAddPatient.Location = new System.Drawing.Point(1683, 62);
-            this.buttonAddPatient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonAddPatient.Location = new System.Drawing.Point(1122, 40);
             this.buttonAddPatient.Name = "buttonAddPatient";
-            this.buttonAddPatient.Size = new System.Drawing.Size(165, 35);
+            this.buttonAddPatient.Size = new System.Drawing.Size(110, 23);
             this.buttonAddPatient.TabIndex = 0;
             this.buttonAddPatient.Text = "Add Patient";
             this.buttonAddPatient.UseVisualStyleBackColor = true;
@@ -205,11 +202,10 @@
             // 
             // tabAppointments
             // 
-            this.tabAppointments.Location = new System.Drawing.Point(4, 29);
-            this.tabAppointments.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabAppointments.Location = new System.Drawing.Point(4, 22);
             this.tabAppointments.Name = "tabAppointments";
-            this.tabAppointments.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabAppointments.Size = new System.Drawing.Size(1899, 976);
+            this.tabAppointments.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabAppointments.Size = new System.Drawing.Size(1263, 630);
             this.tabAppointments.TabIndex = 1;
             this.tabAppointments.Text = "Appointments";
             this.tabAppointments.UseVisualStyleBackColor = true;
@@ -217,21 +213,19 @@
             // loggedInUser
             // 
             this.loggedInUser.AutoSize = true;
-            this.loggedInUser.Location = new System.Drawing.Point(1468, 14);
-            this.loggedInUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.loggedInUser.MinimumSize = new System.Drawing.Size(450, 0);
+            this.loggedInUser.Location = new System.Drawing.Point(979, 9);
+            this.loggedInUser.MinimumSize = new System.Drawing.Size(300, 0);
             this.loggedInUser.Name = "loggedInUser";
-            this.loggedInUser.Size = new System.Drawing.Size(450, 20);
+            this.loggedInUser.Size = new System.Drawing.Size(300, 13);
             this.loggedInUser.TabIndex = 0;
             this.loggedInUser.Text = "Hello, PERSON";
             this.loggedInUser.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // logOut
             // 
-            this.logOut.Location = new System.Drawing.Point(1812, 39);
-            this.logOut.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.logOut.Location = new System.Drawing.Point(1208, 25);
             this.logOut.Name = "logOut";
-            this.logOut.Size = new System.Drawing.Size(112, 35);
+            this.logOut.Size = new System.Drawing.Size(75, 23);
             this.logOut.TabIndex = 1;
             this.logOut.Text = "Log Out";
             this.logOut.UseVisualStyleBackColor = true;
@@ -239,13 +233,12 @@
             // 
             // MainApp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1943, 1091);
+            this.ClientSize = new System.Drawing.Size(1295, 709);
             this.Controls.Add(this.logOut);
             this.Controls.Add(this.loggedInUser);
             this.Controls.Add(this.appComponents);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MainApp";
             this.Text = "Healthcare System";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Wrapper_FormClosing);

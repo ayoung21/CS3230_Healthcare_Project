@@ -115,10 +115,14 @@ namespace Healthcare_System.View
                 var patientInfo = PatientDAL.GetPatient(userId, patientId);
 
                 // Open multi-purpose register form
-                RegisterForm registerForm = new RegisterForm(patientInfo);
-                registerForm.ShowDialog();
+                // RegisterForm registerForm = new RegisterForm(patientInfo);
+                // registerForm.ShowDialog();
 
-                this.search();
+                // Refresh?
+                // this.search();
+
+                PatientInfo patientInfoForm = new PatientInfo(patientInfo);
+                patientInfoForm.ShowDialog();
             }
             else
             {
