@@ -94,12 +94,15 @@
             this.tabControl1.Location = new System.Drawing.Point(13, 13);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(570, 604);
+            this.tabControl1.Size = new System.Drawing.Size(556, 702);
             this.tabControl1.TabIndex = 2;
             // 
             // tabDetails
             // 
+            this.tabDetails.Controls.Add(this.buttonCancel);
             this.tabDetails.Controls.Add(this.labelInvalidGender);
+            this.tabDetails.Controls.Add(this.buttonSave);
+            this.tabDetails.Controls.Add(this.buttonEdit);
             this.tabDetails.Controls.Add(this.labelInvalidPhoneNumber);
             this.tabDetails.Controls.Add(this.labelInvalidLastName);
             this.tabDetails.Controls.Add(this.labelInvalidBirthday);
@@ -118,7 +121,7 @@
             this.tabDetails.Location = new System.Drawing.Point(4, 22);
             this.tabDetails.Name = "tabDetails";
             this.tabDetails.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDetails.Size = new System.Drawing.Size(562, 578);
+            this.tabDetails.Size = new System.Drawing.Size(548, 676);
             this.tabDetails.TabIndex = 0;
             this.tabDetails.Text = "Details";
             this.tabDetails.UseVisualStyleBackColor = true;
@@ -339,7 +342,7 @@
             // buttonEdit
             // 
             this.buttonEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonEdit.Location = new System.Drawing.Point(333, 658);
+            this.buttonEdit.Location = new System.Drawing.Point(288, 631);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(121, 39);
             this.buttonEdit.TabIndex = 3;
@@ -350,7 +353,7 @@
             // buttonSave
             // 
             this.buttonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSave.Location = new System.Drawing.Point(460, 658);
+            this.buttonSave.Location = new System.Drawing.Point(415, 631);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(121, 39);
             this.buttonSave.TabIndex = 4;
@@ -361,7 +364,7 @@
             // buttonCancel
             // 
             this.buttonCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCancel.Location = new System.Drawing.Point(19, 658);
+            this.buttonCancel.Location = new System.Drawing.Point(11, 631);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(121, 39);
             this.buttonCancel.TabIndex = 5;
@@ -472,10 +475,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(593, 709);
-            this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.buttonEdit);
+            this.ClientSize = new System.Drawing.Size(573, 721);
             this.Controls.Add(this.tabControl1);
             this.Name = "PatientInfo";
             this.Text = "PatientInfo";
