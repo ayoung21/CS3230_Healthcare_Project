@@ -15,7 +15,7 @@ namespace Healthcare_System.Messages
         public static readonly string INVALID_STREET_ADDRESS = "* Please enter a valid street address";
         public static readonly string INVALID_CITY = "* Please enter a valid city";
         public static readonly string INVALID_STATE = "* Please enter a valid state";
-        public static readonly string INVALID_ZIP = "* Please enter a valid zip";
+        public static readonly string INVALID_ZIP = "* Invalid zip code";
         public static readonly string INVALID_PHONE = "* Please enter a valid phone number";
         public static readonly string INVALID_GENDER = "* Please enter a valid gender";
     }
