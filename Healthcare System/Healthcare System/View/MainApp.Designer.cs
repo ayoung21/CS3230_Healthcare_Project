@@ -75,7 +75,7 @@
             this.tabPatients.Controls.Add(this.buttonAddPatient);
             this.tabPatients.Location = new System.Drawing.Point(4, 22);
             this.tabPatients.Name = "tabPatients";
-            this.tabPatients.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPatients.Padding = new System.Windows.Forms.Padding(3);
             this.tabPatients.Size = new System.Drawing.Size(1263, 630);
             this.tabPatients.TabIndex = 0;
             this.tabPatients.Text = "Patients";
@@ -176,7 +176,7 @@
             this.buttonEditPatient.Name = "buttonEditPatient";
             this.buttonEditPatient.Size = new System.Drawing.Size(110, 23);
             this.buttonEditPatient.TabIndex = 2;
-            this.buttonEditPatient.Text = "Edit Patient";
+            this.buttonEditPatient.Text = "View Patient";
             this.buttonEditPatient.UseVisualStyleBackColor = true;
             this.buttonEditPatient.Click += new System.EventHandler(this.buttonEditPatient_Click);
             // 
@@ -204,7 +204,7 @@
             // 
             this.tabAppointments.Location = new System.Drawing.Point(4, 22);
             this.tabAppointments.Name = "tabAppointments";
-            this.tabAppointments.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabAppointments.Padding = new System.Windows.Forms.Padding(3);
             this.tabAppointments.Size = new System.Drawing.Size(1263, 630);
             this.tabAppointments.TabIndex = 1;
             this.tabAppointments.Text = "Appointments";

@@ -31,7 +31,7 @@ namespace Healthcare_System.View
             this.buttonSave.Enabled = detailsTabEditMode;
             this.buttonCancel.Enabled = detailsTabEditMode;
             this.populateFields();
-            
+            this.dateTimeAppointmentDate.CustomFormat = "MM/dd/yyyy HH:mm";
         }
 
         private void EnableDetailsTabAllowEdit(bool allowEdit)
@@ -240,6 +240,11 @@ namespace Healthcare_System.View
             {
                 e.Handled = true;
             }
+        }
+
+        private void buttonScheduleAppointment_Click(object sender, EventArgs e)
+        {
+            //TPDP
         }
     }
 }
