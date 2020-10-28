@@ -32,6 +32,21 @@ namespace Healthcare_System.Model
         /// </value>
         public string LastName { get; set; }
 
+
+        /// <summary>
+        /// Gets the full name (First Last)
+        /// </summary>
+        /// <value>
+        /// The full name.
+        /// </value>
+        public string FullName
+        {
+            get
+            {
+                return this.FirstName + " " + this.LastName;
+            }
+        }
+
         /// <summary>
         /// Gets or sets the date of birth.
         /// </summary>

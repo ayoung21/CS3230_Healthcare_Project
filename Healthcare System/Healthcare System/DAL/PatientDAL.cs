@@ -53,10 +53,13 @@ namespace Healthcare_System.DAL
 
             if (!string.IsNullOrEmpty(lastName))
                 query.Append(" AND u.last_name LIKE @lastName");
+
             if (!string.IsNullOrEmpty(firstName))
                 query.Append(" AND u.first_name LIKE @firstName");
+
             if (dob != null)
                 query.Append(" AND dob = @dob");
+
             query.Append(";");
 
             List<Person> matches = new List<Person>();

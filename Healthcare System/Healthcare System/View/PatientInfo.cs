@@ -32,6 +32,9 @@ namespace Healthcare_System.View
             this.buttonCancel.Enabled = detailsTabEditMode;
             this.populateFields();
             this.dateTimeAppointmentDate.CustomFormat = "MM/dd/yyyy HH:mm";
+            this.comboBoxDoctor.ValueMember = "DoctorId";
+            this.comboBoxDoctor.DisplayMember = "FullName";
+            this.comboBoxDoctor.DataSource = DoctorDAL.GetAllDoctors();
         }
 
         private void EnableDetailsTabAllowEdit(bool allowEdit)
@@ -244,7 +247,48 @@ namespace Healthcare_System.View
 
         private void buttonScheduleAppointment_Click(object sender, EventArgs e)
         {
-            //TPDP
+            if (this.comboBoxDoctor.SelectedValue == null)
+            {
+                MessageBox.Show("Please select a doctor");
+                return;
+            }
+
+            int patientId = this.patient.PatientID.Value;
+            DateTime appointmentDateTime = this.dateTimeAppointmentDate.Value;
+            string reasons = this.textBoxAppointmentReasons.Text;
+            int doctorId = Int32.Parse(this.comboBoxDoctor.SelectedValue.ToString());
+ 
+
+            if (this.validateAppointmentInfo(appointmentDateTime, patientId, doctorId, reasons))
+                AppointmentDAL.AddAppointment(patientId, appointmentDateTime, doctorId, reasons);
+        }
+
+        private bool validateAppointmentInfo(DateTime appointmentDateTime, int patientId, int doctorId, string reasons)
+        {
+            if (appointmentDateTime < DateTime.Now)
+            {
+                MessageBox.Show("You cannot schedule an appointment in the past");
+                return false;
+            }
+
+            if (AppointmentDAL.HasMatchingAppointment(appointmentDateTime, patientId: patientId))
+            {
+                MessageBox.Show("The patient cannot be scheduled for 2 appointments at the same time!");
+                return false;
+            }
+            else if (AppointmentDAL.HasMatchingAppointment(appointmentDateTime, doctorId: doctorId))
+            {
+                MessageBox.Show("The doctor cannot be at 2 appointments at the same time!");
+                return false;
+            }
+
+            if (String.IsNullOrWhiteSpace(reasons))
+            {
+                MessageBox.Show("Please include appointment reasons.");
+                return false;
+            }
+
+            return true;
         }
     }
 }
