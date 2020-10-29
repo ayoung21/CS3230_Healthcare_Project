@@ -17,6 +17,8 @@ namespace Healthcare_System.View
     {
         private Person patient;
         private bool detailsTabEditMode;
+        private bool appointmentEditMode;
+        private bool currentlyEditingAppointment;
 
         public PatientInfo(Person patientInfo)
         {
@@ -24,20 +26,32 @@ namespace Healthcare_System.View
 
             this.patient = patientInfo;
             this.detailsTabEditMode = false;
+            this.currentlyEditingAppointment = false;
 
-            this.EnableDetailsTabAllowEdit(false);
+            this.enableDetailsTabAllowEdit(false);
             this.hideDetailsTabErrorMessages();
             this.comboBoxStates.DataSource = Enum.GetValues(typeof(StateAbbreviations));
-            this.buttonSave.Enabled = detailsTabEditMode;
-            this.buttonCancel.Enabled = detailsTabEditMode;
+            this.buttonSavePatient.Enabled = detailsTabEditMode;
+            this.buttonCancelEditPatient.Enabled = detailsTabEditMode;
             this.populateFields();
             this.dateTimeAppointmentDate.CustomFormat = "MM/dd/yyyy HH:mm";
             this.comboBoxDoctor.ValueMember = "DoctorId";
-            this.comboBoxDoctor.DisplayMember = "FullName";
+            this.comboBoxDoctor.DisplayMember = "FullNameLastFirst";
             this.comboBoxDoctor.DataSource = DoctorDAL.GetAllDoctors();
+
+            this.initializeAppointmentsListView();
+            this.reloadAppointments();
+            this.disableAppointmentEditFields();
         }
 
-        private void EnableDetailsTabAllowEdit(bool allowEdit)
+        #region Patient Details Tab
+        private void initializeAppointmentsListView()
+        {
+            this.listViewAppointments.Columns.Add("Date & Time", 150);
+            this.listViewAppointments.Columns.Add("Reasons", 400);
+        }
+
+        private void enableDetailsTabAllowEdit(bool allowEdit)
         {
             // Patient Info
             this.textBoxFirstName.Enabled = allowEdit;
@@ -81,36 +95,36 @@ namespace Healthcare_System.View
             this.comboBoxGender.SelectedItem = (patient.Gender == Gender.M) ? "Male" : "Female";
         }
 
-        private void buttonEdit_Click(object sender, EventArgs e)
+        private void buttonEditPatient_Click(object sender, EventArgs e)
         {
-            this.EnableDetailsTabAllowEdit(true);
+            this.enableDetailsTabAllowEdit(true);
 
-            this.buttonEdit.Enabled = false;
-            this.buttonCancel.Enabled = true;
-            this.buttonSave.Enabled = true;
+            this.buttonEditPatient.Enabled = false;
+            this.buttonCancelEditPatient.Enabled = true;
+            this.buttonSavePatient.Enabled = true;
         }
 
-        private void buttonCancel_Click(object sender, EventArgs e)
+        private void buttonCancelEditPatient_Click(object sender, EventArgs e)
         {
             this.populateFields();
-            this.EnableDetailsTabAllowEdit(false);
+            this.enableDetailsTabAllowEdit(false);
             this.hideDetailsTabErrorMessages();
 
-            this.buttonEdit.Enabled = true;
-            this.buttonCancel.Enabled = false;
-            this.buttonSave.Enabled = false;
+            this.buttonEditPatient.Enabled = true;
+            this.buttonCancelEditPatient.Enabled = false;
+            this.buttonSavePatient.Enabled = false;
         }
 
-        private void buttonSave_Click(object sender, EventArgs e)
+        private void buttonSavePatient_Click(object sender, EventArgs e)
         {
             this.hideDetailsTabErrorMessages();
             var validFields = this.validateDetailsTabFields();
 
             if (validFields)
             {
-                this.buttonSave.Enabled = false;
-                this.buttonCancel.Enabled = false;
-                this.buttonEdit.Enabled = true;
+                this.buttonSavePatient.Enabled = false;
+                this.buttonCancelEditPatient.Enabled = false;
+                this.buttonEditPatient.Enabled = true;
                 this.hideDetailsTabErrorMessages();
 
                 // Update Person
@@ -135,12 +149,12 @@ namespace Healthcare_System.View
                     // TODO: Need to refactor -- same logic as cancel button
                     // NOTE: this needs to be before message box
                     this.populateFields();
-                    this.EnableDetailsTabAllowEdit(false);
+                    this.enableDetailsTabAllowEdit(false);
                     this.hideDetailsTabErrorMessages();
 
-                    this.buttonEdit.Enabled = true;
-                    this.buttonCancel.Enabled = false;
-                    this.buttonSave.Enabled = false;
+                    this.buttonEditPatient.Enabled = true;
+                    this.buttonCancelEditPatient.Enabled = false;
+                    this.buttonSavePatient.Enabled = false;
 
                     MessageBox.Show("Patient has been updated!");
                 }
@@ -244,8 +258,10 @@ namespace Healthcare_System.View
                 e.Handled = true;
             }
         }
+        #endregion
 
-        private void buttonScheduleAppointment_Click(object sender, EventArgs e)
+        #region Appointments Tab
+        private void buttonSaveAppointment_Click(object sender, EventArgs e)
         {
             if (this.comboBoxDoctor.SelectedValue == null)
             {
@@ -257,13 +273,85 @@ namespace Healthcare_System.View
             DateTime appointmentDateTime = this.dateTimeAppointmentDate.Value;
             string reasons = this.textBoxAppointmentReasons.Text;
             int doctorId = Int32.Parse(this.comboBoxDoctor.SelectedValue.ToString());
- 
+            bool successful = false;
 
-            if (this.validateAppointmentInfo(appointmentDateTime, patientId, doctorId, reasons))
-                AppointmentDAL.AddAppointment(patientId, appointmentDateTime, doctorId, reasons);
+            if (this.appointmentEditMode)
+            {
+                Appointment oldAppointment = (Appointment)this.listViewAppointments.SelectedItems[0].Tag;
+                if (this.validateAppointmentInfo(appointmentDateTime, patientId, doctorId, reasons, oldAppointment))
+                {
+                    DateTime oldDateTime = oldAppointment.DateTime;
+                    successful = AppointmentDAL.UpdateAppointment(this.patient.PatientID.Value, oldDateTime, appointmentDateTime, doctorId, reasons);
+                }
+                else
+                {
+                    return;
+                }
+            } 
+            else if (this.validateAppointmentInfo(appointmentDateTime, patientId, doctorId, reasons))
+            {
+                successful = AppointmentDAL.AddAppointment(patientId, appointmentDateTime, doctorId, reasons);
+            } else
+            {
+                return;
+            }
+ 
+            if (successful)
+            {
+                this.reloadAppointments();
+                this.clearAppointmentDetailsFields();
+                this.disableAppointmentEditFields();
+                this.currentlyEditingAppointment = false;
+            }
+            else
+            {
+                MessageBox.Show("An error occured while saving the appointment");
+            }
         }
 
-        private bool validateAppointmentInfo(DateTime appointmentDateTime, int patientId, int doctorId, string reasons)
+        private void reloadAppointments()
+        {
+            this.listViewAppointments.Items.Clear();
+
+            List<Appointment> appointments = AppointmentDAL.GetAllAppointmentsForPatient(this.patient.PatientID.Value);
+
+            foreach (Appointment appointment in appointments)
+            {
+                string formattedDateTime = appointment.DateTime.ToShortDateString() + " " + appointment.DateTime.ToShortTimeString();
+                ListViewItem row = new ListViewItem(new[] { formattedDateTime, appointment.Reasons });
+                row.Tag = appointment;
+                this.listViewAppointments.Items.Add(row);
+            }
+
+        }
+
+        private void disableAppointmentEditFields()
+        {
+            this.dateTimeAppointmentDate.Enabled = false;
+            this.comboBoxDoctor.Enabled = false;
+            this.textBoxAppointmentReasons.Enabled = false;
+            this.buttonCancelAppointmentEdit.Enabled = false;
+            this.buttonSaveAppointment.Enabled = false;
+        }
+
+        private void enableAppointmentEditFields()
+        {
+            this.dateTimeAppointmentDate.Enabled = true;
+            this.comboBoxDoctor.Enabled = true;
+            this.textBoxAppointmentReasons.Enabled = true;
+            this.buttonCancelAppointmentEdit.Enabled = true;
+            this.buttonSaveAppointment.Enabled = true;
+        }
+
+        private void clearAppointmentDetailsFields()
+        {
+            this.dateTimeAppointmentDate.Value = DateTime.Now;
+            this.comboBoxDoctor.SelectedIndex = 0;
+            this.comboBoxDoctor.SelectedIndex = 0;
+            this.textBoxAppointmentReasons.Clear();
+        }
+
+        private bool validateAppointmentInfo(DateTime appointmentDateTime, int patientId, int doctorId, string reasons, Appointment ignoredAppointment = null)
         {
             if (appointmentDateTime < DateTime.Now)
             {
@@ -271,12 +359,12 @@ namespace Healthcare_System.View
                 return false;
             }
 
-            if (AppointmentDAL.HasMatchingAppointment(appointmentDateTime, patientId: patientId))
+            if (AppointmentDAL.HasMatchingAppointment(appointmentDateTime, patientId: patientId, ignoredAppointment: ignoredAppointment))
             {
                 MessageBox.Show("The patient cannot be scheduled for 2 appointments at the same time!");
                 return false;
             }
-            else if (AppointmentDAL.HasMatchingAppointment(appointmentDateTime, doctorId: doctorId))
+            else if (AppointmentDAL.HasMatchingAppointment(appointmentDateTime, doctorId: doctorId, ignoredAppointment: ignoredAppointment))
             {
                 MessageBox.Show("The doctor cannot be at 2 appointments at the same time!");
                 return false;
@@ -286,9 +374,111 @@ namespace Healthcare_System.View
             {
                 MessageBox.Show("Please include appointment reasons.");
                 return false;
+            } else if (reasons.Length > 200)
+            {
+                MessageBox.Show("Reasons length cannot exceed 200 characters");
+                return false;
             }
 
             return true;
         }
+
+        private void buttonCancelAppointmentEdit_Click(object sender, EventArgs e)
+        {
+            this.clearAppointmentDetailsFields();
+            this.disableAppointmentEditFields();
+            this.currentlyEditingAppointment = false;
+        }
+
+        private void buttonNewAppointment_Click(object sender, EventArgs e)
+        {
+            if (this.currentlyEditingAppointment)
+            {
+                this.showUnsavedAppointmentChangesError();
+                return;
+            }
+
+            this.currentlyEditingAppointment = true;
+            this.clearAppointmentDetailsFields();
+            this.changeAppointmentEditMode(false);
+            this.enableAppointmentEditFields();
+        }
+
+        private void buttonEditAppointment_Click(object sender, EventArgs e)
+        {
+            if (this.currentlyEditingAppointment)
+            {
+                this.showUnsavedAppointmentChangesError();
+                return;
+            }
+
+            if (this.listViewAppointments.SelectedItems.Count > 0)
+            {
+                DateTime appointmentDateTime = ((Appointment)this.listViewAppointments.SelectedItems[0].Tag).DateTime;
+                if (appointmentDateTime < DateTime.Now)
+                {
+                    MessageBox.Show("You cannot edit this appointment because its time has passed");
+                    return;
+                }
+                this.currentlyEditingAppointment = true;
+                this.changeAppointmentEditMode(true);
+                this.populateAppointmentDetails();
+                this.enableAppointmentEditFields();
+            }
+            else
+            {
+                MessageBox.Show("Please select an appointment to edit");
+            }
+        }
+
+        private void listViewAppointments_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (!this.currentlyEditingAppointment)
+            {
+                this.populateAppointmentDetails();
+            }
+        }
+
+        private void populateAppointmentDetails()
+        {
+            if (this.listViewAppointments.SelectedItems.Count > 0)
+            {
+                Appointment selectedAppointment = (Appointment)this.listViewAppointments.SelectedItems[0].Tag;
+                this.dateTimeAppointmentDate.Value = selectedAppointment.DateTime;
+                this.comboBoxDoctor.SelectedItem = selectedAppointment.DoctorId;
+                this.textBoxAppointmentReasons.Text = selectedAppointment.Reasons;
+            }
+        }
+
+        private void showUnsavedAppointmentChangesError()
+        {
+            MessageBox.Show("Please save or cancel your current changes before proceding");
+        }
+
+        private void changeAppointmentEditMode(bool isEditMode)
+        {
+            this.appointmentEditMode = isEditMode;
+            if (isEditMode)
+            {
+                this.buttonSaveAppointment.Text = "Save Changes";
+            }
+            else
+            {
+                this.buttonSaveAppointment.Text = "Schedule Appointment";
+            }
+        }
+
+        private void buttonDeleteAppointment_Click(object sender, EventArgs e)
+        {
+            //TODO
+            MessageBox.Show("Not implemented yet");
+        }
+
+        private void buttonMakeVisit_Click(object sender, EventArgs e)
+        {
+            //TODO
+        }
+        #endregion
+
     }
 }

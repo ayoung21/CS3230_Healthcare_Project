@@ -170,7 +170,9 @@ namespace Healthcare_System.DAL
             var gender = person.Gender.ToString();
             var user_id = person.UserId;
 
-            string query = "UPDATE user SET first_name = @first_name, last_name = @last_name, address_line1 = @address_line1, address_line2 = @address_line2, city = @city, state = @state, zip = @zip, phone = @phone, dob = @dob, gender = @gender WHERE user_id = @user_id;";
+            string query = "UPDATE user " +
+                "SET first_name = @first_name, last_name = @last_name, address_line1 = @address_line1, address_line2 = @address_line2, city = @city, state = @state, zip = @zip, phone = @phone, dob = @dob, gender = @gender " +
+                "WHERE user_id = @user_id;";
 
             using (MySqlConnection connection = DbConnection.GetConnection())
             {

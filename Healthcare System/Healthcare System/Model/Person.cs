@@ -34,16 +34,16 @@ namespace Healthcare_System.Model
 
 
         /// <summary>
-        /// Gets the full name (First Last)
+        /// Gets the full name (Last, First)
         /// </summary>
         /// <value>
         /// The full name.
         /// </value>
-        public string FullName
+        public string FullNameLastFirst
         {
             get
             {
-                return this.FirstName + " " + this.LastName;
+                return this.LastName + ", " + this.FirstName;
             }
         }
 
