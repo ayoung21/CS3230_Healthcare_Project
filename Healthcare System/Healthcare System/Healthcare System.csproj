@@ -57,12 +57,12 @@
     <Compile Include="DAL\AdministratorDAL.cs" />
     <Compile Include="DAL\AccountDAL.cs" />
     <Compile Include="DAL\AppointmentDAL.cs" />
-    <Compile Include="DAL\DbConnection.cs" />
     <Compile Include="DAL\DoctorDAL.cs" />
     <Compile Include="DAL\Helpers.cs" />
     <Compile Include="DAL\NurseDAL.cs" />
     <Compile Include="DAL\PatientDAL.cs" />
     <Compile Include="DAL\UserDAL.cs" />
+    <Compile Include="DbConnection.cs" />
     <Compile Include="Model\Appointment.cs" />
     <Compile Include="Model\Gender.cs" />
     <Compile Include="Model\StateAbbreviations.cs" />
