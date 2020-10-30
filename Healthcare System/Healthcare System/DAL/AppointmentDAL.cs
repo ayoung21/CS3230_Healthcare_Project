@@ -12,7 +12,7 @@ namespace Healthcare_System.DAL
     {
         public static bool AddAppointment(int patientId, DateTime appointmentDateTime, int doctorId, string reasons)
         {
-            string query = "INSERT INTO appointment VALUES(@patient_id, @datetime, @doctor_id, @reasons)";
+            string query = "INSERT INTO appointment VALUES(@patient_id, @datetime, @doctor_id, @reasons);";
 
             using (MySqlConnection connection = DbConnection.GetConnection())
             {
