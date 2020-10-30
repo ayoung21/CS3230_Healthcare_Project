@@ -475,7 +475,7 @@ namespace Healthcare_System.View
             {
                 Appointment selectedAppointment = (Appointment)this.listViewAppointments.SelectedItems[0].Tag;
                 this.dateTimeAppointmentDate.Value = selectedAppointment.DateTime;
-                this.comboBoxAppointmentDoctor.SelectedItem = selectedAppointment.DoctorId;
+                this.comboBoxAppointmentDoctor.SelectedValue = selectedAppointment.DoctorId;
                 this.textBoxAppointmentReasons.Text = selectedAppointment.Reasons;
             }
         }
@@ -650,7 +650,7 @@ namespace Healthcare_System.View
             {
                 Visit selectedVisit = (Visit)this.listViewVisits.SelectedItems[0].Tag;
                 this.dateTimePickerVisit.Value = selectedVisit.AppointmentDateTime;
-                this.comboBoxVisitDoctor.SelectedItem = selectedVisit.DoctorId;
+                this.comboBoxVisitDoctor.SelectedValue = selectedVisit.DoctorId;
                 this.numericUpDownSystolic.Value = selectedVisit.BpSystolic;
                 this.numericUpDownDiastolic.Value = selectedVisit.BpDiastolic;
                 this.numericUpDownPulse.Value = selectedVisit.Pulse;
