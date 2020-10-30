@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
 
 namespace Healthcare_System.DAL
@@ -16,7 +15,7 @@ namespace Healthcare_System.DAL
         /// <returns>1 if the username and password are validated, 0 if not</returns>
         public static int Authenticate(string username, string password)
         {
-            string query = "SELECT COUNT(*) FROM account WHERE username = @username AND password = @password";
+            string query = "SELECT COUNT(*) FROM account WHERE username = @username AND password = SHA(@password)";
 
             using (MySqlConnection connection = DbConnection.GetConnection())
             {
@@ -37,7 +36,6 @@ namespace Healthcare_System.DAL
             }
         }
 
-
         /// <summary>Registers the specified username.</summary>
         /// <param name="username">The username.</param>
         /// <param name="email">The email.</param>
@@ -49,6 +47,7 @@ namespace Healthcare_System.DAL
             {
                 return false;
             }
+
 
             registerUser(username, password);
             return doesUserExist(username);
@@ -76,7 +75,7 @@ namespace Healthcare_System.DAL
 
         private static void registerUser(string username, string password)
         {
-            string query = "INSERT INTO account VALUES(@username, @password)";
+            string query = "INSERT INTO account VALUES(@username, SHA(@password))";
 
             using (MySqlConnection connection = DbConnection.GetConnection())
             {

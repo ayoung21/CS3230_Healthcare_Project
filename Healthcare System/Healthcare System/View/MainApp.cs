@@ -129,5 +129,14 @@ namespace Healthcare_System.View
                 MessageBox.Show("Please select a patient if you wish to edit.");
             }
         }
+
+        private void buttonClearSearchFields_Click(object sender, EventArgs e)
+        {
+            this.textBoxFirstName.Clear();
+            this.textBoxLastName.Clear();
+            this.dateTimePickerDob.Value = DateTime.Now;
+            this.dateTimePickerDob.Checked = false;
+            this.listViewPatients.Items.Clear();
+        }
     }
 }
