@@ -121,7 +121,7 @@ namespace Healthcare_System.View
                 // Refresh?
                 // this.search();
 
-                PatientInfo patientInfoForm = new PatientInfo(patientInfo);
+                PatientInfo patientInfoForm = new PatientInfo(patientInfo, this.userId);
                 patientInfoForm.ShowDialog();
             }
             else
