@@ -11,7 +11,6 @@
         /// <value>The street address.</value>
         public string StreetAddress { get; set; }
 
-
         /// <summary>
         ///     Gets or sets the address line 2.
         /// </summary>
