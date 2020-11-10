@@ -13,20 +13,22 @@ namespace Healthcare_System.Model
         public int BpSystolic { get; set; }
         public int BpDiastolic { get; set; }
         public decimal Temperature { get; set; }
+        public decimal Weight { get; set; }
         public int Pulse { get; set; }
         public string Symptoms { get; set; }
         public int NurseUserId { get; set; }
         public int DoctorId { get; set; }
         public string Diagnoses { get; set; }
 
-        public Visit(int patientId, DateTime appoinmentDateTime, int bpSystolic, int bpDiastolic,
-            decimal temperature, int pulse, string symptoms, int nurseUserId, int doctorId, string diagnoses = null)
+        public Visit(int patientId, DateTime appoinmentDateTime, int bpSystolic, int bpDiastolic, decimal temperature, 
+            decimal weight, int pulse, string symptoms, int nurseUserId, int doctorId, string diagnoses = null)
         {
             this.PatientId = patientId;
             this.AppointmentDateTime = appoinmentDateTime;
             this.BpSystolic = bpSystolic;
             this.BpDiastolic = bpDiastolic;
             this.Temperature = temperature;
+            this.Weight = weight;
             this.Pulse = pulse;
             this.Symptoms = symptoms;
             this.NurseUserId = nurseUserId;

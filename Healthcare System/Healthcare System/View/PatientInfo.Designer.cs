@@ -102,6 +102,9 @@
             this.dateTimePickerVisit = new System.Windows.Forms.DateTimePicker();
             this.label15 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.numericUpDownWeight = new System.Windows.Forms.NumericUpDown();
+            this.label22 = new System.Windows.Forms.Label();
+            this.checkBoxFinalDiagnosis = new System.Windows.Forms.CheckBox();
             this.tabControlPatientInfo.SuspendLayout();
             this.tabDetails.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -113,6 +116,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTemperature)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDiastolic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSystolic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWeight)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxFirstName
@@ -138,11 +142,11 @@
             this.tabControlPatientInfo.Controls.Add(this.tabDetails);
             this.tabControlPatientInfo.Controls.Add(this.tabAppointments);
             this.tabControlPatientInfo.Controls.Add(this.tabVisits);
-            this.tabControlPatientInfo.Location = new System.Drawing.Point(17, 16);
+            this.tabControlPatientInfo.Location = new System.Drawing.Point(8, 16);
             this.tabControlPatientInfo.Margin = new System.Windows.Forms.Padding(4);
             this.tabControlPatientInfo.Name = "tabControlPatientInfo";
             this.tabControlPatientInfo.SelectedIndex = 0;
-            this.tabControlPatientInfo.Size = new System.Drawing.Size(811, 864);
+            this.tabControlPatientInfo.Size = new System.Drawing.Size(972, 864);
             this.tabControlPatientInfo.TabIndex = 2;
             // 
             // tabDetails
@@ -170,7 +174,7 @@
             this.tabDetails.Margin = new System.Windows.Forms.Padding(4);
             this.tabDetails.Name = "tabDetails";
             this.tabDetails.Padding = new System.Windows.Forms.Padding(4);
-            this.tabDetails.Size = new System.Drawing.Size(803, 835);
+            this.tabDetails.Size = new System.Drawing.Size(964, 835);
             this.tabDetails.TabIndex = 0;
             this.tabDetails.Text = "Details";
             this.tabDetails.UseVisualStyleBackColor = true;
@@ -549,7 +553,7 @@
             this.tabAppointments.Margin = new System.Windows.Forms.Padding(4);
             this.tabAppointments.Name = "tabAppointments";
             this.tabAppointments.Padding = new System.Windows.Forms.Padding(4);
-            this.tabAppointments.Size = new System.Drawing.Size(803, 835);
+            this.tabAppointments.Size = new System.Drawing.Size(964, 835);
             this.tabAppointments.TabIndex = 1;
             this.tabAppointments.Text = "Appointments";
             this.tabAppointments.UseVisualStyleBackColor = true;
@@ -723,14 +727,14 @@
             this.tabVisits.Location = new System.Drawing.Point(4, 25);
             this.tabVisits.Margin = new System.Windows.Forms.Padding(4);
             this.tabVisits.Name = "tabVisits";
-            this.tabVisits.Size = new System.Drawing.Size(803, 835);
+            this.tabVisits.Size = new System.Drawing.Size(964, 835);
             this.tabVisits.TabIndex = 2;
             this.tabVisits.Text = "Visits";
             this.tabVisits.UseVisualStyleBackColor = true;
             // 
             // buttonEditVisit
             // 
-            this.buttonEditVisit.Location = new System.Drawing.Point(701, 357);
+            this.buttonEditVisit.Location = new System.Drawing.Point(865, 358);
             this.buttonEditVisit.Name = "buttonEditVisit";
             this.buttonEditVisit.Size = new System.Drawing.Size(75, 31);
             this.buttonEditVisit.TabIndex = 3;
@@ -744,7 +748,7 @@
             this.listViewVisits.Location = new System.Drawing.Point(25, 12);
             this.listViewVisits.MultiSelect = false;
             this.listViewVisits.Name = "listViewVisits";
-            this.listViewVisits.Size = new System.Drawing.Size(751, 340);
+            this.listViewVisits.Size = new System.Drawing.Size(915, 340);
             this.listViewVisits.TabIndex = 2;
             this.listViewVisits.UseCompatibleStateImageBehavior = false;
             this.listViewVisits.View = System.Windows.Forms.View.Details;
@@ -752,6 +756,9 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.checkBoxFinalDiagnosis);
+            this.groupBox3.Controls.Add(this.numericUpDownWeight);
+            this.groupBox3.Controls.Add(this.label22);
             this.groupBox3.Controls.Add(this.comboBoxVisitDoctor);
             this.groupBox3.Controls.Add(this.label21);
             this.groupBox3.Controls.Add(this.buttonLabs);
@@ -773,11 +780,11 @@
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(25, 387);
+            this.groupBox3.Location = new System.Drawing.Point(4, 387);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(751, 444);
+            this.groupBox3.Size = new System.Drawing.Size(943, 444);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Visit Info";
@@ -791,7 +798,7 @@
             this.comboBoxVisitDoctor.Location = new System.Drawing.Point(413, 19);
             this.comboBoxVisitDoctor.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxVisitDoctor.Name = "comboBoxVisitDoctor";
-            this.comboBoxVisitDoctor.Size = new System.Drawing.Size(307, 33);
+            this.comboBoxVisitDoctor.Size = new System.Drawing.Size(514, 33);
             this.comboBoxVisitDoctor.TabIndex = 19;
             // 
             // label21
@@ -830,7 +837,7 @@
             // buttonCancelVisitInfo
             // 
             this.buttonCancelVisitInfo.Enabled = false;
-            this.buttonCancelVisitInfo.Location = new System.Drawing.Point(559, 408);
+            this.buttonCancelVisitInfo.Location = new System.Drawing.Point(757, 408);
             this.buttonCancelVisitInfo.Name = "buttonCancelVisitInfo";
             this.buttonCancelVisitInfo.Size = new System.Drawing.Size(88, 36);
             this.buttonCancelVisitInfo.TabIndex = 15;
@@ -841,7 +848,7 @@
             // buttonSaveVisit
             // 
             this.buttonSaveVisit.Enabled = false;
-            this.buttonSaveVisit.Location = new System.Drawing.Point(653, 408);
+            this.buttonSaveVisit.Location = new System.Drawing.Point(851, 408);
             this.buttonSaveVisit.Name = "buttonSaveVisit";
             this.buttonSaveVisit.Size = new System.Drawing.Size(75, 36);
             this.buttonSaveVisit.TabIndex = 14;
@@ -856,7 +863,7 @@
             this.textBoxDiagnoses.MaxLength = 200;
             this.textBoxDiagnoses.Multiline = true;
             this.textBoxDiagnoses.Name = "textBoxDiagnoses";
-            this.textBoxDiagnoses.Size = new System.Drawing.Size(716, 218);
+            this.textBoxDiagnoses.Size = new System.Drawing.Size(649, 218);
             this.textBoxDiagnoses.TabIndex = 13;
             // 
             // label20
@@ -874,7 +881,7 @@
             this.textBoxSymptoms.Location = new System.Drawing.Point(116, 113);
             this.textBoxSymptoms.MaxLength = 200;
             this.textBoxSymptoms.Name = "textBoxSymptoms";
-            this.textBoxSymptoms.Size = new System.Drawing.Size(612, 30);
+            this.textBoxSymptoms.Size = new System.Drawing.Size(811, 30);
             this.textBoxSymptoms.TabIndex = 11;
             // 
             // label19
@@ -889,7 +896,7 @@
             // numericUpDownPulse
             // 
             this.numericUpDownPulse.Enabled = false;
-            this.numericUpDownPulse.Location = new System.Drawing.Point(489, 65);
+            this.numericUpDownPulse.Location = new System.Drawing.Point(475, 64);
             this.numericUpDownPulse.Maximum = new decimal(new int[] {
             999,
             0,
@@ -912,7 +919,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(422, 67);
+            this.label18.Location = new System.Drawing.Point(408, 67);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(61, 25);
             this.label18.TabIndex = 8;
@@ -922,7 +929,7 @@
             // 
             this.numericUpDownTemperature.DecimalPlaces = 2;
             this.numericUpDownTemperature.Enabled = false;
-            this.numericUpDownTemperature.Location = new System.Drawing.Point(639, 65);
+            this.numericUpDownTemperature.Location = new System.Drawing.Point(623, 64);
             this.numericUpDownTemperature.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -945,7 +952,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(572, 67);
+            this.label17.Location = new System.Drawing.Point(554, 67);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(68, 25);
             this.label17.TabIndex = 6;
@@ -954,7 +961,7 @@
             // numericUpDownDiastolic
             // 
             this.numericUpDownDiastolic.Enabled = false;
-            this.numericUpDownDiastolic.Location = new System.Drawing.Point(334, 65);
+            this.numericUpDownDiastolic.Location = new System.Drawing.Point(321, 65);
             this.numericUpDownDiastolic.Maximum = new decimal(new int[] {
             999,
             0,
@@ -977,7 +984,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(212, 67);
+            this.label16.Location = new System.Drawing.Point(199, 67);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(116, 25);
             this.label16.TabIndex = 4;
@@ -986,7 +993,7 @@
             // numericUpDownSystolic
             // 
             this.numericUpDownSystolic.Enabled = false;
-            this.numericUpDownSystolic.Location = new System.Drawing.Point(121, 65);
+            this.numericUpDownSystolic.Location = new System.Drawing.Point(113, 64);
             this.numericUpDownSystolic.Maximum = new decimal(new int[] {
             999,
             0,
@@ -1033,11 +1040,54 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Date/Time";
             // 
+            // numericUpDownWeight
+            // 
+            this.numericUpDownWeight.DecimalPlaces = 2;
+            this.numericUpDownWeight.Enabled = false;
+            this.numericUpDownWeight.Location = new System.Drawing.Point(822, 65);
+            this.numericUpDownWeight.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            131072});
+            this.numericUpDownWeight.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            131072});
+            this.numericUpDownWeight.Name = "numericUpDownWeight";
+            this.numericUpDownWeight.Size = new System.Drawing.Size(114, 30);
+            this.numericUpDownWeight.TabIndex = 21;
+            this.numericUpDownWeight.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(742, 69);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(74, 25);
+            this.label22.TabIndex = 20;
+            this.label22.Text = "Weight";
+            // 
+            // checkBoxFinalDiagnosis
+            // 
+            this.checkBoxFinalDiagnosis.AutoSize = true;
+            this.checkBoxFinalDiagnosis.Location = new System.Drawing.Point(691, 223);
+            this.checkBoxFinalDiagnosis.Name = "checkBoxFinalDiagnosis";
+            this.checkBoxFinalDiagnosis.Size = new System.Drawing.Size(218, 29);
+            this.checkBoxFinalDiagnosis.TabIndex = 22;
+            this.checkBoxFinalDiagnosis.Text = "Final diagnosis made";
+            this.checkBoxFinalDiagnosis.UseVisualStyleBackColor = true;
+            // 
             // PatientInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 887);
+            this.ClientSize = new System.Drawing.Size(980, 887);
             this.Controls.Add(this.tabControlPatientInfo);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PatientInfo";
@@ -1057,6 +1107,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTemperature)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDiastolic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSystolic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWeight)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1137,5 +1188,8 @@
         private System.Windows.Forms.Button buttonLabs;
         private System.Windows.Forms.ComboBox comboBoxVisitDoctor;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.NumericUpDown numericUpDownWeight;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.CheckBox checkBoxFinalDiagnosis;
     }
 }

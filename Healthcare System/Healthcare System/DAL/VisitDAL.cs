@@ -11,10 +11,10 @@ namespace Healthcare_System.DAL
     class VisitDAL
     {
         public static bool AddVisit(int patientId, DateTime dateTime, int bpSystolic, int bpDiastolic,
-            decimal temperature, int pulse, string symptoms, int nurseUserId, int doctorId, string diagnoses)
+            decimal temperature, decimal weight, int pulse, string symptoms, int nurseUserId, int doctorId, string diagnoses)
         {
             string query = "INSERT INTO record VALUES(@patient_id, @appt_datetime, @bp_systolic, @bp_diastolic, @temperature, " +
-                "@pulse, @symptoms, @diagnoses, @nurse_user_id, @doctor_id);";
+                "@weight, @pulse, @symptoms, @diagnoses, @nurse_user_id, @doctor_id);";
 
             using (MySqlConnection connection = DbConnection.GetConnection())
             {
@@ -34,6 +34,9 @@ namespace Healthcare_System.DAL
 
                 cmd.Parameters.Add("@temperature", MySqlDbType.Decimal);
                 cmd.Parameters["@temperature"].Value = temperature;
+
+                cmd.Parameters.Add("@weight", MySqlDbType.Decimal);
+                cmd.Parameters["@weight"].Value = weight;
 
                 cmd.Parameters.Add("@pulse", MySqlDbType.Int32);
                 cmd.Parameters["@pulse"].Value = pulse;
@@ -102,13 +105,14 @@ namespace Healthcare_System.DAL
                         int bpSystolic = (dataReader["bp_systolic"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["bp_systolic"]);
                         int bpDiastolic = (dataReader["bp_diastolic"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["bp_diastolic"]);
                         decimal temperature = (dataReader["temperature"] == DBNull.Value) ? default : Convert.ToDecimal(dataReader["temperature"]);
+                        decimal weight = (dataReader["weight"] == DBNull.Value) ? default : Convert.ToDecimal(dataReader["weight"]);
                         int pulse = (dataReader["pulse"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["pulse"]);
                         string symptoms = (dataReader["symptoms"] == DBNull.Value) ? default : Convert.ToString(dataReader["symptoms"]);
                         string diagnoses = (dataReader["diagnoses"] == DBNull.Value) ? null : Convert.ToString(dataReader["diagnoses"]);
                         int nurseUserId = (dataReader["nurse_user_id"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["nurse_user_id"]);
                         int doctorId = (dataReader["doctor_id"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["doctor_id"]);
 
-                        visits.Add(new Visit(patientId, dateTime, bpSystolic, bpDiastolic, temperature, pulse, symptoms, nurseUserId, doctorId, diagnoses));
+                        visits.Add(new Visit(patientId, dateTime, bpSystolic, bpDiastolic, temperature, weight, pulse, symptoms, nurseUserId, doctorId, diagnoses));
                     }
                 }
             }
@@ -117,10 +121,10 @@ namespace Healthcare_System.DAL
         }
 
         public static bool UpdateVisit(int patientId, DateTime datetime, int bpSystolic, int bpDiastolic,
-            decimal temperature, int pulse, string symptoms, int nurseUserId, int doctorId, string diagnoses)
+            decimal temperature, decimal weight, int pulse, string symptoms, int nurseUserId, int doctorId, string diagnoses)
         {
             string query = "UPDATE record " +
-                "SET bp_systolic = @bp_systolic, bp_diastolic = @bp_diastolic, temperature = @temperature, pulse = @pulse, " +
+                "SET bp_systolic = @bp_systolic, bp_diastolic = @bp_diastolic, temperature = @temperature, weight = @weight, pulse = @pulse, " +
                 "symptoms = @symptoms, diagnoses = @diagnoses, nurse_user_id = @nurse_user_id, doctor_id = @doctor_id " +
                 "WHERE patient_id = @patient_id AND appointment_datetime = @datetime;";
 
@@ -136,6 +140,9 @@ namespace Healthcare_System.DAL
 
                 cmd.Parameters.Add("@temperature", MySqlDbType.Decimal);
                 cmd.Parameters["@temperature"].Value = temperature;
+
+                cmd.Parameters.Add("@weight", MySqlDbType.Decimal);
+                cmd.Parameters["@weight"].Value = weight;
 
                 cmd.Parameters.Add("@pulse", MySqlDbType.Int32);
                 cmd.Parameters["@pulse"].Value = pulse;

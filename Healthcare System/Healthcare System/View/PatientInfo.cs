@@ -538,6 +538,7 @@ namespace Healthcare_System.View
             int bpSystolic = (int)this.numericUpDownSystolic.Value;
             int bpDiastolic = (int)this.numericUpDownDiastolic.Value;
             decimal temperature = this.numericUpDownTemperature.Value;
+            decimal weight = this.numericUpDownWeight.Value;
             int pulse = (int)this.numericUpDownPulse.Value;
             string symptoms = this.textBoxSymptoms.Text;
             string diagnoses = this.textBoxDiagnoses.Text;
@@ -554,11 +555,11 @@ namespace Healthcare_System.View
 
             if (this.visitUpdateMode)
             {
-                isSuccessful = VisitDAL.UpdateVisit(patientId, apptDateTime, bpSystolic, bpDiastolic, temperature, pulse, symptoms, nurseUserId, doctorId, diagnoses);
+                isSuccessful = VisitDAL.UpdateVisit(patientId, apptDateTime, bpSystolic, bpDiastolic, temperature, weight, pulse, symptoms, nurseUserId, doctorId, diagnoses);
             }
             else
             {
-                isSuccessful = VisitDAL.AddVisit(patientId, apptDateTime, bpSystolic, bpDiastolic, temperature, pulse, symptoms, this.nurseUserId, doctorId, diagnoses);
+                isSuccessful = VisitDAL.AddVisit(patientId, apptDateTime, bpSystolic, bpDiastolic, temperature, weight, pulse, symptoms, this.nurseUserId, doctorId, diagnoses);
             }
 
             if (isSuccessful)
@@ -585,6 +586,7 @@ namespace Healthcare_System.View
         {
             this.comboBoxVisitDoctor.Enabled = false;
             this.numericUpDownTemperature.Enabled = false;
+            this.numericUpDownWeight.Enabled = false;
             this.numericUpDownSystolic.Enabled = false;
             this.numericUpDownDiastolic.Enabled = false;
             this.numericUpDownPulse.Enabled = false;
@@ -599,6 +601,7 @@ namespace Healthcare_System.View
         {
             this.comboBoxVisitDoctor.Enabled = true;
             this.numericUpDownTemperature.Enabled = true;
+            this.numericUpDownWeight.Enabled = true;
             this.numericUpDownSystolic.Enabled = true;
             this.numericUpDownDiastolic.Enabled = true;
             this.numericUpDownPulse.Enabled = true;
@@ -614,6 +617,7 @@ namespace Healthcare_System.View
             this.comboBoxVisitDoctor.SelectedIndex = 0;
             this.dateTimePickerVisit.Value = DateTime.Now;
             this.numericUpDownTemperature.Value = this.numericUpDownTemperature.Minimum;
+            this.numericUpDownWeight.Value = this.numericUpDownWeight.Minimum;
             this.numericUpDownSystolic.Value = this.numericUpDownSystolic.Minimum;
             this.numericUpDownDiastolic.Value = this.numericUpDownDiastolic.Minimum;
             this.numericUpDownTemperature.Value = this.numericUpDownTemperature.Minimum;
@@ -655,6 +659,7 @@ namespace Healthcare_System.View
                 this.numericUpDownDiastolic.Value = selectedVisit.BpDiastolic;
                 this.numericUpDownPulse.Value = selectedVisit.Pulse;
                 this.numericUpDownTemperature.Value = selectedVisit.Temperature;
+                this.numericUpDownWeight.Value = selectedVisit.Weight;
                 this.textBoxSymptoms.Text = selectedVisit.Symptoms;
                 this.textBoxDiagnoses.Text = selectedVisit.Diagnoses;
             }
