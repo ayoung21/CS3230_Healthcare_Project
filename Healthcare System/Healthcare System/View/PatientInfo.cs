@@ -685,8 +685,8 @@ namespace Healthcare_System.View
 
         private void buttonLabs_Click(object sender, EventArgs e)
         {
-            //TODO
-            MessageBox.Show("Not yet implemented");
+            Labs labsForm = new Labs();
+            labsForm.ShowDialog();
         }
         #endregion
     }

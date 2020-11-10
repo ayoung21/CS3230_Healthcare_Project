@@ -72,6 +72,12 @@
     <Compile Include="Model\StateAbbreviations.cs" />
     <Compile Include="Model\Visit.cs" />
     <Compile Include="Validation\FormValidation.cs" />
+    <Compile Include="View\Labs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Labs.Designer.cs">
+      <DependentUpon>Labs.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MainApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     <Compile Include="View\RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\Labs.resx">
+      <DependentUpon>Labs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\MainApp.resx">
       <DependentUpon>MainApp.cs</DependentUpon>
     </EmbeddedResource>

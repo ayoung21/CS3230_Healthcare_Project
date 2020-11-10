@@ -8,9 +8,9 @@ namespace Healthcare_System.Model
 {
     class LabTestResults
     {
-        public string Results { get; private set; }
+        public string Results { get; set; }
 
-        public bool IsAbnormal { get; private set; }
+        public bool IsAbnormal { get; set; }
 
         public LabTestResults(string results, bool isAbnormal)
         {
