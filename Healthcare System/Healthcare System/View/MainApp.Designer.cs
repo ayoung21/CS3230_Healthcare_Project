@@ -31,6 +31,7 @@
             this.loggedInUser = new System.Windows.Forms.Label();
             this.logOut = new System.Windows.Forms.Button();
             this.tabPatients = new System.Windows.Forms.TabPage();
+            this.buttonClearSearchFields = new System.Windows.Forms.Button();
             this.listViewPatients = new System.Windows.Forms.ListView();
             this.textBoxFirstName = new System.Windows.Forms.TextBox();
             this.textBoxLastName = new System.Windows.Forms.TextBox();
@@ -44,9 +45,16 @@
             this.buttonDeletePatient = new System.Windows.Forms.Button();
             this.buttonAddPatient = new System.Windows.Forms.Button();
             this.appComponents = new System.Windows.Forms.TabControl();
-            this.buttonClearSearchFields = new System.Windows.Forms.Button();
+            this.tabAdmin = new System.Windows.Forms.TabPage();
+            this.buttonAdminQuery = new System.Windows.Forms.Button();
+            this.textBoxAdminQuery = new System.Windows.Forms.TextBox();
+            this.labelResult = new System.Windows.Forms.Label();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.labelAdminQuery = new System.Windows.Forms.Label();
             this.tabPatients.SuspendLayout();
             this.appComponents.SuspendLayout();
+            this.tabAdmin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // loggedInUser
@@ -87,11 +95,21 @@
             this.tabPatients.Controls.Add(this.buttonAddPatient);
             this.tabPatients.Location = new System.Drawing.Point(4, 22);
             this.tabPatients.Name = "tabPatients";
-            this.tabPatients.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPatients.Padding = new System.Windows.Forms.Padding(3);
             this.tabPatients.Size = new System.Drawing.Size(1263, 630);
             this.tabPatients.TabIndex = 0;
             this.tabPatients.Text = "Patients";
             this.tabPatients.UseVisualStyleBackColor = true;
+            // 
+            // buttonClearSearchFields
+            // 
+            this.buttonClearSearchFields.Location = new System.Drawing.Point(966, 11);
+            this.buttonClearSearchFields.Name = "buttonClearSearchFields";
+            this.buttonClearSearchFields.Size = new System.Drawing.Size(133, 23);
+            this.buttonClearSearchFields.TabIndex = 22;
+            this.buttonClearSearchFields.Text = "Clear Search Fields";
+            this.buttonClearSearchFields.UseVisualStyleBackColor = true;
+            this.buttonClearSearchFields.Click += new System.EventHandler(this.buttonClearSearchFields_Click);
             // 
             // listViewPatients
             // 
@@ -216,21 +234,68 @@
             // appComponents
             // 
             this.appComponents.Controls.Add(this.tabPatients);
+            this.appComponents.Controls.Add(this.tabAdmin);
             this.appComponents.Location = new System.Drawing.Point(12, 41);
             this.appComponents.Name = "appComponents";
             this.appComponents.SelectedIndex = 0;
             this.appComponents.Size = new System.Drawing.Size(1271, 656);
             this.appComponents.TabIndex = 0;
             // 
-            // buttonClearSearchFields
+            // tabAdmin
             // 
-            this.buttonClearSearchFields.Location = new System.Drawing.Point(966, 11);
-            this.buttonClearSearchFields.Name = "buttonClearSearchFields";
-            this.buttonClearSearchFields.Size = new System.Drawing.Size(133, 23);
-            this.buttonClearSearchFields.TabIndex = 22;
-            this.buttonClearSearchFields.Text = "Clear Search Fields";
-            this.buttonClearSearchFields.UseVisualStyleBackColor = true;
-            this.buttonClearSearchFields.Click += new System.EventHandler(this.buttonClearSearchFields_Click);
+            this.tabAdmin.Controls.Add(this.labelAdminQuery);
+            this.tabAdmin.Controls.Add(this.dataGridView);
+            this.tabAdmin.Controls.Add(this.labelResult);
+            this.tabAdmin.Controls.Add(this.buttonAdminQuery);
+            this.tabAdmin.Controls.Add(this.textBoxAdminQuery);
+            this.tabAdmin.Location = new System.Drawing.Point(4, 22);
+            this.tabAdmin.Name = "tabAdmin";
+            this.tabAdmin.Size = new System.Drawing.Size(1263, 630);
+            this.tabAdmin.TabIndex = 1;
+            this.tabAdmin.Text = "Admin";
+            this.tabAdmin.UseVisualStyleBackColor = true;
+            // 
+            // buttonAdminQuery
+            // 
+            this.buttonAdminQuery.Location = new System.Drawing.Point(626, 39);
+            this.buttonAdminQuery.Name = "buttonAdminQuery";
+            this.buttonAdminQuery.Size = new System.Drawing.Size(75, 23);
+            this.buttonAdminQuery.TabIndex = 1;
+            this.buttonAdminQuery.Text = "Go!";
+            this.buttonAdminQuery.UseVisualStyleBackColor = true;
+            this.buttonAdminQuery.Click += new System.EventHandler(this.buttonAdminQuery_Click);
+            // 
+            // textBoxAdminQuery
+            // 
+            this.textBoxAdminQuery.Location = new System.Drawing.Point(39, 42);
+            this.textBoxAdminQuery.Name = "textBoxAdminQuery";
+            this.textBoxAdminQuery.Size = new System.Drawing.Size(518, 20);
+            this.textBoxAdminQuery.TabIndex = 0;
+            // 
+            // labelResult
+            // 
+            this.labelResult.AutoSize = true;
+            this.labelResult.Location = new System.Drawing.Point(39, 78);
+            this.labelResult.Name = "labelResult";
+            this.labelResult.Size = new System.Drawing.Size(0, 13);
+            this.labelResult.TabIndex = 2;
+            // 
+            // dataGridView
+            // 
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Location = new System.Drawing.Point(42, 112);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.Size = new System.Drawing.Size(1146, 150);
+            this.dataGridView.TabIndex = 3;
+            // 
+            // labelAdminQuery
+            // 
+            this.labelAdminQuery.AutoSize = true;
+            this.labelAdminQuery.Location = new System.Drawing.Point(39, 78);
+            this.labelAdminQuery.Name = "labelAdminQuery";
+            this.labelAdminQuery.Size = new System.Drawing.Size(35, 13);
+            this.labelAdminQuery.TabIndex = 4;
+            this.labelAdminQuery.Text = "label4";
             // 
             // MainApp
             // 
@@ -247,6 +312,9 @@
             this.tabPatients.ResumeLayout(false);
             this.tabPatients.PerformLayout();
             this.appComponents.ResumeLayout(false);
+            this.tabAdmin.ResumeLayout(false);
+            this.tabAdmin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,5 +338,11 @@
         private System.Windows.Forms.Button buttonAddPatient;
         private System.Windows.Forms.TabControl appComponents;
         private System.Windows.Forms.Button buttonClearSearchFields;
+        private System.Windows.Forms.TabPage tabAdmin;
+        private System.Windows.Forms.Button buttonAdminQuery;
+        private System.Windows.Forms.TextBox textBoxAdminQuery;
+        private System.Windows.Forms.Label labelResult;
+        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.Label labelAdminQuery;
     }
 }

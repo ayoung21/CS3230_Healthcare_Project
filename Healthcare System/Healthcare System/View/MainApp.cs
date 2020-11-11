@@ -15,6 +15,7 @@ namespace Healthcare_System.View
         private LoginForm loginForm;
         private int userId;
         private bool isNurse;
+        private bool isAdmin;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MainApp"/> class.
@@ -27,13 +28,16 @@ namespace Healthcare_System.View
             this.loginForm.Hide();
             InitializeComponent();
             this.isNurse = Helpers.IsUsernameInTable(username, NurseDAL.tableName);
+            this.isAdmin = Helpers.IsUsernameInTable(username, AdministratorDAL.tableName);
 
-            if (this.isNurse)
+            if (this.isNurse && !this.isAdmin)
             {
                 this.userId = Helpers.GetUserIdFromTable(username, NurseDAL.tableName);
-            } else
+                this.appComponents.TabPages.Remove(this.tabAdmin);
+            } else if (this.isAdmin && !this.isNurse)
             {
                 this.userId = Helpers.GetUserIdFromTable(username, AdministratorDAL.tableName);
+                this.appComponents.TabPages.Remove(this.tabPatients);
             }
 
             this.loggedInUser.Text = $"Hello, {UserDAL.GetFullName(this.userId)}! ({username})";
@@ -41,6 +45,7 @@ namespace Healthcare_System.View
             this.initializeColumnHeaders();
 
             this.listViewPatients.FullRowSelect = true;
+            this.labelAdminQuery.Visible = false;
         }
 
         private void initializeColumnHeaders()
@@ -137,6 +142,17 @@ namespace Healthcare_System.View
             this.dateTimePickerDob.Value = DateTime.Now;
             this.dateTimePickerDob.Checked = false;
             this.listViewPatients.Items.Clear();
+        }
+
+        private void buttonAdminQuery_Click(object sender, EventArgs e)
+        {
+            var query = this.textBoxAdminQuery.Text;
+            var result = AdministratorDAL.Query(query);
+            this.labelAdminQuery.Text = query;
+            this.labelAdminQuery.Visible = true;
+            this.textBoxAdminQuery.Text = "";
+
+            this.dataGridView.DataSource = result;
         }
     }
 }
