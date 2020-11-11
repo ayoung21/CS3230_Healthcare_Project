@@ -28,11 +28,9 @@ namespace Healthcare_System.DAL
         {
             string query = "INSERT INTO user(first_name, last_name, address_line1, address_line2, city, " +
                 "state, zip, phone, dob, gender) VALUES(@first_name, @last_name, @address1, @address2, @city, " +
-                "@state, @zip, @phone, @dob, @gender); SELECT LAST_INSERT_ID();";
-            //TODO put multiple registrations/insertions into a transaction object and attach it to the connection object
-            //before insertion, begin transaction
-            //after all insertions, check if any errors occured. If no errors, manually commit operations to DB.
-            //if there is an error, just go back (nothing will be done to DB)
+                "@state, @zip, @phone, @dob, @gender); " +
+                "SELECT LAST_INSERT_ID();";
+
             using (MySqlConnection connection = DbConnection.GetConnection())
             {
                 using MySqlCommand cmd = new MySqlCommand(query, connection);
@@ -70,7 +68,6 @@ namespace Healthcare_System.DAL
                 connection.Open();
                 object queryResult = cmd.ExecuteScalar();
                 int generatedUserId = Convert.ToInt32(queryResult);
-                connection.Close();
 
                 return generatedUserId;
             }

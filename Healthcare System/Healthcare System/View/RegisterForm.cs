@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Healthcare_System.DAL;
 using Healthcare_System.Messages;
 using Healthcare_System.Model;
+using MySql.Data.MySqlClient;
 
 namespace Healthcare_System
 {
@@ -194,20 +195,13 @@ namespace Healthcare_System
             {
                 if (this.roleRegisteringFor == PersonRoles.Administrator)
                 {
-
-                    int userId = UserDAL.Register(firstName, lastName, city, state, zip, phone, dob, gender, address1,
-                        address2);
-                    bool accountRegistrationSuccess = AccountDAL.Register(username, password);
-                    bool administratorRegistrationSuccess = AdministratorDAL.Register(userId, username);
-
-                    bool registrationSuccess = accountRegistrationSuccess && administratorRegistrationSuccess;
-
-                    Console.WriteLine("Register Successful? " + registrationSuccess + " " + userId.ToString());
+                    bool registrationSuccess = RegistrationHelpers.RegisterAdministrator(firstName, lastName, city, state, zip, phone,
+                        dob, gender, address1, address2, username, password); //TODO do something if false
                 }
                 else
                 {
-                    int userId = UserDAL.Register(firstName, lastName, city, state, zip, phone, dob, gender, address1, address2);
-                    bool patientRegistrationSuccess = PatientDAL.Register(userId);
+                    bool registrationSuccess = RegistrationHelpers.RegisterPatient(firstName, lastName, city, state, zip, phone,
+                         dob, gender, address1, address2); //TODO do something if false
                 }
 
                 this.labelErrorMessages.Hide();

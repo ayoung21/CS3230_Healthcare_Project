@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Healthcare_System.DAL
 {
-    class AppointmentDAL
+    static class AppointmentDAL
     {
         public static bool AddAppointment(int patientId, DateTime appointmentDateTime, int doctorId, string reasons)
         {

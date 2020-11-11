@@ -10,7 +10,7 @@ namespace Healthcare_System.DAL
     /// <summary>
     /// Manages actions on the administrator table
     /// </summary>
-    class AdministratorDAL
+    static class AdministratorDAL
     {
         public static readonly string tableName = "administrator";
 
@@ -26,7 +26,7 @@ namespace Healthcare_System.DAL
         /// </returns>
         public static bool Register(int userId, string username)
         {
-            if (Helpers.IsUserIdInTable(userId, tableName))
+            if (UserHelpers.IsUserIdInTable(userId, tableName))
             {
                 return false;
             }
@@ -48,7 +48,7 @@ namespace Healthcare_System.DAL
                 connection.Close();
             }
 
-            return Helpers.IsUserIdInTable(userId, tableName);
+            return UserHelpers.IsUserIdInTable(userId, tableName);
         }
 
         /// <summary>

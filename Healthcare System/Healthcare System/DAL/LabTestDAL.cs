@@ -12,7 +12,7 @@ namespace Healthcare_System.DAL
     /// <summary>
     /// Manages actions on related to lab tests.
     /// </summary>
-    class LabDAL
+    static class LabTestDAL
     {
 
         /// <summary>
@@ -45,26 +45,6 @@ namespace Healthcare_System.DAL
                 }
             }
             return labTests;
-        }
-
-        public static int OrderTest(int patientId, DateTime appointmentDateTime, List<LabTest> tests)
-        {
-            //TODO
-            // - must add to the has_tests table and lab_test_order table
-            // - returns the test order ID
-            return 0;
-        }
-
-        public static bool AddResults(bool isAbnormal, string results, int testOrderId)
-        {
-            //TODO
-            return false;
-        }
-
-        public static LabTestResults GetTestResults(int testOrderId, int testCode)
-        {
-            //TODO
-            return null;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Healthcare_System.DAL
     /// <summary>
     /// Manages actions on the patient table.
     /// </summary>
-    class PatientDAL
+    static class PatientDAL
     {
         public static readonly string tableName = "patient";
 
@@ -23,7 +23,7 @@ namespace Healthcare_System.DAL
         /// </returns>
         public static bool Register(int userId)
         {
-            if (Helpers.IsUserIdInTable(userId, tableName))
+            if (UserHelpers.IsUserIdInTable(userId, tableName))
             {
                 return false;
             }
@@ -42,7 +42,7 @@ namespace Healthcare_System.DAL
                 connection.Close();
             }
 
-            return Helpers.IsUserIdInTable(userId, tableName);
+            return UserHelpers.IsUserIdInTable(userId, tableName);
         }
 
         public static List<Person> GetSearchResults(string lastName, string firstName, DateTime? dob)

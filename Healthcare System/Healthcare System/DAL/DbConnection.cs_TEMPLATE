@@ -8,7 +8,7 @@ namespace Healthcare_System.DAL
     /// <summary>
     /// Manages the DB connection info
     /// </summary>
-    public static class DbConnection
+    static class DbConnection
     {
         private static string username = "";
         private static string password = "";

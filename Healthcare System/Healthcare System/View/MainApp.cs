@@ -26,14 +26,14 @@ namespace Healthcare_System.View
             this.loginForm = loginForm;
             this.loginForm.Hide();
             InitializeComponent();
-            this.isNurse = Helpers.IsUsernameInTable(username, NurseDAL.tableName);
+            this.isNurse = UserHelpers.IsUsernameInTable(username, NurseDAL.tableName);
 
             if (this.isNurse)
             {
-                this.userId = Helpers.GetUserIdFromTable(username, NurseDAL.tableName);
+                this.userId = UserHelpers.GetUserIdFromTable(username, NurseDAL.tableName);
             } else
             {
-                this.userId = Helpers.GetUserIdFromTable(username, AdministratorDAL.tableName);
+                this.userId = UserHelpers.GetUserIdFromTable(username, AdministratorDAL.tableName);
             }
 
             this.loggedInUser.Text = $"Hello, {UserDAL.GetFullName(this.userId)}! ({username})";

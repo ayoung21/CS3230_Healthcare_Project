@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Healthcare_System.DAL
 {
-    class DoctorDAL
+    static class DoctorDAL
     {
         public static List<Person> GetAllDoctors()
         {

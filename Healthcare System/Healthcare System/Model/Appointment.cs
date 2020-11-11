@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Healthcare_System.Model
 {
-    class Appointment
+    public class Appointment
     {
         public int PatientId { get; set; }
         public DateTime DateTime { get; set; }

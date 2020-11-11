@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Healthcare_System.DAL
 {
-    class VisitDAL
+    static class VisitDAL
     {
         public static bool AddVisit(int patientId, DateTime dateTime, int bpSystolic, int bpDiastolic,
             decimal temperature, decimal weight, int pulse, string symptoms, int nurseUserId, int doctorId, string diagnoses)

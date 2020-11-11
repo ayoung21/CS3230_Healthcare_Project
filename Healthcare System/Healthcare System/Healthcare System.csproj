@@ -52,6 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\HasTestsDAL.cs" />
+    <Compile Include="DAL\Helpers\LabTestHelpers.cs" />
+    <Compile Include="DAL\Helpers\RegistrationHelpers.cs" />
     <Compile Include="DAL\DbConnection.cs" />
     <None Include="DAL\DbConnection.cs_TEMPLATE" />
     <Compile Include="Constants\Constants.cs" />
@@ -59,8 +62,11 @@
     <Compile Include="DAL\AccountDAL.cs" />
     <Compile Include="DAL\AppointmentDAL.cs" />
     <Compile Include="DAL\DoctorDAL.cs" />
-    <Compile Include="DAL\Helpers.cs" />
-    <Compile Include="DAL\LabDAL.cs" />
+    <Compile Include="DAL\Helpers\UserHelpers.cs" />
+    <Compile Include="DAL\Helpers\TransactionHelpers.cs" />
+    <Compile Include="DAL\LabTestDAL.cs" />
+    <Compile Include="DAL\LabTestOrderDAL.cs" />
+    <Compile Include="DAL\LabTestResultDAL.cs" />
     <Compile Include="DAL\NurseDAL.cs" />
     <Compile Include="DAL\PatientDAL.cs" />
     <Compile Include="DAL\UserDAL.cs" />

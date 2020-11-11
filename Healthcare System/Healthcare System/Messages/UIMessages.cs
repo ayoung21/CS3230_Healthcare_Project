@@ -4,7 +4,7 @@ namespace Healthcare_System.Messages
     /// <summary>
     /// Contains various messages used in the UI.
     /// </summary>
-    public static class UIMessages
+    static class UIMessages
     {
         public static readonly string INVALID_USERNAME = "* Please enter a valid username";
         public static readonly string INVALID_PASSWORD = "* Please enter a valid password";

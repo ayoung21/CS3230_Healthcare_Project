@@ -8,7 +8,7 @@ namespace Healthcare_System.DAL
     /// <summary>
     /// Helper methods used in various DAL classes
     /// </summary>
-    static class Helpers
+    static class UserHelpers
     {
         private static bool isTableNameAllowed(string tableName)
         {
