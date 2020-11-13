@@ -22,7 +22,6 @@ namespace Healthcare_System.View
         private bool visitUpdateMode;
         private bool currentlyEditingAppointment;
         private bool currentlyEditingVisit;
-        private const string DATE_TIME_PICKER_FORMAT = "MM/dd/yyyy HH:mm";
 
         public PatientInfo(Person patientInfo, int nurseUserId)
         {
@@ -40,8 +39,8 @@ namespace Healthcare_System.View
             this.buttonSavePatient.Enabled = detailsTabEditMode;
             this.buttonCancelEditPatient.Enabled = detailsTabEditMode;
             this.populateFields();
-            this.dateTimeAppointmentDate.CustomFormat = DATE_TIME_PICKER_FORMAT;
-            this.dateTimePickerVisit.CustomFormat = DATE_TIME_PICKER_FORMAT;
+            this.dateTimeAppointmentDate.CustomFormat = Constants.Constants.DATE_TIME_PICKER_FORMAT;
+            this.dateTimePickerVisit.CustomFormat = Constants.Constants.DATE_TIME_PICKER_FORMAT;
             List<Person> allDoctors = DoctorDAL.GetAllDoctors();
             this.comboBoxAppointmentDoctor.ValueMember = "DoctorId";
             this.comboBoxAppointmentDoctor.DisplayMember = "FullNameLastFirst";
@@ -53,7 +52,6 @@ namespace Healthcare_System.View
             this.initializeAppointmentsListView();
             this.listViewVisits.Columns.Add("Date & Time", 150);
             this.reloadAppointments();
-            this.disableAppointmentEditFields();
             this.loadVisits();
         }
 
@@ -313,7 +311,7 @@ namespace Healthcare_System.View
             {
                 this.reloadAppointments();
                 this.clearAppointmentDetailsFields();
-                this.disableAppointmentEditFields();
+                this.groupBoxAppointmentInfo.Enabled = false;
                 this.toggleCurrentlyEditingAppointment(false);
             }
             else
@@ -336,24 +334,6 @@ namespace Healthcare_System.View
                 this.listViewAppointments.Items.Add(row);
             }
 
-        }
-
-        private void disableAppointmentEditFields()
-        {
-            this.dateTimeAppointmentDate.Enabled = false;
-            this.comboBoxAppointmentDoctor.Enabled = false;
-            this.textBoxAppointmentReasons.Enabled = false;
-            this.buttonCancelAppointmentEdit.Enabled = false;
-            this.buttonSaveAppointment.Enabled = false;
-        }
-
-        private void enableAppointmentEditFields()
-        {
-            this.dateTimeAppointmentDate.Enabled = true;
-            this.comboBoxAppointmentDoctor.Enabled = true;
-            this.textBoxAppointmentReasons.Enabled = true;
-            this.buttonCancelAppointmentEdit.Enabled = true;
-            this.buttonSaveAppointment.Enabled = true;
         }
 
         private void clearAppointmentDetailsFields()
@@ -399,7 +379,7 @@ namespace Healthcare_System.View
         private void buttonCancelAppointmentEdit_Click(object sender, EventArgs e)
         {
             this.clearAppointmentDetailsFields();
-            this.disableAppointmentEditFields();
+            this.groupBoxAppointmentInfo.Enabled = false;
             this.toggleCurrentlyEditingAppointment(false);
         }
 
@@ -414,7 +394,7 @@ namespace Healthcare_System.View
             this.toggleCurrentlyEditingAppointment(true);
             this.clearAppointmentDetailsFields();
             this.changeAppointmentUpdateMode(false);
-            this.enableAppointmentEditFields();
+            this.groupBoxAppointmentInfo.Enabled = true;
         }
 
         private void buttonEditAppointment_Click(object sender, EventArgs e)
@@ -434,7 +414,7 @@ namespace Healthcare_System.View
                 this.toggleCurrentlyEditingAppointment(true);
                 this.changeAppointmentUpdateMode(true);
                 this.populateAppointmentDetails();
-                this.enableAppointmentEditFields();
+                this.groupBoxAppointmentInfo.Enabled = true;
             }
             else
             {

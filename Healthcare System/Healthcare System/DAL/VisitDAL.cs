@@ -13,7 +13,7 @@ namespace Healthcare_System.DAL
         public static bool AddVisit(int patientId, DateTime dateTime, int bpSystolic, int bpDiastolic,
             decimal temperature, decimal weight, int pulse, string symptoms, int nurseUserId, int doctorId, string diagnoses)
         {
-            string query = "INSERT INTO record VALUES(@patient_id, @appt_datetime, @bp_systolic, @bp_diastolic, @temperature, " +
+            string query = "INSERT INTO record VALUES(@patient_id, @datetime, @bp_systolic, @bp_diastolic, @temperature, " +
                 "@weight, @pulse, @symptoms, @diagnoses, @nurse_user_id, @doctor_id);";
 
             using (MySqlConnection connection = DbConnection.GetConnection())
@@ -23,8 +23,8 @@ namespace Healthcare_System.DAL
                 cmd.Parameters.Add("@patient_id", MySqlDbType.Int32);
                 cmd.Parameters["@patient_id"].Value = patientId;
 
-                cmd.Parameters.Add("@appt_datetime", MySqlDbType.DateTime);
-                cmd.Parameters["@appt_datetime"].Value = dateTime;
+                cmd.Parameters.Add("@datetime", MySqlDbType.DateTime);
+                cmd.Parameters["@datetime"].Value = dateTime;
 
                 cmd.Parameters.Add("@bp_systolic", MySqlDbType.Int32);
                 cmd.Parameters["@bp_systolic"].Value = bpSystolic;
@@ -62,7 +62,7 @@ namespace Healthcare_System.DAL
 
         public static bool HasMatchingVisit(int patientId, DateTime appointmentDateTime)
         {
-            string query = "SELECT COUNT(*) FROM record WHERE patient_id = @patient_id AND appointment_datetime = @appointment_datetime;";
+            string query = "SELECT COUNT(*) FROM record WHERE patient_id = @patient_id AND datetime = @datetime;";
 
             using (MySqlConnection connection = DbConnection.GetConnection())
             {
@@ -71,8 +71,8 @@ namespace Healthcare_System.DAL
                 cmd.Parameters.Add("@patient_id", MySqlDbType.Int32);
                 cmd.Parameters["@patient_id"].Value = patientId;
 
-                cmd.Parameters.Add("@appointment_datetime", MySqlDbType.DateTime);
-                cmd.Parameters["@appointment_datetime"].Value = appointmentDateTime;
+                cmd.Parameters.Add("@datetime", MySqlDbType.DateTime);
+                cmd.Parameters["@datetime"].Value = appointmentDateTime;
 
                 connection.Open();
                 int count = Convert.ToInt32(cmd.ExecuteScalar());
@@ -101,7 +101,7 @@ namespace Healthcare_System.DAL
                 {
                     while (dataReader.Read())
                     {
-                        DateTime dateTime = (dataReader["appointment_datetime"] == DBNull.Value) ? default : Convert.ToDateTime(dataReader["appointment_datetime"]);
+                        DateTime dateTime = (dataReader["datetime"] == DBNull.Value) ? default : Convert.ToDateTime(dataReader["datetime"]);
                         int bpSystolic = (dataReader["bp_systolic"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["bp_systolic"]);
                         int bpDiastolic = (dataReader["bp_diastolic"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["bp_diastolic"]);
                         decimal temperature = (dataReader["temperature"] == DBNull.Value) ? default : Convert.ToDecimal(dataReader["temperature"]);
@@ -126,7 +126,7 @@ namespace Healthcare_System.DAL
             string query = "UPDATE record " +
                 "SET bp_systolic = @bp_systolic, bp_diastolic = @bp_diastolic, temperature = @temperature, weight = @weight, pulse = @pulse, " +
                 "symptoms = @symptoms, diagnoses = @diagnoses, nurse_user_id = @nurse_user_id, doctor_id = @doctor_id " +
-                "WHERE patient_id = @patient_id AND appointment_datetime = @datetime;";
+                "WHERE patient_id = @patient_id AND datetime = @datetime;";
 
             using (MySqlConnection connection = DbConnection.GetConnection())
             {
