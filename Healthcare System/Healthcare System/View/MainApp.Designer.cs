@@ -31,6 +31,7 @@
             this.loggedInUser = new System.Windows.Forms.Label();
             this.logOut = new System.Windows.Forms.Button();
             this.tabPatients = new System.Windows.Forms.TabPage();
+            this.buttonClearSearchFields = new System.Windows.Forms.Button();
             this.listViewPatients = new System.Windows.Forms.ListView();
             this.textBoxFirstName = new System.Windows.Forms.TextBox();
             this.textBoxLastName = new System.Windows.Forms.TextBox();
@@ -44,9 +45,20 @@
             this.buttonDeletePatient = new System.Windows.Forms.Button();
             this.buttonAddPatient = new System.Windows.Forms.Button();
             this.appComponents = new System.Windows.Forms.TabControl();
-            this.buttonClearSearchFields = new System.Windows.Forms.Button();
+            this.tabAdmin = new System.Windows.Forms.TabPage();
+            this.labelAdminQuery = new System.Windows.Forms.Label();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.labelResult = new System.Windows.Forms.Label();
+            this.buttonAdminQuery = new System.Windows.Forms.Button();
+            this.textBoxAdminQuery = new System.Windows.Forms.TextBox();
+            this.dateTimePickerStartDate = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerEndDate = new System.Windows.Forms.DateTimePicker();
+            this.buttonSearchAppointmentsBetween = new System.Windows.Forms.Button();
+            this.listViewAppointmentsBetween = new System.Windows.Forms.ListView();
             this.tabPatients.SuspendLayout();
             this.appComponents.SuspendLayout();
+            this.tabAdmin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // loggedInUser
@@ -87,11 +99,21 @@
             this.tabPatients.Controls.Add(this.buttonAddPatient);
             this.tabPatients.Location = new System.Drawing.Point(4, 22);
             this.tabPatients.Name = "tabPatients";
-            this.tabPatients.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPatients.Padding = new System.Windows.Forms.Padding(3);
             this.tabPatients.Size = new System.Drawing.Size(1263, 630);
             this.tabPatients.TabIndex = 0;
             this.tabPatients.Text = "Patients";
             this.tabPatients.UseVisualStyleBackColor = true;
+            // 
+            // buttonClearSearchFields
+            // 
+            this.buttonClearSearchFields.Location = new System.Drawing.Point(966, 11);
+            this.buttonClearSearchFields.Name = "buttonClearSearchFields";
+            this.buttonClearSearchFields.Size = new System.Drawing.Size(133, 23);
+            this.buttonClearSearchFields.TabIndex = 22;
+            this.buttonClearSearchFields.Text = "Clear Search Fields";
+            this.buttonClearSearchFields.UseVisualStyleBackColor = true;
+            this.buttonClearSearchFields.Click += new System.EventHandler(this.buttonClearSearchFields_Click);
             // 
             // listViewPatients
             // 
@@ -216,21 +238,106 @@
             // appComponents
             // 
             this.appComponents.Controls.Add(this.tabPatients);
+            this.appComponents.Controls.Add(this.tabAdmin);
             this.appComponents.Location = new System.Drawing.Point(12, 41);
             this.appComponents.Name = "appComponents";
             this.appComponents.SelectedIndex = 0;
             this.appComponents.Size = new System.Drawing.Size(1271, 656);
             this.appComponents.TabIndex = 0;
             // 
-            // buttonClearSearchFields
+            // tabAdmin
             // 
-            this.buttonClearSearchFields.Location = new System.Drawing.Point(966, 11);
-            this.buttonClearSearchFields.Name = "buttonClearSearchFields";
-            this.buttonClearSearchFields.Size = new System.Drawing.Size(133, 23);
-            this.buttonClearSearchFields.TabIndex = 22;
-            this.buttonClearSearchFields.Text = "Clear Search Fields";
-            this.buttonClearSearchFields.UseVisualStyleBackColor = true;
-            this.buttonClearSearchFields.Click += new System.EventHandler(this.buttonClearSearchFields_Click);
+            this.tabAdmin.Controls.Add(this.listViewAppointmentsBetween);
+            this.tabAdmin.Controls.Add(this.buttonSearchAppointmentsBetween);
+            this.tabAdmin.Controls.Add(this.dateTimePickerEndDate);
+            this.tabAdmin.Controls.Add(this.dateTimePickerStartDate);
+            this.tabAdmin.Controls.Add(this.labelAdminQuery);
+            this.tabAdmin.Controls.Add(this.dataGridView);
+            this.tabAdmin.Controls.Add(this.labelResult);
+            this.tabAdmin.Controls.Add(this.buttonAdminQuery);
+            this.tabAdmin.Controls.Add(this.textBoxAdminQuery);
+            this.tabAdmin.Location = new System.Drawing.Point(4, 22);
+            this.tabAdmin.Name = "tabAdmin";
+            this.tabAdmin.Size = new System.Drawing.Size(1263, 630);
+            this.tabAdmin.TabIndex = 1;
+            this.tabAdmin.Text = "Admin";
+            this.tabAdmin.UseVisualStyleBackColor = true;
+            // 
+            // labelAdminQuery
+            // 
+            this.labelAdminQuery.AutoSize = true;
+            this.labelAdminQuery.Location = new System.Drawing.Point(39, 78);
+            this.labelAdminQuery.Name = "labelAdminQuery";
+            this.labelAdminQuery.Size = new System.Drawing.Size(35, 13);
+            this.labelAdminQuery.TabIndex = 4;
+            this.labelAdminQuery.Text = "label4";
+            // 
+            // dataGridView
+            // 
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Location = new System.Drawing.Point(42, 112);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.Size = new System.Drawing.Size(515, 150);
+            this.dataGridView.TabIndex = 3;
+            // 
+            // labelResult
+            // 
+            this.labelResult.AutoSize = true;
+            this.labelResult.Location = new System.Drawing.Point(39, 78);
+            this.labelResult.Name = "labelResult";
+            this.labelResult.Size = new System.Drawing.Size(0, 13);
+            this.labelResult.TabIndex = 2;
+            // 
+            // buttonAdminQuery
+            // 
+            this.buttonAdminQuery.Location = new System.Drawing.Point(581, 39);
+            this.buttonAdminQuery.Name = "buttonAdminQuery";
+            this.buttonAdminQuery.Size = new System.Drawing.Size(75, 23);
+            this.buttonAdminQuery.TabIndex = 1;
+            this.buttonAdminQuery.Text = "Go!";
+            this.buttonAdminQuery.UseVisualStyleBackColor = true;
+            this.buttonAdminQuery.Click += new System.EventHandler(this.buttonAdminQuery_Click);
+            // 
+            // textBoxAdminQuery
+            // 
+            this.textBoxAdminQuery.Location = new System.Drawing.Point(39, 42);
+            this.textBoxAdminQuery.Name = "textBoxAdminQuery";
+            this.textBoxAdminQuery.Size = new System.Drawing.Size(518, 20);
+            this.textBoxAdminQuery.TabIndex = 0;
+            // 
+            // dateTimePickerStartDate
+            // 
+            this.dateTimePickerStartDate.Location = new System.Drawing.Point(46, 380);
+            this.dateTimePickerStartDate.Name = "dateTimePickerStartDate";
+            this.dateTimePickerStartDate.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerStartDate.TabIndex = 5;
+            // 
+            // dateTimePickerEndDate
+            // 
+            this.dateTimePickerEndDate.Location = new System.Drawing.Point(287, 380);
+            this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
+            this.dateTimePickerEndDate.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerEndDate.TabIndex = 6;
+            // 
+            // buttonSearchAppointmentsBetween
+            // 
+            this.buttonSearchAppointmentsBetween.Location = new System.Drawing.Point(516, 377);
+            this.buttonSearchAppointmentsBetween.Name = "buttonSearchAppointmentsBetween";
+            this.buttonSearchAppointmentsBetween.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearchAppointmentsBetween.TabIndex = 7;
+            this.buttonSearchAppointmentsBetween.Text = "Search";
+            this.buttonSearchAppointmentsBetween.UseVisualStyleBackColor = true;
+            this.buttonSearchAppointmentsBetween.Click += new System.EventHandler(this.buttonSearchAppointmentsBetween_Click);
+            // 
+            // listViewAppointmentsBetween
+            // 
+            this.listViewAppointmentsBetween.HideSelection = false;
+            this.listViewAppointmentsBetween.Location = new System.Drawing.Point(46, 406);
+            this.listViewAppointmentsBetween.Name = "listViewAppointmentsBetween";
+            this.listViewAppointmentsBetween.Size = new System.Drawing.Size(511, 138);
+            this.listViewAppointmentsBetween.TabIndex = 8;
+            this.listViewAppointmentsBetween.UseCompatibleStateImageBehavior = false;
+            this.listViewAppointmentsBetween.View = System.Windows.Forms.View.Details;
             // 
             // MainApp
             // 
@@ -247,6 +354,9 @@
             this.tabPatients.ResumeLayout(false);
             this.tabPatients.PerformLayout();
             this.appComponents.ResumeLayout(false);
+            this.tabAdmin.ResumeLayout(false);
+            this.tabAdmin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,5 +380,15 @@
         private System.Windows.Forms.Button buttonAddPatient;
         private System.Windows.Forms.TabControl appComponents;
         private System.Windows.Forms.Button buttonClearSearchFields;
+        private System.Windows.Forms.TabPage tabAdmin;
+        private System.Windows.Forms.Button buttonAdminQuery;
+        private System.Windows.Forms.TextBox textBoxAdminQuery;
+        private System.Windows.Forms.Label labelResult;
+        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.Label labelAdminQuery;
+        private System.Windows.Forms.Button buttonSearchAppointmentsBetween;
+        private System.Windows.Forms.DateTimePicker dateTimePickerEndDate;
+        private System.Windows.Forms.DateTimePicker dateTimePickerStartDate;
+        private System.Windows.Forms.ListView listViewAppointmentsBetween;
     }
 }

@@ -15,6 +15,7 @@ namespace Healthcare_System.View
         private LoginForm loginForm;
         private int userId;
         private bool isNurse;
+        private bool isAdmin;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MainApp"/> class.
@@ -26,14 +27,17 @@ namespace Healthcare_System.View
             this.loginForm = loginForm;
             this.loginForm.Hide();
             InitializeComponent();
-            this.isNurse = UserHelpers.IsUsernameInTable(username, NurseDAL.tableName);
+            this.isNurse = Helpers.IsUsernameInTable(username, NurseDAL.tableName);
+            this.isAdmin = Helpers.IsUsernameInTable(username, AdministratorDAL.tableName);
 
-            if (this.isNurse)
+            if (this.isNurse && !this.isAdmin)
             {
-                this.userId = UserHelpers.GetUserIdFromTable(username, NurseDAL.tableName);
-            } else
+                this.userId = Helpers.GetUserIdFromTable(username, NurseDAL.tableName);
+                this.appComponents.TabPages.Remove(this.tabAdmin);
+            } else if (this.isAdmin && !this.isNurse)
             {
-                this.userId = UserHelpers.GetUserIdFromTable(username, AdministratorDAL.tableName);
+                this.userId = Helpers.GetUserIdFromTable(username, AdministratorDAL.tableName);
+                this.appComponents.TabPages.Remove(this.tabPatients);
             }
 
             this.loggedInUser.Text = $"Hello, {UserDAL.GetFullName(this.userId)}! ({username})";
@@ -41,6 +45,7 @@ namespace Healthcare_System.View
             this.initializeColumnHeaders();
 
             this.listViewPatients.FullRowSelect = true;
+            this.labelAdminQuery.Visible = false;
         }
 
         private void initializeColumnHeaders()
@@ -49,6 +54,11 @@ namespace Healthcare_System.View
             this.listViewPatients.Columns.Add("First Name", 100);
             this.listViewPatients.Columns.Add("Date of Birth", 100);
             this.listViewPatients.Columns.Add("Patient ID", 60);
+
+            this.listViewAppointmentsBetween.Columns.Add("Date / Time", 100);
+            this.listViewAppointmentsBetween.Columns.Add("Patient ID", 100);
+            this.listViewAppointmentsBetween.Columns.Add("First Name", 100);
+            this.listViewAppointmentsBetween.Columns.Add("Last Name", 100);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -130,6 +140,43 @@ namespace Healthcare_System.View
             this.dateTimePickerDob.Value = DateTime.Now;
             this.dateTimePickerDob.Checked = false;
             this.listViewPatients.Items.Clear();
+        }
+
+        private void buttonAdminQuery_Click(object sender, EventArgs e)
+        {
+            var query = this.textBoxAdminQuery.Text;
+            var result = AdministratorDAL.Query(query);
+            this.labelAdminQuery.Text = query;
+            this.labelAdminQuery.Visible = true;
+            this.textBoxAdminQuery.Text = "";
+
+            this.dataGridView.DataSource = result;
+        }
+
+        private void buttonSearchAppointmentsBetween_Click(object sender, EventArgs e)
+        {
+            var dateTimeStart = this.dateTimePickerStartDate.Value;
+            var dateTimeEnd = this.dateTimePickerEndDate.Value;
+            var results = VisitDAL.GetAllVisitsBetween(dateTimeStart, dateTimeEnd);
+
+            this.listViewAppointmentsBetween.Items.Clear();
+
+            foreach (Visit currentVisit in results)
+            {
+                var patientUserId = Convert.ToInt32(PatientDAL.GetPatientUserId(currentVisit.PatientId));
+                var patient = PatientDAL.GetPatient(patientUserId, currentVisit.PatientId);
+
+                ListViewItem row = new ListViewItem(new[]
+                {
+                    currentVisit.AppointmentDateTime.ToString(),
+                    currentVisit.PatientId.ToString(),
+                    patient.FirstName,
+                    patient.LastName
+
+                });
+                this.listViewAppointmentsBetween.Items.Add(row);
+            }
+
         }
     }
 }
