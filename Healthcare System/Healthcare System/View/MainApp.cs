@@ -27,16 +27,16 @@ namespace Healthcare_System.View
             this.loginForm = loginForm;
             this.loginForm.Hide();
             InitializeComponent();
-            this.isNurse = Helpers.IsUsernameInTable(username, NurseDAL.tableName);
-            this.isAdmin = Helpers.IsUsernameInTable(username, AdministratorDAL.tableName);
+            this.isNurse = UserHelpers.IsUsernameInTable(username, NurseDAL.tableName);
+            this.isAdmin = UserHelpers.IsUsernameInTable(username, AdministratorDAL.tableName);
 
             if (this.isNurse && !this.isAdmin)
             {
-                this.userId = Helpers.GetUserIdFromTable(username, NurseDAL.tableName);
+                this.userId = UserHelpers.GetUserIdFromTable(username, NurseDAL.tableName);
                 this.appComponents.TabPages.Remove(this.tabAdmin);
             } else if (this.isAdmin && !this.isNurse)
             {
-                this.userId = Helpers.GetUserIdFromTable(username, AdministratorDAL.tableName);
+                this.userId = UserHelpers.GetUserIdFromTable(username, AdministratorDAL.tableName);
                 this.appComponents.TabPages.Remove(this.tabPatients);
             }
 
