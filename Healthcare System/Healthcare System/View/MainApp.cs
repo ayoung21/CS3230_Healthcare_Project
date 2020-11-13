@@ -54,6 +54,11 @@ namespace Healthcare_System.View
             this.listViewPatients.Columns.Add("First Name", 100);
             this.listViewPatients.Columns.Add("Date of Birth", 100);
             this.listViewPatients.Columns.Add("Patient ID", 60);
+
+            this.listViewAppointmentsBetween.Columns.Add("Date / Time", 100);
+            this.listViewAppointmentsBetween.Columns.Add("Patient ID", 100);
+            this.listViewAppointmentsBetween.Columns.Add("First Name", 100);
+            this.listViewAppointmentsBetween.Columns.Add("Last Name", 100);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -153,6 +158,32 @@ namespace Healthcare_System.View
             this.textBoxAdminQuery.Text = "";
 
             this.dataGridView.DataSource = result;
+        }
+
+        private void buttonSearchAppointmentsBetween_Click(object sender, EventArgs e)
+        {
+            var dateTimeStart = this.dateTimePickerStartDate.Value;
+            var dateTimeEnd = this.dateTimePickerEndDate.Value;
+            var results = VisitDAL.GetAllVisitsBetween(dateTimeStart, dateTimeEnd);
+
+            this.listViewAppointmentsBetween.Items.Clear();
+
+            foreach (Visit currentVisit in results)
+            {
+                var patientUserId = Convert.ToInt32(PatientDAL.GetPatientUserId(currentVisit.PatientId));
+                var patient = PatientDAL.GetPatient(patientUserId, currentVisit.PatientId);
+
+                ListViewItem row = new ListViewItem(new[]
+                {
+                    currentVisit.AppointmentDateTime.ToString(),
+                    currentVisit.PatientId.ToString(),
+                    patient.FirstName,
+                    patient.LastName
+
+                });
+                this.listViewAppointmentsBetween.Items.Add(row);
+            }
+
         }
     }
 }
