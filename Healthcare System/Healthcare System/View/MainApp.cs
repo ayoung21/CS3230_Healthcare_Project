@@ -59,6 +59,10 @@ namespace Healthcare_System.View
             this.listViewAppointmentsBetween.Columns.Add("Patient ID", 100);
             this.listViewAppointmentsBetween.Columns.Add("First Name", 100);
             this.listViewAppointmentsBetween.Columns.Add("Last Name", 100);
+            this.listViewAppointmentsBetween.Columns.Add("Doctor ID", 100);
+            this.listViewAppointmentsBetween.Columns.Add("Doctor User ID", 100);
+            this.listViewAppointmentsBetween.Columns.Add("Doctor Name", 100);
+            this.listViewAppointmentsBetween.Columns.Add("Nurse Name", 100);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -165,13 +169,20 @@ namespace Healthcare_System.View
             {
                 var patientUserId = Convert.ToInt32(PatientDAL.GetPatientUserId(currentVisit.PatientId));
                 var patient = PatientDAL.GetPatient(patientUserId, currentVisit.PatientId);
+                var doctorUserId = Convert.ToInt32(DoctorDAL.GetDoctorUserId(currentVisit.DoctorId));
+                var doctorFullName = UserDAL.GetFullName(doctorUserId);
+                var nurseFullName = UserDAL.GetFullName(currentVisit.NurseUserId);
 
                 ListViewItem row = new ListViewItem(new[]
                 {
                     currentVisit.AppointmentDateTime.ToString(),
                     currentVisit.PatientId.ToString(),
                     patient.FirstName,
-                    patient.LastName
+                    patient.LastName,
+                    currentVisit.DoctorId.ToString(),
+                    doctorUserId.ToString(),
+                    doctorFullName,
+                    nurseFullName
 
                 });
                 this.listViewAppointmentsBetween.Items.Add(row);
