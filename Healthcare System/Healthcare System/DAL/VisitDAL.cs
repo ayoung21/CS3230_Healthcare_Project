@@ -14,7 +14,7 @@ namespace Healthcare_System.DAL
         public static IList<Visit> GetAllVisitsBetween(DateTime startDate, DateTime endDate)
         {
             var dataTable = new DataTable();
-            string query = "SELECT * FROM record WHERE datetime BETWEEN @startDate AND @endDate;";
+            string query = "SELECT * FROM visit WHERE datetime BETWEEN @startDate AND @endDate;";
 
             List<Visit> visits = new List<Visit>();
 
@@ -61,7 +61,7 @@ namespace Healthcare_System.DAL
         public static bool AddVisit(int patientId, DateTime dateTime, int bpSystolic, int bpDiastolic,
             decimal temperature, decimal weight, int pulse, string symptoms, int nurseUserId, int doctorId, string diagnoses)
         {
-            string query = "INSERT INTO record VALUES(@patient_id, @datetime, @bp_systolic, @bp_diastolic, @temperature, " +
+            string query = "INSERT INTO visit VALUES(@patient_id, @datetime, @bp_systolic, @bp_diastolic, @temperature, " +
                 "@weight, @pulse, @symptoms, @diagnoses, @nurse_user_id, @doctor_id);";
 
             using (MySqlConnection connection = DbConnection.GetConnection())
@@ -110,7 +110,7 @@ namespace Healthcare_System.DAL
 
         public static bool HasMatchingVisit(int patientId, DateTime appointmentDateTime)
         {
-            string query = "SELECT COUNT(*) FROM record WHERE patient_id = @patient_id AND datetime = @datetime;";
+            string query = "SELECT COUNT(*) FROM visit WHERE patient_id = @patient_id AND datetime = @datetime;";
 
             using (MySqlConnection connection = DbConnection.GetConnection())
             {
@@ -130,7 +130,7 @@ namespace Healthcare_System.DAL
 
         public static List<Visit> GetAllVisitsForPatient(int patientId)
         {
-            string query = "SELECT * FROM record WHERE patient_id = @patient_id;";
+            string query = "SELECT * FROM visit WHERE patient_id = @patient_id;";
 
             List<Visit> visits = new List<Visit>();
 
@@ -171,7 +171,7 @@ namespace Healthcare_System.DAL
         public static bool UpdateVisit(int patientId, DateTime datetime, int bpSystolic, int bpDiastolic,
             decimal temperature, decimal weight, int pulse, string symptoms, int nurseUserId, int doctorId, string diagnoses)
         {
-            string query = "UPDATE record " +
+            string query = "UPDATE visit " +
                 "SET bp_systolic = @bp_systolic, bp_diastolic = @bp_diastolic, temperature = @temperature, weight = @weight, pulse = @pulse, " +
                 "symptoms = @symptoms, diagnoses = @diagnoses, nurse_user_id = @nurse_user_id, doctor_id = @doctor_id " +
                 "WHERE patient_id = @patient_id AND datetime = @datetime;";
