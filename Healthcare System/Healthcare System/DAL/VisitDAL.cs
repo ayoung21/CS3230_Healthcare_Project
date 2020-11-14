@@ -49,8 +49,9 @@ namespace Healthcare_System.DAL
                         string diagnoses = (dataReader["diagnoses"] == DBNull.Value) ? null : Convert.ToString(dataReader["diagnoses"]);
                         int nurseUserId = (dataReader["nurse_user_id"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["nurse_user_id"]);
                         int doctorId = (dataReader["doctor_id"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["doctor_id"]);
+                        bool finalDiagnosis = (dataReader["final_diagnosis"] == DBNull.Value) ? false : Convert.ToBoolean(dataReader["final_diagnosis"]);
 
-                        visits.Add(new Visit(patientId, dateTime, bpSystolic, bpDiastolic, temperature, weight, pulse, symptoms, nurseUserId, doctorId, diagnoses));
+                        visits.Add(new Visit(patientId, dateTime, bpSystolic, bpDiastolic, temperature, weight, pulse, symptoms, nurseUserId, doctorId, diagnoses, finalDiagnosis));
                     }
                 }
             }
@@ -59,10 +60,11 @@ namespace Healthcare_System.DAL
         }
 
         public static bool AddVisit(int patientId, DateTime dateTime, int bpSystolic, int bpDiastolic,
-            decimal temperature, decimal weight, int pulse, string symptoms, int nurseUserId, int doctorId, string diagnoses)
+            decimal temperature, decimal weight, int pulse, string symptoms, int nurseUserId, int doctorId, 
+            string diagnoses, bool finalDiagnosisMade)
         {
             string query = "INSERT INTO visit VALUES(@patient_id, @datetime, @bp_systolic, @bp_diastolic, @temperature, " +
-                "@weight, @pulse, @symptoms, @diagnoses, @nurse_user_id, @doctor_id);";
+                "@weight, @pulse, @symptoms, @diagnoses, @nurse_user_id, @doctor_id, @final_diagnosis);";
 
             using (MySqlConnection connection = DbConnection.GetConnection())
             {
@@ -100,6 +102,9 @@ namespace Healthcare_System.DAL
 
                 cmd.Parameters.Add("@doctor_id", MySqlDbType.Int32);
                 cmd.Parameters["@doctor_id"].Value = doctorId;
+
+                cmd.Parameters.Add("@final_diagnosis", MySqlDbType.Int16);
+                cmd.Parameters["@final_diagnosis"].Value = finalDiagnosisMade;
 
                 connection.Open();
                 int result = cmd.ExecuteNonQuery();
@@ -159,8 +164,9 @@ namespace Healthcare_System.DAL
                         string diagnoses = (dataReader["diagnoses"] == DBNull.Value) ? null : Convert.ToString(dataReader["diagnoses"]);
                         int nurseUserId = (dataReader["nurse_user_id"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["nurse_user_id"]);
                         int doctorId = (dataReader["doctor_id"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["doctor_id"]);
+                        bool finalDiagnosis = (dataReader["final_diagnosis"] == DBNull.Value) ? false : Convert.ToBoolean(dataReader["final_diagnosis"]);
 
-                        visits.Add(new Visit(patientId, dateTime, bpSystolic, bpDiastolic, temperature, weight, pulse, symptoms, nurseUserId, doctorId, diagnoses));
+                        visits.Add(new Visit(patientId, dateTime, bpSystolic, bpDiastolic, temperature, weight, pulse, symptoms, nurseUserId, doctorId, diagnoses, finalDiagnosis));
                     }
                 }
             }
@@ -169,11 +175,13 @@ namespace Healthcare_System.DAL
         }
 
         public static bool UpdateVisit(int patientId, DateTime datetime, int bpSystolic, int bpDiastolic,
-            decimal temperature, decimal weight, int pulse, string symptoms, int nurseUserId, int doctorId, string diagnoses)
+            decimal temperature, decimal weight, int pulse, string symptoms, int nurseUserId, int doctorId, 
+            string diagnoses, bool finalDiagnosisMade)
         {
             string query = "UPDATE visit " +
-                "SET bp_systolic = @bp_systolic, bp_diastolic = @bp_diastolic, temperature = @temperature, weight = @weight, pulse = @pulse, " +
-                "symptoms = @symptoms, diagnoses = @diagnoses, nurse_user_id = @nurse_user_id, doctor_id = @doctor_id " +
+                "SET bp_systolic = @bp_systolic, bp_diastolic = @bp_diastolic, temperature = @temperature, " +
+                "weight = @weight, pulse = @pulse, symptoms = @symptoms, diagnoses = @diagnoses, " +
+                "nurse_user_id = @nurse_user_id, doctor_id = @doctor_id, final_diagnosis = @final_diagnosis " +
                 "WHERE patient_id = @patient_id AND datetime = @datetime;";
 
             using (MySqlConnection connection = DbConnection.GetConnection())
@@ -212,6 +220,9 @@ namespace Healthcare_System.DAL
 
                 cmd.Parameters.Add("@datetime", MySqlDbType.DateTime);
                 cmd.Parameters["@datetime"].Value = datetime;
+
+                cmd.Parameters.Add("@final_diagnosis", MySqlDbType.Int16);
+                cmd.Parameters["@final_diagnosis"].Value = finalDiagnosisMade;
 
                 connection.Open();
                 int result = cmd.ExecuteNonQuery();

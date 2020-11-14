@@ -1018,6 +1018,7 @@
             // 
             // dateTimePickerVisit
             // 
+            this.dateTimePickerVisit.Enabled = false;
             this.dateTimePickerVisit.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerVisit.Location = new System.Drawing.Point(85, 18);
             this.dateTimePickerVisit.Margin = new System.Windows.Forms.Padding(2);

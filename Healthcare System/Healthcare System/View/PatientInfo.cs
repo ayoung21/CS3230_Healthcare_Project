@@ -513,6 +513,7 @@ namespace Healthcare_System.View
             int pulse = (int)this.numericUpDownPulse.Value;
             string symptoms = this.textBoxSymptoms.Text;
             string diagnoses = this.textBoxDiagnoses.Text;
+            bool finalDiagnosisMade = this.checkBoxFinalDiagnosis.Checked;
             if (string.IsNullOrWhiteSpace(diagnoses))
                 diagnoses = null;
 
@@ -526,11 +527,13 @@ namespace Healthcare_System.View
 
             if (this.visitUpdateMode)
             {
-                isSuccessful = VisitDAL.UpdateVisit(patientId, apptDateTime, bpSystolic, bpDiastolic, temperature, weight, pulse, symptoms, nurseUserId, doctorId, diagnoses);
+                isSuccessful = VisitDAL.UpdateVisit(patientId, apptDateTime, bpSystolic, bpDiastolic, temperature, 
+                    weight, pulse, symptoms, nurseUserId, doctorId, diagnoses, finalDiagnosisMade);
             }
             else
             {
-                isSuccessful = VisitDAL.AddVisit(patientId, apptDateTime, bpSystolic, bpDiastolic, temperature, weight, pulse, symptoms, this.nurseUserId, doctorId, diagnoses);
+                isSuccessful = VisitDAL.AddVisit(patientId, apptDateTime, bpSystolic, bpDiastolic, temperature, 
+                    weight, pulse, symptoms, this.nurseUserId, doctorId, diagnoses, finalDiagnosisMade);
             }
 
             if (isSuccessful)
@@ -564,6 +567,7 @@ namespace Healthcare_System.View
             this.numericUpDownTemperature.Value = this.numericUpDownTemperature.Minimum;
             this.textBoxSymptoms.Clear();
             this.textBoxDiagnoses.Clear();
+            this.checkBoxFinalDiagnosis.Checked = false;
         }
 
         private void loadVisits()
@@ -603,6 +607,7 @@ namespace Healthcare_System.View
                 this.numericUpDownWeight.Value = selectedVisit.Weight;
                 this.textBoxSymptoms.Text = selectedVisit.Symptoms;
                 this.textBoxDiagnoses.Text = selectedVisit.Diagnoses;
+                this.checkBoxFinalDiagnosis.Checked = selectedVisit.FinalDiagnosisMade;
             }
         }
 
@@ -630,6 +635,12 @@ namespace Healthcare_System.View
             }
             else if (this.listViewVisits.SelectedItems.Count > 0)
             {
+                if (this.checkBoxFinalDiagnosis.Checked)
+                {
+                    MessageBox.Show("You cannot edit a visit where the final diagnosis has been made.");
+                    return;
+                }
+
                 this.visitUpdateMode = true;
                 this.currentlyEditingVisit = true;
                 this.groupBoxVisitInfo.Enabled = true;

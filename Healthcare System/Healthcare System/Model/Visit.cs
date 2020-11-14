@@ -19,9 +19,10 @@ namespace Healthcare_System.Model
         public int NurseUserId { get; set; }
         public int DoctorId { get; set; }
         public string Diagnoses { get; set; }
+        public bool FinalDiagnosisMade { get; set; }
 
         public Visit(int patientId, DateTime appoinmentDateTime, int bpSystolic, int bpDiastolic, decimal temperature, 
-            decimal weight, int pulse, string symptoms, int nurseUserId, int doctorId, string diagnoses = null)
+            decimal weight, int pulse, string symptoms, int nurseUserId, int doctorId, string diagnoses, bool finalDiagnosisMade)
         {
             this.PatientId = patientId;
             this.AppointmentDateTime = appoinmentDateTime;
@@ -34,6 +35,7 @@ namespace Healthcare_System.Model
             this.NurseUserId = nurseUserId;
             this.DoctorId = doctorId;
             this.Diagnoses = diagnoses;
+            this.FinalDiagnosisMade = finalDiagnosisMade;
         }
     }
 }
