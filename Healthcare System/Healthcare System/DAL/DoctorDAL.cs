@@ -10,6 +10,28 @@ namespace Healthcare_System.DAL
 {
     static class DoctorDAL
     {
+
+        public static string GetDoctorUserId(int doctor_id)
+        {
+            string query = "SELECT user_id FROM doctor WHERE doctor_id = @doctor_id;";
+
+            using (MySqlConnection connection = DbConnection.GetConnection())
+            {
+                using MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                cmd.Parameters.Add("@doctor_id", MySqlDbType.Int32);
+                cmd.Parameters["@doctor_id"].Value = doctor_id;
+
+                connection.Open();
+
+                object queryResult = cmd.ExecuteScalar();
+                string firstName = (queryResult == DBNull.Value) ? null : Convert.ToString(queryResult);
+                connection.Close();
+
+                return firstName;
+            }
+        }
+
         public static List<Person> GetAllDoctors()
         {
             string query = "SELECT u.user_id, u.first_name, u.last_name, u.address_line1, " +
