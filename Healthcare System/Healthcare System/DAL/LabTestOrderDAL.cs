@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Healthcare_System.Model;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,11 @@ namespace Healthcare_System.DAL
 {
     static class LabTestOrderDAL
     {
-        public static int OrderTest(int patientId, DateTime appointmentDateTime)
+        public static int OrderTest(int patientId, DateTime visitDateTime)
         {
-            string query = "INSERT INTO lab_test_order(patient_id, appointment_datetime) " +
-                "VALUES(@patient_id, @appointment_datetime);" +
-                "SELET LAST_INSERT_ID();";
+            string query = "INSERT INTO lab_test_order(patient_id, visit_datetime) " +
+                "VALUES(@patient_id, @visit_datetime);" +
+                "SELECT LAST_INSERT_ID();";
 
             using (MySqlConnection connection = DbConnection.GetConnection())
             {
@@ -22,14 +23,64 @@ namespace Healthcare_System.DAL
                 cmd.Parameters.Add("@patient_id", MySqlDbType.Int32);
                 cmd.Parameters["@patient_id"].Value = patientId;
 
-                cmd.Parameters.Add("@appointment_datetime", MySqlDbType.DateTime);
-                cmd.Parameters["@appointment_datetime"].Value = appointmentDateTime;
+                cmd.Parameters.Add("@visit_datetime", MySqlDbType.DateTime);
+                cmd.Parameters["@visit_datetime"].Value = visitDateTime;
 
                 connection.Open();
                 object queryResult = cmd.ExecuteScalar();
                 int generatedOrderId = Convert.ToInt32(queryResult);
 
                 return generatedOrderId;
+            }
+        }
+
+        public static bool HasTestOrder(int patientId, DateTime visitDateTime)
+        {
+            string query = "SELECT COUNT(*) FROM lab_test_order " +
+                "WHERE patient_id = @patient_id AND visit_datetime = @visit_datetime;";
+
+            using (MySqlConnection connection = DbConnection.GetConnection())
+            {
+                using MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                cmd.Parameters.Add("@patient_id", MySqlDbType.Int32);
+                cmd.Parameters["@patient_id"].Value = patientId;
+
+                cmd.Parameters.Add("@visit_datetime", MySqlDbType.DateTime);
+                cmd.Parameters["@visit_datetime"].Value = visitDateTime;
+
+                connection.Open();
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                return count > 0;
+            }
+        }
+
+        public static LabTestOrder GetTestOrder(int patientId, DateTime visitDateTime)
+        {
+            string query = "SELECT order_id FROM lab_test_order " +
+                "WHERE patient_id = @patient_id AND visit_datetime = @visit_datetime;";
+
+            using (MySqlConnection connection = DbConnection.GetConnection())
+            {
+                using MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                cmd.Parameters.Add("@patient_id", MySqlDbType.Int32);
+                cmd.Parameters["@patient_id"].Value = patientId;
+
+                cmd.Parameters.Add("@visit_datetime", MySqlDbType.DateTime);
+                cmd.Parameters["@visit_datetime"].Value = visitDateTime;
+
+                connection.Open();
+                object queryResult = cmd.ExecuteScalar();
+
+                if (queryResult == null)
+                {
+                    return null;
+                }
+
+                int orderId = (queryResult == DBNull.Value) ? default : Convert.ToInt32(queryResult);
+
+                return new LabTestOrder(orderId, patientId, visitDateTime);
             }
         }
     }

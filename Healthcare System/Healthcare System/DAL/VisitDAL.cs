@@ -14,7 +14,7 @@ namespace Healthcare_System.DAL
         public static IList<Visit> GetAllVisitsBetween(DateTime startDate, DateTime endDate)
         {
             var dataTable = new DataTable();
-            string query = "SELECT * FROM record WHERE appointment_datetime BETWEEN @startDate AND @endDate;";
+            string query = "SELECT * FROM record WHERE datetime BETWEEN @startDate AND @endDate;";
 
             List<Visit> visits = new List<Visit>();
 
@@ -39,7 +39,7 @@ namespace Healthcare_System.DAL
                         int patientId = (dataReader["patient_id"] == DBNull.Value)
                             ? default
                             : Convert.ToInt32(dataReader["patient_id"]);
-                        DateTime dateTime = (dataReader["appointment_datetime"] == DBNull.Value) ? default : Convert.ToDateTime(dataReader["appointment_datetime"]);
+                        DateTime dateTime = (dataReader["appointment_datetime"] == DBNull.Value) ? default : Convert.ToDateTime(dataReader["datetime"]);
                         int bpSystolic = (dataReader["bp_systolic"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["bp_systolic"]);
                         int bpDiastolic = (dataReader["bp_diastolic"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["bp_diastolic"]);
                         decimal temperature = (dataReader["temperature"] == DBNull.Value) ? default : Convert.ToDecimal(dataReader["temperature"]);

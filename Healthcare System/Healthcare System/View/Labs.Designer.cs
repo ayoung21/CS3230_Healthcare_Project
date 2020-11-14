@@ -30,19 +30,20 @@
         {
             this.listViewTests = new System.Windows.Forms.ListView();
             this.groupBoxResults = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dateTimePickerTest = new System.Windows.Forms.DateTimePicker();
             this.buttonCancelEditResults = new System.Windows.Forms.Button();
             this.buttonSaveResults = new System.Windows.Forms.Button();
             this.checkBoxAbnormal = new System.Windows.Forms.CheckBox();
             this.textBoxResults = new System.Windows.Forms.TextBox();
             this.buttonEditResults = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.comboBoxTestOrder = new System.Windows.Forms.ComboBox();
             this.buttonAddTestToOrder = new System.Windows.Forms.Button();
             this.buttonSubmitOrder = new System.Windows.Forms.Button();
-            this.dateTimePickerTest = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
             this.buttonRemoveTest = new System.Windows.Forms.Button();
+            this.groupBoxOrderTest = new System.Windows.Forms.GroupBox();
             this.groupBoxResults.SuspendLayout();
+            this.groupBoxOrderTest.SuspendLayout();
             this.SuspendLayout();
             // 
             // listViewTests
@@ -50,11 +51,13 @@
             this.listViewTests.HideSelection = false;
             this.listViewTests.Location = new System.Drawing.Point(8, 51);
             this.listViewTests.Margin = new System.Windows.Forms.Padding(2);
+            this.listViewTests.MultiSelect = false;
             this.listViewTests.Name = "listViewTests";
             this.listViewTests.Size = new System.Drawing.Size(584, 319);
             this.listViewTests.TabIndex = 0;
             this.listViewTests.UseCompatibleStateImageBehavior = false;
             this.listViewTests.View = System.Windows.Forms.View.Details;
+            this.listViewTests.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listViewTests_MouseUp);
             // 
             // groupBoxResults
             // 
@@ -74,6 +77,23 @@
             this.groupBoxResults.TabStop = false;
             this.groupBoxResults.Text = "Results";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(134, 218);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(92, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Date/Time Taken";
+            // 
+            // dateTimePickerTest
+            // 
+            this.dateTimePickerTest.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerTest.Location = new System.Drawing.Point(232, 214);
+            this.dateTimePickerTest.Name = "dateTimePickerTest";
+            this.dateTimePickerTest.Size = new System.Drawing.Size(162, 20);
+            this.dateTimePickerTest.TabIndex = 4;
+            // 
             // buttonCancelEditResults
             // 
             this.buttonCancelEditResults.Location = new System.Drawing.Point(456, 215);
@@ -83,6 +103,7 @@
             this.buttonCancelEditResults.TabIndex = 3;
             this.buttonCancelEditResults.Text = "Cancel";
             this.buttonCancelEditResults.UseVisualStyleBackColor = true;
+            this.buttonCancelEditResults.Click += new System.EventHandler(this.buttonCancelEditResults_Click);
             // 
             // buttonSaveResults
             // 
@@ -93,6 +114,7 @@
             this.buttonSaveResults.TabIndex = 2;
             this.buttonSaveResults.Text = "Save";
             this.buttonSaveResults.UseVisualStyleBackColor = true;
+            this.buttonSaveResults.Click += new System.EventHandler(this.buttonSaveResults_Click);
             // 
             // checkBoxAbnormal
             // 
@@ -125,29 +147,20 @@
             this.buttonEditResults.UseVisualStyleBackColor = true;
             this.buttonEditResults.Click += new System.EventHandler(this.buttonEditResults_Click);
             // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(5, 7);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 16);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Order Lab Test";
-            // 
             // comboBoxTestOrder
             // 
             this.comboBoxTestOrder.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxTestOrder.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxTestOrder.FormattingEnabled = true;
-            this.comboBoxTestOrder.Location = new System.Drawing.Point(88, 4);
+            this.comboBoxTestOrder.Location = new System.Drawing.Point(5, 16);
             this.comboBoxTestOrder.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxTestOrder.Name = "comboBoxTestOrder";
-            this.comboBoxTestOrder.Size = new System.Drawing.Size(418, 21);
+            this.comboBoxTestOrder.Size = new System.Drawing.Size(488, 21);
             this.comboBoxTestOrder.TabIndex = 4;
             // 
             // buttonAddTestToOrder
             // 
-            this.buttonAddTestToOrder.Location = new System.Drawing.Point(511, 4);
+            this.buttonAddTestToOrder.Location = new System.Drawing.Point(498, 16);
             this.buttonAddTestToOrder.Name = "buttonAddTestToOrder";
             this.buttonAddTestToOrder.Size = new System.Drawing.Size(80, 23);
             this.buttonAddTestToOrder.TabIndex = 5;
@@ -157,7 +170,7 @@
             // 
             // buttonSubmitOrder
             // 
-            this.buttonSubmitOrder.Location = new System.Drawing.Point(426, 374);
+            this.buttonSubmitOrder.Location = new System.Drawing.Point(511, 375);
             this.buttonSubmitOrder.Name = "buttonSubmitOrder";
             this.buttonSubmitOrder.Size = new System.Drawing.Size(80, 23);
             this.buttonSubmitOrder.TabIndex = 6;
@@ -165,26 +178,9 @@
             this.buttonSubmitOrder.UseVisualStyleBackColor = true;
             this.buttonSubmitOrder.Click += new System.EventHandler(this.buttonSubmitOrder_Click);
             // 
-            // dateTimePickerTest
-            // 
-            this.dateTimePickerTest.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerTest.Location = new System.Drawing.Point(232, 214);
-            this.dateTimePickerTest.Name = "dateTimePickerTest";
-            this.dateTimePickerTest.Size = new System.Drawing.Size(162, 20);
-            this.dateTimePickerTest.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(134, 218);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Date/Time Taken";
-            // 
             // buttonRemoveTest
             // 
-            this.buttonRemoveTest.Location = new System.Drawing.Point(8, 374);
+            this.buttonRemoveTest.Location = new System.Drawing.Point(364, 375);
             this.buttonRemoveTest.Name = "buttonRemoveTest";
             this.buttonRemoveTest.Size = new System.Drawing.Size(141, 23);
             this.buttonRemoveTest.TabIndex = 7;
@@ -192,16 +188,25 @@
             this.buttonRemoveTest.UseVisualStyleBackColor = true;
             this.buttonRemoveTest.Click += new System.EventHandler(this.buttonRemoveTest_Click);
             // 
+            // groupBoxOrderTest
+            // 
+            this.groupBoxOrderTest.Controls.Add(this.comboBoxTestOrder);
+            this.groupBoxOrderTest.Controls.Add(this.buttonAddTestToOrder);
+            this.groupBoxOrderTest.Location = new System.Drawing.Point(8, 3);
+            this.groupBoxOrderTest.Name = "groupBoxOrderTest";
+            this.groupBoxOrderTest.Size = new System.Drawing.Size(584, 43);
+            this.groupBoxOrderTest.TabIndex = 8;
+            this.groupBoxOrderTest.TabStop = false;
+            this.groupBoxOrderTest.Text = "Order Lab Test";
+            // 
             // Labs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 656);
+            this.Controls.Add(this.groupBoxOrderTest);
             this.Controls.Add(this.buttonRemoveTest);
             this.Controls.Add(this.buttonSubmitOrder);
-            this.Controls.Add(this.buttonAddTestToOrder);
-            this.Controls.Add(this.comboBoxTestOrder);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonEditResults);
             this.Controls.Add(this.groupBoxResults);
             this.Controls.Add(this.listViewTests);
@@ -210,6 +215,7 @@
             this.Text = "Labs";
             this.groupBoxResults.ResumeLayout(false);
             this.groupBoxResults.PerformLayout();
+            this.groupBoxOrderTest.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -223,12 +229,12 @@
         private System.Windows.Forms.Button buttonSaveResults;
         private System.Windows.Forms.CheckBox checkBoxAbnormal;
         private System.Windows.Forms.Button buttonEditResults;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxTestOrder;
         private System.Windows.Forms.Button buttonAddTestToOrder;
         private System.Windows.Forms.Button buttonSubmitOrder;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateTimePickerTest;
         private System.Windows.Forms.Button buttonRemoveTest;
+        private System.Windows.Forms.GroupBox groupBoxOrderTest;
     }
 }

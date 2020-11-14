@@ -29,5 +29,36 @@ namespace Healthcare_System.DAL
                 return result == 1;
             }
         }
+
+        public static List<int> GetTestCodesFromOrder(int orderId)
+        {
+            string query = "SELECT test_code FROM has_tests WHERE order_id = @order_id;";
+
+            List<int> testCodes = new List<int>();
+
+            using (MySqlConnection connection = DbConnection.GetConnection())
+            {
+                using MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                cmd.Parameters.Add("@order_id", MySqlDbType.Int32);
+                cmd.Parameters["@order_id"].Value = orderId;
+
+                connection.Open();
+
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                        int testCode = (dataReader["test_code"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["test_code"]);
+
+                        testCodes.Add(testCode);
+                    }
+                }
+            }
+
+            return testCodes;
+        }
     }
 }

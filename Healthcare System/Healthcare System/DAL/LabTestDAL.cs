@@ -46,5 +46,25 @@ namespace Healthcare_System.DAL
             }
             return labTests;
         }
+
+        public static string GetTestName(int testCode)
+        {
+            string query = "SELECT name FROM lab_test WHERE code = @code;";
+
+            using (MySqlConnection connection = DbConnection.GetConnection())
+            {
+                using MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                cmd.Parameters.Add("@code", MySqlDbType.Int32);
+                cmd.Parameters["@code"].Value = testCode;
+
+                connection.Open();
+
+                object queryResult = cmd.ExecuteScalar();
+                string name = (queryResult == DBNull.Value) ? null : Convert.ToString(queryResult);
+
+                return name;
+            }
+        }
     }
 }

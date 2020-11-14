@@ -10,15 +10,22 @@ namespace Healthcare_System.DAL.Helpers
 {
     static class LabTestHelpers
     {
-        public static int CreateTestOrder(int patientId, DateTime appointmentDateTime, List<LabTest> tests)
+        /// <summary>
+        /// Creates a test order.
+        /// </summary>
+        /// <param name="patientId">The patient id.</param>
+        /// <param name="appointmentDateTime">The appointment date time.</param>
+        /// <param name="testCodes">The codes of the tests to order.</param>
+        /// <returns>The lab order id if successful, -1 if not</returns>
+        public static int CreateTestOrder(int patientId, DateTime appointmentDateTime, List<int> testCodes)
         {
             MySqlTransaction transaction = TransactionHelpers.BeginTransaction();
 
             int orderId = LabTestOrderDAL.OrderTest(patientId, appointmentDateTime);
 
-            foreach (LabTest test in tests)
+            foreach (int code in testCodes)
             {
-                if (!HasTestsDAL.AddTestToOrder(orderId, test.Code))
+                if (!HasTestsDAL.AddTestToOrder(orderId, code))
                 {
                     transaction.Rollback();
                     return -1;
@@ -27,6 +34,21 @@ namespace Healthcare_System.DAL.Helpers
 
             TransactionHelpers.CommitTransaction(transaction);
             return orderId;
+        }
+
+        public static List<LabTest> GetTestsFromOrder(int orderId)
+        {
+            List<int> testCodes = HasTestsDAL.GetTestCodesFromOrder(orderId);
+
+            List<LabTest> testsOrdered = new List<LabTest>();
+
+            foreach (int code in testCodes)
+            {
+                string name = LabTestDAL.GetTestName(code);
+                testsOrdered.Add(new LabTest(code, name));
+            }
+
+            return testsOrdered;
         }
     }
 }

@@ -56,12 +56,6 @@ namespace Healthcare_System.View
         }
 
         #region Patient Details Tab
-        private void initializeAppointmentsListView()
-        {
-            this.listViewAppointments.Columns.Add("Date & Time", 150);
-            this.listViewAppointments.Columns.Add("Reasons", 400);
-        }
-
         private void enableDetailsTabAllowEdit(bool allowEdit)
         {
             // Patient Info
@@ -272,6 +266,12 @@ namespace Healthcare_System.View
         #endregion
 
         #region Appointments Tab
+        private void initializeAppointmentsListView()
+        {
+            this.listViewAppointments.Columns.Add("Date & Time", 150);
+            this.listViewAppointments.Columns.Add("Reasons", 400);
+        }
+
         private void buttonSaveAppointment_Click(object sender, EventArgs e)
         {
             if (this.comboBoxAppointmentDoctor.SelectedValue == null)
@@ -433,20 +433,11 @@ namespace Healthcare_System.View
         private void toggleCurrentlyEditingAppointment(bool currentlyEditing)
         {
             this.currentlyEditingAppointment = currentlyEditing;
-            if (currentlyEditing)
-            {
-                this.buttonNewAppointment.Enabled = false;
-                this.buttonEditAppointment.Enabled = false;
-                this.buttonDeleteAppointment.Enabled = false;
-                this.buttonMakeVisit.Enabled = false;
-            }
-            else
-            {
-                this.buttonNewAppointment.Enabled = true;
-                this.buttonEditAppointment.Enabled = true;
-                this.buttonDeleteAppointment.Enabled = true;
-                this.buttonMakeVisit.Enabled = true;
-            }
+
+            this.buttonNewAppointment.Enabled = !currentlyEditing;
+            this.buttonEditAppointment.Enabled = !currentlyEditing;
+            this.buttonDeleteAppointment.Enabled = !currentlyEditing;
+            this.buttonMakeVisit.Enabled = !currentlyEditing;
         }
 
         private void populateAppointmentDetails()
@@ -665,7 +656,7 @@ namespace Healthcare_System.View
 
         private void buttonLabs_Click(object sender, EventArgs e)
         {
-            Labs labsForm = new Labs();
+            Labs labsForm = new Labs(this.patient.PatientID.Value, this.dateTimePickerVisit.Value);
             labsForm.ShowDialog();
         }
         #endregion

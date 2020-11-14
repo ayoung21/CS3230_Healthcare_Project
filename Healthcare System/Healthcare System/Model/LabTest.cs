@@ -12,6 +12,8 @@ namespace Healthcare_System.Model
 
         public string Name { get; private set; }
 
+        public string CodeAndName { get => $"{this.Code} - {this.Name}";  }
+
         public LabTest(int code, string name)
         {
             this.Code = code;

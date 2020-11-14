@@ -93,7 +93,6 @@ namespace Healthcare_System.DAL
 
                 object queryResult = cmd.ExecuteScalar();
                 string firstName = (queryResult == DBNull.Value) ? null : Convert.ToString(queryResult);
-                connection.Close();
 
                 return firstName;
             }
@@ -119,7 +118,6 @@ namespace Healthcare_System.DAL
 
                 object queryResult = cmd.ExecuteScalar();
                 string lastName = (queryResult == DBNull.Value) ? null : Convert.ToString(queryResult);
-                connection.Close();
 
                 return lastName;
             }
@@ -147,7 +145,6 @@ namespace Healthcare_System.DAL
                 dataReader.Read();
                 string firstName = (dataReader["first_name"] == DBNull.Value) ? null : Convert.ToString(dataReader["first_name"]);
                 string lastName = (dataReader["last_name"] == DBNull.Value) ? null : Convert.ToString(dataReader["last_name"]);
-                connection.Close();
 
                 return firstName + " " + lastName;
             }

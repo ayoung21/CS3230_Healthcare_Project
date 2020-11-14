@@ -74,6 +74,7 @@
     <Compile Include="Model\Appointment.cs" />
     <Compile Include="Model\Gender.cs" />
     <Compile Include="Model\LabTest.cs" />
+    <Compile Include="Model\LabTestOrder.cs" />
     <Compile Include="Model\LabTestResults.cs" />
     <Compile Include="Model\StateAbbreviations.cs" />
     <Compile Include="Model\Visit.cs" />
