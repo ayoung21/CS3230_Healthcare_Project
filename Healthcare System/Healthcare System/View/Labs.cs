@@ -19,6 +19,8 @@ namespace Healthcare_System.View
         private DateTime visitDateTime;
         private bool orderSubmitted;
         private LabTestOrder order;
+        private bool currentTestHasResults;
+        private int currentTestCode;
 
         #region Initialization
         public Labs(int patientId, DateTime visitDateTime)
@@ -157,27 +159,83 @@ namespace Healthcare_System.View
             this.groupBoxResults.Visible = orderSubmitted;
         }
 
-        private void buttonEditResults_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void listViewTests_MouseUp(object sender, MouseEventArgs e)
         {
             if (this.listViewTests.SelectedItems.Count > 0)
             {
+                int testCode = Convert.ToInt32(this.listViewTests.SelectedItems[0].Tag);
+                this.currentTestCode = testCode;
+                LabTestResults results = LabTestResultDAL.GetResults(this.order.OrderId, testCode);
+
+                if (results != null)
+                {
+                    this.currentTestHasResults = true;
+                    this.textBoxResults.Text = results.Results;
+                    this.checkBoxAbnormal.Checked = results.IsAbnormal;
+                    this.dateTimePickerTest.Value = results.TakenOn;
+                }
+                else
+                {
+                    this.currentTestHasResults = false;
+                    this.resetResults();
+                }
                 
+            }
+        }
+
+        private void buttonEditResults_Click(object sender, EventArgs e)
+        {
+            if (this.listViewTests.SelectedIndices.Count > 0)
+            {
+                this.listViewTests.Enabled = false;
+                this.buttonEditResults.Enabled = false;
+                this.groupBoxResults.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Please select a test to edit results for");
             }
         }
 
         private void buttonCancelEditResults_Click(object sender, EventArgs e)
         {
-
+            this.resetResults();
         }
 
         private void buttonSaveResults_Click(object sender, EventArgs e)
         {
+            if (this.currentTestHasResults)
+            {
+                bool successful = LabTestResultDAL.UpdateResults(this.order.OrderId, this.currentTestCode, this.textBoxResults.Text, this.checkBoxAbnormal.Checked, this.dateTimePickerTest.Value);
 
+                if (!successful)
+                {
+                    MessageBox.Show("Updating test results failed!");
+                    return;
+                }
+            }
+            else
+            {
+                bool successful = LabTestResultDAL.AddResults(this.order.OrderId, this.currentTestCode, this.textBoxResults.Text, this.checkBoxAbnormal.Checked, this.dateTimePickerTest.Value);
+
+                if (!successful)
+                {
+                    MessageBox.Show("Adding test results failed!");
+                    return;
+                }
+            }
+
+            this.resetResults();
+        }
+
+        private void resetResults()
+        {
+            this.groupBoxResults.Enabled = false;
+            this.textBoxResults.Clear();
+            this.checkBoxAbnormal.Checked = false;
+            this.dateTimePickerTest.Value = DateTime.Now;
+            this.listViewTests.Enabled = true;
+            this.buttonEditResults.Enabled = true;
         }
     }
 }

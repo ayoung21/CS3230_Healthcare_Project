@@ -12,10 +12,13 @@ namespace Healthcare_System.Model
 
         public bool IsAbnormal { get; set; }
 
-        public LabTestResults(string results, bool isAbnormal)
+        public DateTime TakenOn { get; set; }
+
+        public LabTestResults(string results, bool isAbnormal, DateTime takenOn)
         {
             this.Results = results;
             this.IsAbnormal = isAbnormal;
+            this.TakenOn = takenOn;
         }
     }
 }

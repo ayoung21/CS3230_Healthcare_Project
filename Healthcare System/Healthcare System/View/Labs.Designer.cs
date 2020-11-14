@@ -96,7 +96,7 @@
             // 
             // buttonCancelEditResults
             // 
-            this.buttonCancelEditResults.Location = new System.Drawing.Point(456, 215);
+            this.buttonCancelEditResults.Location = new System.Drawing.Point(463, 215);
             this.buttonCancelEditResults.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCancelEditResults.Name = "buttonCancelEditResults";
             this.buttonCancelEditResults.Size = new System.Drawing.Size(56, 19);
