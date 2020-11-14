@@ -487,7 +487,7 @@ namespace Healthcare_System.View
                 this.currentlyEditingVisit = true;
                 this.tabControlPatientInfo.SelectTab(2);
                 this.comboBoxVisitDoctor.SelectedIndex = this.comboBoxAppointmentDoctor.SelectedIndex;
-                this.enableVisitInfoFields();
+                this.groupBoxVisitInfo.Enabled = true;
                 this.dateTimePickerVisit.Value = this.dateTimeAppointmentDate.Value;
             }
         }
@@ -536,7 +536,7 @@ namespace Healthcare_System.View
             if (isSuccessful)
             {
                 this.clearVisitInfoFields();
-                this.disableVisitInfoFields();
+                this.groupBoxVisitInfo.Enabled = false;
                 this.currentlyEditingVisit = false;
                 this.loadVisits();
             }
@@ -548,39 +548,9 @@ namespace Healthcare_System.View
 
         private void buttonCancelVisitInfo_Click(object sender, EventArgs e)
         {
-            this.disableVisitInfoFields();
+            this.groupBoxVisitInfo.Enabled = false;
             this.clearVisitInfoFields();
             this.currentlyEditingVisit = false;
-        }
-
-        private void disableVisitInfoFields()
-        {
-            this.comboBoxVisitDoctor.Enabled = false;
-            this.numericUpDownTemperature.Enabled = false;
-            this.numericUpDownWeight.Enabled = false;
-            this.numericUpDownSystolic.Enabled = false;
-            this.numericUpDownDiastolic.Enabled = false;
-            this.numericUpDownPulse.Enabled = false;
-            this.textBoxSymptoms.Enabled = false;
-            this.textBoxDiagnoses.Enabled = false;
-            this.buttonLabs.Enabled = false;
-            this.buttonSaveVisit.Enabled = false;
-            this.buttonCancelVisitInfo.Enabled = false;
-        }
-
-        private void enableVisitInfoFields()
-        {
-            this.comboBoxVisitDoctor.Enabled = true;
-            this.numericUpDownTemperature.Enabled = true;
-            this.numericUpDownWeight.Enabled = true;
-            this.numericUpDownSystolic.Enabled = true;
-            this.numericUpDownDiastolic.Enabled = true;
-            this.numericUpDownPulse.Enabled = true;
-            this.textBoxSymptoms.Enabled = true;
-            this.textBoxDiagnoses.Enabled = true;
-            this.buttonLabs.Enabled = true;
-            this.buttonSaveVisit.Enabled = true;
-            this.buttonCancelVisitInfo.Enabled = true;
         }
 
         private void clearVisitInfoFields()
@@ -636,6 +606,22 @@ namespace Healthcare_System.View
             }
         }
 
+        private void checkBoxFinalDiagnosis_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxFinalDiagnosis.Checked)
+            {
+                DialogResult okToProceed = MessageBox.Show("Once a final diagnosis has been made, you CANNOT make further changes",
+                    "Do you want to proceed?",
+                    MessageBoxButtons.YesNo);
+
+                if (okToProceed == DialogResult.No)
+                {
+                    this.checkBoxFinalDiagnosis.Checked = false;
+                    return;
+                }
+            }
+        }
+
         private void buttonEditVisit_Click(object sender, EventArgs e)
         {
             if (this.currentlyEditingVisit)
@@ -646,7 +632,7 @@ namespace Healthcare_System.View
             {
                 this.visitUpdateMode = true;
                 this.currentlyEditingVisit = true;
-                this.enableVisitInfoFields();
+                this.groupBoxVisitInfo.Enabled = true;
                 this.populateVisitDetails();
             } else
             {

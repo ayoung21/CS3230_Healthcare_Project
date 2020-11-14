@@ -81,7 +81,7 @@
             this.tabVisits = new System.Windows.Forms.TabPage();
             this.buttonEditVisit = new System.Windows.Forms.Button();
             this.listViewVisits = new System.Windows.Forms.ListView();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBoxVisitInfo = new System.Windows.Forms.GroupBox();
             this.checkBoxFinalDiagnosis = new System.Windows.Forms.CheckBox();
             this.numericUpDownWeight = new System.Windows.Forms.NumericUpDown();
             this.label22 = new System.Windows.Forms.Label();
@@ -111,7 +111,7 @@
             this.tabAppointments.SuspendLayout();
             this.groupBoxAppointmentInfo.SuspendLayout();
             this.tabVisits.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.groupBoxVisitInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPulse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTemperature)).BeginInit();
@@ -169,7 +169,7 @@
             this.tabDetails.Controls.Add(this.textBoxLastName);
             this.tabDetails.Location = new System.Drawing.Point(4, 22);
             this.tabDetails.Name = "tabDetails";
-            this.tabDetails.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabDetails.Padding = new System.Windows.Forms.Padding(3);
             this.tabDetails.Size = new System.Drawing.Size(721, 676);
             this.tabDetails.TabIndex = 0;
             this.tabDetails.Text = "Details";
@@ -515,7 +515,7 @@
             this.tabAppointments.Controls.Add(this.groupBoxAppointmentInfo);
             this.tabAppointments.Location = new System.Drawing.Point(4, 22);
             this.tabAppointments.Name = "tabAppointments";
-            this.tabAppointments.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabAppointments.Padding = new System.Windows.Forms.Padding(3);
             this.tabAppointments.Size = new System.Drawing.Size(721, 676);
             this.tabAppointments.TabIndex = 1;
             this.tabAppointments.Text = "Appointments";
@@ -524,7 +524,7 @@
             // buttonNewAppointment
             // 
             this.buttonNewAppointment.Location = new System.Drawing.Point(18, 295);
-            this.buttonNewAppointment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonNewAppointment.Margin = new System.Windows.Forms.Padding(2);
             this.buttonNewAppointment.Name = "buttonNewAppointment";
             this.buttonNewAppointment.Size = new System.Drawing.Size(52, 24);
             this.buttonNewAppointment.TabIndex = 5;
@@ -535,7 +535,7 @@
             // buttonEditAppointment
             // 
             this.buttonEditAppointment.Location = new System.Drawing.Point(365, 295);
-            this.buttonEditAppointment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonEditAppointment.Margin = new System.Windows.Forms.Padding(2);
             this.buttonEditAppointment.Name = "buttonEditAppointment";
             this.buttonEditAppointment.Size = new System.Drawing.Size(52, 24);
             this.buttonEditAppointment.TabIndex = 4;
@@ -546,7 +546,7 @@
             // buttonDeleteAppointment
             // 
             this.buttonDeleteAppointment.Location = new System.Drawing.Point(422, 295);
-            this.buttonDeleteAppointment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonDeleteAppointment.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDeleteAppointment.Name = "buttonDeleteAppointment";
             this.buttonDeleteAppointment.Size = new System.Drawing.Size(56, 24);
             this.buttonDeleteAppointment.TabIndex = 3;
@@ -557,7 +557,7 @@
             // buttonMakeVisit
             // 
             this.buttonMakeVisit.Location = new System.Drawing.Point(482, 295);
-            this.buttonMakeVisit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonMakeVisit.Margin = new System.Windows.Forms.Padding(2);
             this.buttonMakeVisit.Name = "buttonMakeVisit";
             this.buttonMakeVisit.Size = new System.Drawing.Size(100, 24);
             this.buttonMakeVisit.TabIndex = 2;
@@ -569,7 +569,7 @@
             // 
             this.listViewAppointments.HideSelection = false;
             this.listViewAppointments.Location = new System.Drawing.Point(18, 11);
-            this.listViewAppointments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listViewAppointments.Margin = new System.Windows.Forms.Padding(2);
             this.listViewAppointments.MultiSelect = false;
             this.listViewAppointments.Name = "listViewAppointments";
             this.listViewAppointments.Size = new System.Drawing.Size(565, 282);
@@ -677,7 +677,7 @@
             // 
             this.tabVisits.Controls.Add(this.buttonEditVisit);
             this.tabVisits.Controls.Add(this.listViewVisits);
-            this.tabVisits.Controls.Add(this.groupBox3);
+            this.tabVisits.Controls.Add(this.groupBoxVisitInfo);
             this.tabVisits.Location = new System.Drawing.Point(4, 22);
             this.tabVisits.Name = "tabVisits";
             this.tabVisits.Size = new System.Drawing.Size(721, 676);
@@ -688,7 +688,7 @@
             // buttonEditVisit
             // 
             this.buttonEditVisit.Location = new System.Drawing.Point(649, 291);
-            this.buttonEditVisit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonEditVisit.Margin = new System.Windows.Forms.Padding(2);
             this.buttonEditVisit.Name = "buttonEditVisit";
             this.buttonEditVisit.Size = new System.Drawing.Size(56, 25);
             this.buttonEditVisit.TabIndex = 3;
@@ -700,7 +700,7 @@
             // 
             this.listViewVisits.HideSelection = false;
             this.listViewVisits.Location = new System.Drawing.Point(19, 10);
-            this.listViewVisits.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listViewVisits.Margin = new System.Windows.Forms.Padding(2);
             this.listViewVisits.MultiSelect = false;
             this.listViewVisits.Name = "listViewVisits";
             this.listViewVisits.Size = new System.Drawing.Size(687, 277);
@@ -709,56 +709,57 @@
             this.listViewVisits.View = System.Windows.Forms.View.Details;
             this.listViewVisits.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listViewVisits_MouseUp);
             // 
-            // groupBox3
+            // groupBoxVisitInfo
             // 
-            this.groupBox3.Controls.Add(this.checkBoxFinalDiagnosis);
-            this.groupBox3.Controls.Add(this.numericUpDownWeight);
-            this.groupBox3.Controls.Add(this.label22);
-            this.groupBox3.Controls.Add(this.comboBoxVisitDoctor);
-            this.groupBox3.Controls.Add(this.label21);
-            this.groupBox3.Controls.Add(this.buttonLabs);
-            this.groupBox3.Controls.Add(this.labelSymptomsError);
-            this.groupBox3.Controls.Add(this.buttonCancelVisitInfo);
-            this.groupBox3.Controls.Add(this.buttonSaveVisit);
-            this.groupBox3.Controls.Add(this.textBoxDiagnoses);
-            this.groupBox3.Controls.Add(this.label20);
-            this.groupBox3.Controls.Add(this.textBoxSymptoms);
-            this.groupBox3.Controls.Add(this.label19);
-            this.groupBox3.Controls.Add(this.numericUpDownPulse);
-            this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Controls.Add(this.numericUpDownTemperature);
-            this.groupBox3.Controls.Add(this.label17);
-            this.groupBox3.Controls.Add(this.numericUpDownDiastolic);
-            this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Controls.Add(this.numericUpDownSystolic);
-            this.groupBox3.Controls.Add(this.dateTimePickerVisit);
-            this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(3, 314);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(707, 361);
-            this.groupBox3.TabIndex = 1;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Visit Info";
+            this.groupBoxVisitInfo.Controls.Add(this.checkBoxFinalDiagnosis);
+            this.groupBoxVisitInfo.Controls.Add(this.numericUpDownWeight);
+            this.groupBoxVisitInfo.Controls.Add(this.label22);
+            this.groupBoxVisitInfo.Controls.Add(this.comboBoxVisitDoctor);
+            this.groupBoxVisitInfo.Controls.Add(this.label21);
+            this.groupBoxVisitInfo.Controls.Add(this.buttonLabs);
+            this.groupBoxVisitInfo.Controls.Add(this.labelSymptomsError);
+            this.groupBoxVisitInfo.Controls.Add(this.buttonCancelVisitInfo);
+            this.groupBoxVisitInfo.Controls.Add(this.buttonSaveVisit);
+            this.groupBoxVisitInfo.Controls.Add(this.textBoxDiagnoses);
+            this.groupBoxVisitInfo.Controls.Add(this.label20);
+            this.groupBoxVisitInfo.Controls.Add(this.textBoxSymptoms);
+            this.groupBoxVisitInfo.Controls.Add(this.label19);
+            this.groupBoxVisitInfo.Controls.Add(this.numericUpDownPulse);
+            this.groupBoxVisitInfo.Controls.Add(this.label18);
+            this.groupBoxVisitInfo.Controls.Add(this.numericUpDownTemperature);
+            this.groupBoxVisitInfo.Controls.Add(this.label17);
+            this.groupBoxVisitInfo.Controls.Add(this.numericUpDownDiastolic);
+            this.groupBoxVisitInfo.Controls.Add(this.label16);
+            this.groupBoxVisitInfo.Controls.Add(this.numericUpDownSystolic);
+            this.groupBoxVisitInfo.Controls.Add(this.dateTimePickerVisit);
+            this.groupBoxVisitInfo.Controls.Add(this.label15);
+            this.groupBoxVisitInfo.Controls.Add(this.label12);
+            this.groupBoxVisitInfo.Enabled = false;
+            this.groupBoxVisitInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxVisitInfo.Location = new System.Drawing.Point(3, 314);
+            this.groupBoxVisitInfo.Name = "groupBoxVisitInfo";
+            this.groupBoxVisitInfo.Size = new System.Drawing.Size(707, 361);
+            this.groupBoxVisitInfo.TabIndex = 1;
+            this.groupBoxVisitInfo.TabStop = false;
+            this.groupBoxVisitInfo.Text = "Visit Info";
             // 
             // checkBoxFinalDiagnosis
             // 
             this.checkBoxFinalDiagnosis.AutoSize = true;
             this.checkBoxFinalDiagnosis.Location = new System.Drawing.Point(518, 181);
-            this.checkBoxFinalDiagnosis.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxFinalDiagnosis.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxFinalDiagnosis.Name = "checkBoxFinalDiagnosis";
             this.checkBoxFinalDiagnosis.Size = new System.Drawing.Size(177, 24);
             this.checkBoxFinalDiagnosis.TabIndex = 22;
             this.checkBoxFinalDiagnosis.Text = "Final diagnosis made";
             this.checkBoxFinalDiagnosis.UseVisualStyleBackColor = true;
+            this.checkBoxFinalDiagnosis.CheckedChanged += new System.EventHandler(this.checkBoxFinalDiagnosis_CheckedChanged);
             // 
             // numericUpDownWeight
             // 
             this.numericUpDownWeight.DecimalPlaces = 2;
-            this.numericUpDownWeight.Enabled = false;
             this.numericUpDownWeight.Location = new System.Drawing.Point(616, 53);
-            this.numericUpDownWeight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDownWeight.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDownWeight.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -792,7 +793,6 @@
             // 
             this.comboBoxVisitDoctor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxVisitDoctor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBoxVisitDoctor.Enabled = false;
             this.comboBoxVisitDoctor.FormattingEnabled = true;
             this.comboBoxVisitDoctor.Location = new System.Drawing.Point(310, 15);
             this.comboBoxVisitDoctor.Name = "comboBoxVisitDoctor";
@@ -810,9 +810,8 @@
             // 
             // buttonLabs
             // 
-            this.buttonLabs.Enabled = false;
-            this.buttonLabs.Location = new System.Drawing.Point(9, 332);
-            this.buttonLabs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonLabs.Location = new System.Drawing.Point(9, 327);
+            this.buttonLabs.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLabs.Name = "buttonLabs";
             this.buttonLabs.Size = new System.Drawing.Size(66, 29);
             this.buttonLabs.TabIndex = 17;
@@ -835,9 +834,8 @@
             // 
             // buttonCancelVisitInfo
             // 
-            this.buttonCancelVisitInfo.Enabled = false;
-            this.buttonCancelVisitInfo.Location = new System.Drawing.Point(568, 332);
-            this.buttonCancelVisitInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonCancelVisitInfo.Location = new System.Drawing.Point(568, 327);
+            this.buttonCancelVisitInfo.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCancelVisitInfo.Name = "buttonCancelVisitInfo";
             this.buttonCancelVisitInfo.Size = new System.Drawing.Size(66, 29);
             this.buttonCancelVisitInfo.TabIndex = 15;
@@ -847,9 +845,8 @@
             // 
             // buttonSaveVisit
             // 
-            this.buttonSaveVisit.Enabled = false;
-            this.buttonSaveVisit.Location = new System.Drawing.Point(638, 332);
-            this.buttonSaveVisit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSaveVisit.Location = new System.Drawing.Point(640, 327);
+            this.buttonSaveVisit.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSaveVisit.Name = "buttonSaveVisit";
             this.buttonSaveVisit.Size = new System.Drawing.Size(56, 29);
             this.buttonSaveVisit.TabIndex = 14;
@@ -859,9 +856,8 @@
             // 
             // textBoxDiagnoses
             // 
-            this.textBoxDiagnoses.Enabled = false;
             this.textBoxDiagnoses.Location = new System.Drawing.Point(9, 150);
-            this.textBoxDiagnoses.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxDiagnoses.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxDiagnoses.MaxLength = 200;
             this.textBoxDiagnoses.Multiline = true;
             this.textBoxDiagnoses.Name = "textBoxDiagnoses";
@@ -880,9 +876,8 @@
             // 
             // textBoxSymptoms
             // 
-            this.textBoxSymptoms.Enabled = false;
             this.textBoxSymptoms.Location = new System.Drawing.Point(87, 92);
-            this.textBoxSymptoms.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxSymptoms.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSymptoms.MaxLength = 200;
             this.textBoxSymptoms.Name = "textBoxSymptoms";
             this.textBoxSymptoms.Size = new System.Drawing.Size(609, 26);
@@ -900,9 +895,8 @@
             // 
             // numericUpDownPulse
             // 
-            this.numericUpDownPulse.Enabled = false;
             this.numericUpDownPulse.Location = new System.Drawing.Point(356, 52);
-            this.numericUpDownPulse.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDownPulse.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDownPulse.Maximum = new decimal(new int[] {
             999,
             0,
@@ -935,9 +929,8 @@
             // numericUpDownTemperature
             // 
             this.numericUpDownTemperature.DecimalPlaces = 2;
-            this.numericUpDownTemperature.Enabled = false;
             this.numericUpDownTemperature.Location = new System.Drawing.Point(467, 52);
-            this.numericUpDownTemperature.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDownTemperature.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDownTemperature.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -969,9 +962,8 @@
             // 
             // numericUpDownDiastolic
             // 
-            this.numericUpDownDiastolic.Enabled = false;
             this.numericUpDownDiastolic.Location = new System.Drawing.Point(241, 53);
-            this.numericUpDownDiastolic.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDownDiastolic.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDownDiastolic.Maximum = new decimal(new int[] {
             999,
             0,
@@ -1003,9 +995,8 @@
             // 
             // numericUpDownSystolic
             // 
-            this.numericUpDownSystolic.Enabled = false;
             this.numericUpDownSystolic.Location = new System.Drawing.Point(85, 52);
-            this.numericUpDownSystolic.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDownSystolic.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDownSystolic.Maximum = new decimal(new int[] {
             999,
             0,
@@ -1027,10 +1018,9 @@
             // 
             // dateTimePickerVisit
             // 
-            this.dateTimePickerVisit.Enabled = false;
             this.dateTimePickerVisit.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerVisit.Location = new System.Drawing.Point(85, 18);
-            this.dateTimePickerVisit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerVisit.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerVisit.Name = "dateTimePickerVisit";
             this.dateTimePickerVisit.Size = new System.Drawing.Size(170, 26);
             this.dateTimePickerVisit.TabIndex = 2;
@@ -1072,8 +1062,8 @@
             this.groupBoxAppointmentInfo.ResumeLayout(false);
             this.groupBoxAppointmentInfo.PerformLayout();
             this.tabVisits.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.groupBoxVisitInfo.ResumeLayout(false);
+            this.groupBoxVisitInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPulse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTemperature)).EndInit();
@@ -1136,7 +1126,7 @@
         private System.Windows.Forms.Button buttonMakeVisit;
         private System.Windows.Forms.Button buttonNewAppointment;
         private System.Windows.Forms.Button buttonCancelAppointmentEdit;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBoxVisitInfo;
         private System.Windows.Forms.DateTimePicker dateTimePickerVisit;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label12;
