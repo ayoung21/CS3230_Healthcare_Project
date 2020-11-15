@@ -150,5 +150,22 @@ namespace Healthcare_System.DAL
 
             return appointments;
         }
+
+        public static bool PatientHasAppointment(int patientId)
+        {
+            string query = "SELECT COUNT(*) FROM appointment WHERE patient_id = @patient_id;";
+
+            using (MySqlConnection connection = DbConnection.GetConnection())
+            {
+                using MySqlCommand cmd = new MySqlCommand(query.ToString(), connection);
+
+                cmd.Parameters.Add("@patient_id", MySqlDbType.Int32);
+                cmd.Parameters["@patient_id"].Value = patientId;
+
+                connection.Open();
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                return count > 0;
+            }
+        }
     }
 }
