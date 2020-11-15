@@ -46,6 +46,7 @@ namespace Healthcare_System.View
             this.initializeColumnHeaders();
 
             this.listViewPatients.FullRowSelect = true;
+            this.listViewAppointmentsBetween.FullRowSelect = true;
             this.labelAdminQuery.Visible = false;
         }
 
@@ -186,9 +187,24 @@ namespace Healthcare_System.View
                     nurseFullName
 
                 });
+                row.Tag = currentVisit;
                 this.listViewAppointmentsBetween.Items.Add(row);
             }
 
+        }
+
+        private void butttonViewLabs_Click(object sender, EventArgs e)
+        {
+            if (this.listViewAppointmentsBetween.SelectedIndices.Count > 0)
+            {
+                var visit = (Visit) this.listViewAppointmentsBetween.SelectedItems[0].Tag;
+                Labs labsForm = new Labs(visit.PatientId, visit.AppointmentDateTime);
+                labsForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Nothing is selected");
+            }
         }
     }
 }
