@@ -2,6 +2,7 @@
 using Healthcare_System.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Healthcare_System.View
@@ -164,7 +165,7 @@ namespace Healthcare_System.View
             var results = VisitDAL.GetAllVisitsBetween(dateTimeStart, dateTimeEnd);
 
             this.listViewAppointmentsBetween.Items.Clear();
-
+            results = results.OrderBy(x => x.AppointmentDateTime).ToList();
             foreach (Visit currentVisit in results)
             {
                 var patientUserId = Convert.ToInt32(PatientDAL.GetPatientUserId(currentVisit.PatientId));
