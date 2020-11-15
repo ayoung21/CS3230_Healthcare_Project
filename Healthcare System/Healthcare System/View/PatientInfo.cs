@@ -611,7 +611,7 @@ namespace Healthcare_System.View
             }
         }
 
-        private void checkBoxFinalDiagnosis_CheckedChanged(object sender, EventArgs e)
+        private void checkBoxFinalDiagnosis_MouseUp(object sender, MouseEventArgs e)
         {
             if (checkBoxFinalDiagnosis.Checked)
             {

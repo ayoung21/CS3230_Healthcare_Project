@@ -678,6 +678,7 @@
             this.tabVisits.Controls.Add(this.buttonEditVisit);
             this.tabVisits.Controls.Add(this.listViewVisits);
             this.tabVisits.Controls.Add(this.groupBoxVisitInfo);
+            this.tabVisits.Controls.Add(this.buttonLabs);
             this.tabVisits.Location = new System.Drawing.Point(4, 22);
             this.tabVisits.Name = "tabVisits";
             this.tabVisits.Size = new System.Drawing.Size(721, 676);
@@ -716,7 +717,6 @@
             this.groupBoxVisitInfo.Controls.Add(this.label22);
             this.groupBoxVisitInfo.Controls.Add(this.comboBoxVisitDoctor);
             this.groupBoxVisitInfo.Controls.Add(this.label21);
-            this.groupBoxVisitInfo.Controls.Add(this.buttonLabs);
             this.groupBoxVisitInfo.Controls.Add(this.labelSymptomsError);
             this.groupBoxVisitInfo.Controls.Add(this.buttonCancelVisitInfo);
             this.groupBoxVisitInfo.Controls.Add(this.buttonSaveVisit);
@@ -753,7 +753,7 @@
             this.checkBoxFinalDiagnosis.TabIndex = 22;
             this.checkBoxFinalDiagnosis.Text = "Final diagnosis made";
             this.checkBoxFinalDiagnosis.UseVisualStyleBackColor = true;
-            this.checkBoxFinalDiagnosis.CheckedChanged += new System.EventHandler(this.checkBoxFinalDiagnosis_CheckedChanged);
+            this.checkBoxFinalDiagnosis.MouseUp += new System.Windows.Forms.MouseEventHandler(this.checkBoxFinalDiagnosis_MouseUp);
             // 
             // numericUpDownWeight
             // 
@@ -810,10 +810,10 @@
             // 
             // buttonLabs
             // 
-            this.buttonLabs.Location = new System.Drawing.Point(9, 327);
+            this.buttonLabs.Location = new System.Drawing.Point(579, 291);
             this.buttonLabs.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLabs.Name = "buttonLabs";
-            this.buttonLabs.Size = new System.Drawing.Size(66, 29);
+            this.buttonLabs.Size = new System.Drawing.Size(66, 25);
             this.buttonLabs.TabIndex = 17;
             this.buttonLabs.Text = "Labs...";
             this.buttonLabs.UseVisualStyleBackColor = true;
