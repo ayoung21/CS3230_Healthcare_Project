@@ -56,10 +56,16 @@
             this.buttonAdminQuery = new System.Windows.Forms.Button();
             this.textBoxAdminQuery = new System.Windows.Forms.TextBox();
             this.butttonViewLabs = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabPatients.SuspendLayout();
             this.appComponents.SuspendLayout();
             this.tabAdmin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // loggedInUser
@@ -248,16 +254,9 @@
             // 
             // tabAdmin
             // 
-            this.tabAdmin.Controls.Add(this.butttonViewLabs);
-            this.tabAdmin.Controls.Add(this.listViewAppointmentsBetween);
-            this.tabAdmin.Controls.Add(this.buttonSearchAppointmentsBetween);
-            this.tabAdmin.Controls.Add(this.dateTimePickerEndDate);
-            this.tabAdmin.Controls.Add(this.dateTimePickerStartDate);
-            this.tabAdmin.Controls.Add(this.labelAdminQuery);
-            this.tabAdmin.Controls.Add(this.dataGridView);
+            this.tabAdmin.Controls.Add(this.groupBox2);
+            this.tabAdmin.Controls.Add(this.groupBox1);
             this.tabAdmin.Controls.Add(this.labelResult);
-            this.tabAdmin.Controls.Add(this.buttonAdminQuery);
-            this.tabAdmin.Controls.Add(this.textBoxAdminQuery);
             this.tabAdmin.Location = new System.Drawing.Point(4, 22);
             this.tabAdmin.Name = "tabAdmin";
             this.tabAdmin.Size = new System.Drawing.Size(1263, 630);
@@ -268,17 +267,17 @@
             // listViewAppointmentsBetween
             // 
             this.listViewAppointmentsBetween.HideSelection = false;
-            this.listViewAppointmentsBetween.Location = new System.Drawing.Point(46, 406);
+            this.listViewAppointmentsBetween.Location = new System.Drawing.Point(15, 116);
             this.listViewAppointmentsBetween.MultiSelect = false;
             this.listViewAppointmentsBetween.Name = "listViewAppointmentsBetween";
-            this.listViewAppointmentsBetween.Size = new System.Drawing.Size(511, 138);
+            this.listViewAppointmentsBetween.Size = new System.Drawing.Size(677, 138);
             this.listViewAppointmentsBetween.TabIndex = 8;
             this.listViewAppointmentsBetween.UseCompatibleStateImageBehavior = false;
             this.listViewAppointmentsBetween.View = System.Windows.Forms.View.Details;
             // 
             // buttonSearchAppointmentsBetween
             // 
-            this.buttonSearchAppointmentsBetween.Location = new System.Drawing.Point(516, 377);
+            this.buttonSearchAppointmentsBetween.Location = new System.Drawing.Point(617, 87);
             this.buttonSearchAppointmentsBetween.Name = "buttonSearchAppointmentsBetween";
             this.buttonSearchAppointmentsBetween.Size = new System.Drawing.Size(75, 23);
             this.buttonSearchAppointmentsBetween.TabIndex = 7;
@@ -288,14 +287,14 @@
             // 
             // dateTimePickerEndDate
             // 
-            this.dateTimePickerEndDate.Location = new System.Drawing.Point(287, 380);
+            this.dateTimePickerEndDate.Location = new System.Drawing.Point(309, 90);
             this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
             this.dateTimePickerEndDate.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerEndDate.TabIndex = 6;
             // 
             // dateTimePickerStartDate
             // 
-            this.dateTimePickerStartDate.Location = new System.Drawing.Point(46, 380);
+            this.dateTimePickerStartDate.Location = new System.Drawing.Point(16, 90);
             this.dateTimePickerStartDate.Name = "dateTimePickerStartDate";
             this.dateTimePickerStartDate.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerStartDate.TabIndex = 5;
@@ -303,18 +302,19 @@
             // labelAdminQuery
             // 
             this.labelAdminQuery.AutoSize = true;
-            this.labelAdminQuery.Location = new System.Drawing.Point(39, 78);
+            this.labelAdminQuery.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAdminQuery.Location = new System.Drawing.Point(13, 86);
             this.labelAdminQuery.Name = "labelAdminQuery";
-            this.labelAdminQuery.Size = new System.Drawing.Size(35, 13);
+            this.labelAdminQuery.Size = new System.Drawing.Size(45, 16);
             this.labelAdminQuery.TabIndex = 4;
             this.labelAdminQuery.Text = "label4";
             // 
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(42, 112);
+            this.dataGridView.Location = new System.Drawing.Point(16, 122);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(515, 150);
+            this.dataGridView.Size = new System.Drawing.Size(1155, 150);
             this.dataGridView.TabIndex = 3;
             // 
             // labelResult
@@ -327,9 +327,9 @@
             // 
             // buttonAdminQuery
             // 
-            this.buttonAdminQuery.Location = new System.Drawing.Point(581, 39);
+            this.buttonAdminQuery.Location = new System.Drawing.Point(1096, 39);
             this.buttonAdminQuery.Name = "buttonAdminQuery";
-            this.buttonAdminQuery.Size = new System.Drawing.Size(75, 23);
+            this.buttonAdminQuery.Size = new System.Drawing.Size(75, 28);
             this.buttonAdminQuery.TabIndex = 1;
             this.buttonAdminQuery.Text = "Go!";
             this.buttonAdminQuery.UseVisualStyleBackColor = true;
@@ -337,20 +337,69 @@
             // 
             // textBoxAdminQuery
             // 
-            this.textBoxAdminQuery.Location = new System.Drawing.Point(39, 42);
+            this.textBoxAdminQuery.Location = new System.Drawing.Point(16, 42);
             this.textBoxAdminQuery.Name = "textBoxAdminQuery";
-            this.textBoxAdminQuery.Size = new System.Drawing.Size(518, 20);
+            this.textBoxAdminQuery.Size = new System.Drawing.Size(1074, 20);
             this.textBoxAdminQuery.TabIndex = 0;
             // 
             // butttonViewLabs
             // 
-            this.butttonViewLabs.Location = new System.Drawing.Point(563, 521);
+            this.butttonViewLabs.Location = new System.Drawing.Point(698, 231);
             this.butttonViewLabs.Name = "butttonViewLabs";
             this.butttonViewLabs.Size = new System.Drawing.Size(75, 23);
             this.butttonViewLabs.TabIndex = 9;
             this.butttonViewLabs.Text = "View Labs";
             this.butttonViewLabs.UseVisualStyleBackColor = true;
             this.butttonViewLabs.Click += new System.EventHandler(this.butttonViewLabs_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dataGridView);
+            this.groupBox1.Controls.Add(this.buttonAdminQuery);
+            this.groupBox1.Controls.Add(this.textBoxAdminQuery);
+            this.groupBox1.Controls.Add(this.labelAdminQuery);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(27, 18);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1189, 300);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "SQL Query Search";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.buttonSearchAppointmentsBetween);
+            this.groupBox2.Controls.Add(this.dateTimePickerStartDate);
+            this.groupBox2.Controls.Add(this.butttonViewLabs);
+            this.groupBox2.Controls.Add(this.dateTimePickerEndDate);
+            this.groupBox2.Controls.Add(this.listViewAppointmentsBetween);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(27, 339);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1189, 260);
+            this.groupBox2.TabIndex = 11;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Patient Report";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 64);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Start Date";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(309, 63);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(52, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "End Date";
             // 
             // MainApp
             // 
@@ -370,6 +419,10 @@
             this.tabAdmin.ResumeLayout(false);
             this.tabAdmin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,5 +457,9 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerStartDate;
         private System.Windows.Forms.ListView listViewAppointmentsBetween;
         private System.Windows.Forms.Button butttonViewLabs;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
