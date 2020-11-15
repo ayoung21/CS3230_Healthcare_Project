@@ -123,34 +123,32 @@ namespace Healthcare_System.View
             {
                 DialogResult okToProceed = MessageBox.Show("After submitting an order, you will NOT be able to edit it!", "Please confirm you would like to continue", MessageBoxButtons.YesNo);
 
-                if (okToProceed == DialogResult.No)
+                if (okToProceed == DialogResult.Yes)
                 {
-                    return;
-                }
+                    if (LabTestOrderDAL.HasTestOrder(this.patientId, this.visitDateTime))
+                    {
+                        MessageBox.Show("A test order has already been placed for this visit");
+                        return;
+                    }
 
-                if (LabTestOrderDAL.HasTestOrder(this.patientId, this.visitDateTime))
-                {
-                    MessageBox.Show("A test order has already been placed for this visit");
-                    return;
-                }
+                    List<int> testCodes = new List<int>();
 
-                List<int> testCodes = new List<int>();
+                    foreach (ListViewItem item in this.listViewTests.Items)
+                    {
+                        int code = int.Parse(item.Tag.ToString());
+                        testCodes.Add(code);
+                    }
 
-                foreach (ListViewItem item in this.listViewTests.Items)
-                {
-                    int code = int.Parse(item.Tag.ToString());
-                    testCodes.Add(code);
-                }
+                    int orderId = LabTestHelpers.CreateTestOrder(this.patientId, this.visitDateTime, testCodes);
 
-                int orderId = LabTestHelpers.CreateTestOrder(this.patientId, this.visitDateTime, testCodes);
-
-                if (orderId == -1)
-                {
-                    MessageBox.Show("Creating test order failed");
-                }
-                else
-                {
-                    this.switchMode(true);
+                    if (orderId == -1)
+                    {
+                        MessageBox.Show("Creating test order failed");
+                    }
+                    else
+                    {
+                        this.switchMode(true);
+                    }
                 }
             }
             else
