@@ -173,25 +173,27 @@ namespace Healthcare_System.View
 
         private void listViewTests_MouseUp(object sender, MouseEventArgs e)
         {
-            if (this.listViewTests.SelectedItems.Count > 0)
+            if (this.order != null)
             {
-                int testCode = Convert.ToInt32(this.listViewTests.SelectedItems[0].Tag);
-                this.currentTestCode = testCode;
-                LabTestResults results = LabTestResultDAL.GetResults(this.order.OrderId, testCode);
+                if (this.listViewTests.SelectedItems.Count > 0)
+                {
+                    int testCode = Convert.ToInt32(this.listViewTests.SelectedItems[0].Tag);
+                    this.currentTestCode = testCode;
+                    LabTestResults results = LabTestResultDAL.GetResults(this.order.OrderId, testCode);
 
-                if (results != null)
-                {
-                    this.currentTestHasResults = true;
-                    this.textBoxResults.Text = results.Results;
-                    this.checkBoxAbnormal.Checked = results.IsAbnormal;
-                    this.dateTimePickerTest.Value = results.TakenOn;
+                    if (results != null)
+                    {
+                        this.currentTestHasResults = true;
+                        this.textBoxResults.Text = results.Results;
+                        this.checkBoxAbnormal.Checked = results.IsAbnormal;
+                        this.dateTimePickerTest.Value = results.TakenOn;
+                    }
+                    else
+                    {
+                        this.currentTestHasResults = false;
+                        this.resetResults();
+                    }
                 }
-                else
-                {
-                    this.currentTestHasResults = false;
-                    this.resetResults();
-                }
-                
             }
         }
 

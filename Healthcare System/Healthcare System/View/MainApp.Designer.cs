@@ -45,27 +45,26 @@
             this.buttonAddPatient = new System.Windows.Forms.Button();
             this.appComponents = new System.Windows.Forms.TabControl();
             this.tabAdmin = new System.Windows.Forms.TabPage();
-            this.butttonViewLabs = new System.Windows.Forms.Button();
-            this.listViewAppointmentsBetween = new System.Windows.Forms.ListView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.buttonSearchAppointmentsBetween = new System.Windows.Forms.Button();
-            this.dateTimePickerEndDate = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerStartDate = new System.Windows.Forms.DateTimePicker();
-            this.labelAdminQuery = new System.Windows.Forms.Label();
+            this.butttonViewLabs = new System.Windows.Forms.Button();
+            this.dateTimePickerEndDate = new System.Windows.Forms.DateTimePicker();
+            this.listViewAppointmentsBetween = new System.Windows.Forms.ListView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.labelResult = new System.Windows.Forms.Label();
             this.buttonAdminQuery = new System.Windows.Forms.Button();
             this.textBoxAdminQuery = new System.Windows.Forms.TextBox();
-            this.butttonViewLabs = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labelAdminQuery = new System.Windows.Forms.Label();
+            this.labelResult = new System.Windows.Forms.Label();
             this.tabPatients.SuspendLayout();
             this.appComponents.SuspendLayout();
             this.tabAdmin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // loggedInUser
@@ -208,7 +207,7 @@
             this.buttonEditPatient.Name = "buttonEditPatient";
             this.buttonEditPatient.Size = new System.Drawing.Size(110, 23);
             this.buttonEditPatient.TabIndex = 2;
-            this.buttonEditPatient.Text = "View Patient";
+            this.buttonEditPatient.Text = "Manage Patient";
             this.buttonEditPatient.UseVisualStyleBackColor = true;
             this.buttonEditPatient.Click += new System.EventHandler(this.buttonEditPatient_Click);
             // 
@@ -254,15 +253,74 @@
             this.tabAdmin.Text = "Admin";
             this.tabAdmin.UseVisualStyleBackColor = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.buttonSearchAppointmentsBetween);
+            this.groupBox2.Controls.Add(this.dateTimePickerStartDate);
+            this.groupBox2.Controls.Add(this.butttonViewLabs);
+            this.groupBox2.Controls.Add(this.dateTimePickerEndDate);
+            this.groupBox2.Controls.Add(this.listViewAppointmentsBetween);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(27, 339);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1189, 260);
+            this.groupBox2.TabIndex = 11;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Patient Report";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(309, 63);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(52, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "End Date";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 64);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Start Date";
+            // 
+            // buttonSearchAppointmentsBetween
+            // 
+            this.buttonSearchAppointmentsBetween.Location = new System.Drawing.Point(617, 87);
+            this.buttonSearchAppointmentsBetween.Name = "buttonSearchAppointmentsBetween";
+            this.buttonSearchAppointmentsBetween.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearchAppointmentsBetween.TabIndex = 7;
+            this.buttonSearchAppointmentsBetween.Text = "Search";
+            this.buttonSearchAppointmentsBetween.UseVisualStyleBackColor = true;
+            this.buttonSearchAppointmentsBetween.Click += new System.EventHandler(this.buttonSearchAppointmentsBetween_Click);
+            // 
+            // dateTimePickerStartDate
+            // 
+            this.dateTimePickerStartDate.Location = new System.Drawing.Point(16, 90);
+            this.dateTimePickerStartDate.Name = "dateTimePickerStartDate";
+            this.dateTimePickerStartDate.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerStartDate.TabIndex = 5;
+            // 
             // butttonViewLabs
             // 
-            this.butttonViewLabs.Location = new System.Drawing.Point(563, 521);
+            this.butttonViewLabs.Location = new System.Drawing.Point(698, 231);
             this.butttonViewLabs.Name = "butttonViewLabs";
             this.butttonViewLabs.Size = new System.Drawing.Size(75, 23);
             this.butttonViewLabs.TabIndex = 9;
             this.butttonViewLabs.Text = "View Labs";
             this.butttonViewLabs.UseVisualStyleBackColor = true;
             this.butttonViewLabs.Click += new System.EventHandler(this.butttonViewLabs_Click);
+            // 
+            // dateTimePickerEndDate
+            // 
+            this.dateTimePickerEndDate.Location = new System.Drawing.Point(309, 90);
+            this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
+            this.dateTimePickerEndDate.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerEndDate.TabIndex = 6;
             // 
             // listViewAppointmentsBetween
             // 
@@ -275,39 +333,19 @@
             this.listViewAppointmentsBetween.UseCompatibleStateImageBehavior = false;
             this.listViewAppointmentsBetween.View = System.Windows.Forms.View.Details;
             // 
-            // buttonSearchAppointmentsBetween
+            // groupBox1
             // 
-            this.buttonSearchAppointmentsBetween.Location = new System.Drawing.Point(617, 87);
-            this.buttonSearchAppointmentsBetween.Name = "buttonSearchAppointmentsBetween";
-            this.buttonSearchAppointmentsBetween.Size = new System.Drawing.Size(75, 23);
-            this.buttonSearchAppointmentsBetween.TabIndex = 7;
-            this.buttonSearchAppointmentsBetween.Text = "Search";
-            this.buttonSearchAppointmentsBetween.UseVisualStyleBackColor = true;
-            this.buttonSearchAppointmentsBetween.Click += new System.EventHandler(this.buttonSearchAppointmentsBetween_Click);
-            // 
-            // dateTimePickerEndDate
-            // 
-            this.dateTimePickerEndDate.Location = new System.Drawing.Point(309, 90);
-            this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
-            this.dateTimePickerEndDate.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerEndDate.TabIndex = 6;
-            // 
-            // dateTimePickerStartDate
-            // 
-            this.dateTimePickerStartDate.Location = new System.Drawing.Point(16, 90);
-            this.dateTimePickerStartDate.Name = "dateTimePickerStartDate";
-            this.dateTimePickerStartDate.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerStartDate.TabIndex = 5;
-            // 
-            // labelAdminQuery
-            // 
-            this.labelAdminQuery.AutoSize = true;
-            this.labelAdminQuery.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAdminQuery.Location = new System.Drawing.Point(13, 86);
-            this.labelAdminQuery.Name = "labelAdminQuery";
-            this.labelAdminQuery.Size = new System.Drawing.Size(45, 16);
-            this.labelAdminQuery.TabIndex = 4;
-            this.labelAdminQuery.Text = "label4";
+            this.groupBox1.Controls.Add(this.dataGridView);
+            this.groupBox1.Controls.Add(this.buttonAdminQuery);
+            this.groupBox1.Controls.Add(this.textBoxAdminQuery);
+            this.groupBox1.Controls.Add(this.labelAdminQuery);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(27, 18);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1189, 300);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "SQL Query Search";
             // 
             // dataGridView
             // 
@@ -316,14 +354,6 @@
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.Size = new System.Drawing.Size(1155, 150);
             this.dataGridView.TabIndex = 3;
-            // 
-            // labelResult
-            // 
-            this.labelResult.AutoSize = true;
-            this.labelResult.Location = new System.Drawing.Point(39, 78);
-            this.labelResult.Name = "labelResult";
-            this.labelResult.Size = new System.Drawing.Size(0, 13);
-            this.labelResult.TabIndex = 2;
             // 
             // buttonAdminQuery
             // 
@@ -342,64 +372,23 @@
             this.textBoxAdminQuery.Size = new System.Drawing.Size(1074, 20);
             this.textBoxAdminQuery.TabIndex = 0;
             // 
-            // butttonViewLabs
+            // labelAdminQuery
             // 
-            this.butttonViewLabs.Location = new System.Drawing.Point(698, 231);
-            this.butttonViewLabs.Name = "butttonViewLabs";
-            this.butttonViewLabs.Size = new System.Drawing.Size(75, 23);
-            this.butttonViewLabs.TabIndex = 9;
-            this.butttonViewLabs.Text = "View Labs";
-            this.butttonViewLabs.UseVisualStyleBackColor = true;
-            this.butttonViewLabs.Click += new System.EventHandler(this.butttonViewLabs_Click);
+            this.labelAdminQuery.AutoSize = true;
+            this.labelAdminQuery.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAdminQuery.Location = new System.Drawing.Point(13, 86);
+            this.labelAdminQuery.Name = "labelAdminQuery";
+            this.labelAdminQuery.Size = new System.Drawing.Size(45, 16);
+            this.labelAdminQuery.TabIndex = 4;
+            this.labelAdminQuery.Text = "label4";
             // 
-            // groupBox1
+            // labelResult
             // 
-            this.groupBox1.Controls.Add(this.dataGridView);
-            this.groupBox1.Controls.Add(this.buttonAdminQuery);
-            this.groupBox1.Controls.Add(this.textBoxAdminQuery);
-            this.groupBox1.Controls.Add(this.labelAdminQuery);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(27, 18);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1189, 300);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "SQL Query Search";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.buttonSearchAppointmentsBetween);
-            this.groupBox2.Controls.Add(this.dateTimePickerStartDate);
-            this.groupBox2.Controls.Add(this.butttonViewLabs);
-            this.groupBox2.Controls.Add(this.dateTimePickerEndDate);
-            this.groupBox2.Controls.Add(this.listViewAppointmentsBetween);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(27, 339);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1189, 260);
-            this.groupBox2.TabIndex = 11;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Patient Report";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 64);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Start Date";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(309, 63);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "End Date";
+            this.labelResult.AutoSize = true;
+            this.labelResult.Location = new System.Drawing.Point(39, 78);
+            this.labelResult.Name = "labelResult";
+            this.labelResult.Size = new System.Drawing.Size(0, 13);
+            this.labelResult.TabIndex = 2;
             // 
             // MainApp
             // 
@@ -418,11 +407,11 @@
             this.appComponents.ResumeLayout(false);
             this.tabAdmin.ResumeLayout(false);
             this.tabAdmin.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

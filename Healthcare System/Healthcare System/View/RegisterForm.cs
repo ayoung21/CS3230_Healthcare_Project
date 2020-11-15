@@ -307,7 +307,7 @@ namespace Healthcare_System
         {
             if (this.comboBoxGender.SelectedItem == null)
                 this.errorMessages.Add(UIMessages.INVALID_GENDER);
-            else if (this.comboBoxGender.SelectedItem.ToString() == "MALE")
+            else if (this.comboBoxGender.SelectedItem.ToString().ToUpper() == "MALE")
                 this.gender = Gender.M;
             else
                 this.gender = Gender.F;

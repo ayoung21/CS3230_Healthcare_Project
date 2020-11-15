@@ -13,7 +13,7 @@ using Healthcare_System.Model;
 
 namespace Healthcare_System.View
 {
-    public partial class PatientInfo : Form
+    public partial class PatientManagement : Form
     {
         private Person patient;
         private int nurseUserId;
@@ -23,7 +23,7 @@ namespace Healthcare_System.View
         private bool currentlyEditingAppointment;
         private bool currentlyEditingVisit;
 
-        public PatientInfo(Person patientInfo, int nurseUserId)
+        public PatientManagement(Person patientInfo, int nurseUserId)
         {
             InitializeComponent();
 
@@ -93,7 +93,7 @@ namespace Healthcare_System.View
             this.textBoxAddressOne.Text = patient.Address.StreetAddress;
             this.textBoxAddressTwo.Text = patient.Address.AddressLine2;
             this.textBoxCity.Text = patient.Address.City;
-            this.comboBoxStates.SelectedItem = patient.Address.State;
+            this.comboBoxStates.SelectedIndex = this.comboBoxStates.FindStringExact(patient.Address.State);
             this.textBoxZipCode.Text = patient.Address.Zip.ToString();
             this.textBoxPhoneNumber.Text = patient.Phone;
             this.dateTimeBirthday.Value = patient.DateOfBirth;

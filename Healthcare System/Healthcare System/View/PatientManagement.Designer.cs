@@ -1,6 +1,6 @@
 ﻿namespace Healthcare_System.View
 {
-    partial class PatientInfo
+    partial class PatientManagement
     {
         /// <summary>
         /// Required designer variable.
@@ -1040,7 +1040,7 @@
             this.ClientSize = new System.Drawing.Size(735, 721);
             this.Controls.Add(this.tabControlPatientInfo);
             this.Name = "PatientInfo";
-            this.Text = "PatientInfo";
+            this.Text = "Manage Patient";
             this.tabControlPatientInfo.ResumeLayout(false);
             this.tabDetails.ResumeLayout(false);
             this.tabDetails.PerformLayout();

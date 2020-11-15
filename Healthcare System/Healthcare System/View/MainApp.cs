@@ -154,7 +154,7 @@ namespace Healthcare_System.View
                 // Get patient info
                 var patientInfo = PatientDAL.GetPatient(userId, patientId);
 
-                PatientInfo patientInfoForm = new PatientInfo(patientInfo, this.userId);
+                PatientManagement patientInfoForm = new PatientManagement(patientInfo, this.userId);
                 patientInfoForm.ShowDialog();
             }
             else
@@ -174,13 +174,20 @@ namespace Healthcare_System.View
 
         private void buttonAdminQuery_Click(object sender, EventArgs e)
         {
-            var query = this.textBoxAdminQuery.Text;
-            var result = AdministratorDAL.Query(query);
-            this.labelAdminQuery.Text = query;
-            this.labelAdminQuery.Visible = true;
-            this.textBoxAdminQuery.Text = "";
+            if (string.IsNullOrWhiteSpace(this.textBoxAdminQuery.Text))
+            {
+                MessageBox.Show("Please enter a query");
+            }
+            else
+            {
+                var query = this.textBoxAdminQuery.Text;
+                var result = AdministratorDAL.Query(query);
+                this.labelAdminQuery.Text = query;
+                this.labelAdminQuery.Visible = true;
+                this.textBoxAdminQuery.Text = "";
 
-            this.dataGridView.DataSource = result;
+                this.dataGridView.DataSource = result;
+            }
         }
 
         private void buttonSearchAppointmentsBetween_Click(object sender, EventArgs e)
