@@ -198,7 +198,7 @@ namespace Healthcare_System.View
             if (this.listViewAppointmentsBetween.SelectedIndices.Count > 0)
             {
                 var visit = (Visit) this.listViewAppointmentsBetween.SelectedItems[0].Tag;
-                Labs labsForm = new Labs(visit.PatientId, visit.AppointmentDateTime);
+                Labs labsForm = new Labs(visit.PatientId, visit.AppointmentDateTime, true);
                 labsForm.ShowDialog();
             }
             else
