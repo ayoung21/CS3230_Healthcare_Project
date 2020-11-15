@@ -66,7 +66,6 @@
             this.tabAppointments = new System.Windows.Forms.TabPage();
             this.buttonNewAppointment = new System.Windows.Forms.Button();
             this.buttonEditAppointment = new System.Windows.Forms.Button();
-            this.buttonDeleteAppointment = new System.Windows.Forms.Button();
             this.buttonMakeVisit = new System.Windows.Forms.Button();
             this.listViewAppointments = new System.Windows.Forms.ListView();
             this.groupBoxAppointmentInfo = new System.Windows.Forms.GroupBox();
@@ -87,7 +86,6 @@
             this.label22 = new System.Windows.Forms.Label();
             this.comboBoxVisitDoctor = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.buttonLabs = new System.Windows.Forms.Button();
             this.labelSymptomsError = new System.Windows.Forms.Label();
             this.buttonCancelVisitInfo = new System.Windows.Forms.Button();
             this.buttonSaveVisit = new System.Windows.Forms.Button();
@@ -105,6 +103,7 @@
             this.dateTimePickerVisit = new System.Windows.Forms.DateTimePicker();
             this.label15 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.buttonLabs = new System.Windows.Forms.Button();
             this.tabControlPatientInfo.SuspendLayout();
             this.tabDetails.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -509,7 +508,6 @@
             // 
             this.tabAppointments.Controls.Add(this.buttonNewAppointment);
             this.tabAppointments.Controls.Add(this.buttonEditAppointment);
-            this.tabAppointments.Controls.Add(this.buttonDeleteAppointment);
             this.tabAppointments.Controls.Add(this.buttonMakeVisit);
             this.tabAppointments.Controls.Add(this.listViewAppointments);
             this.tabAppointments.Controls.Add(this.groupBoxAppointmentInfo);
@@ -534,7 +532,7 @@
             // 
             // buttonEditAppointment
             // 
-            this.buttonEditAppointment.Location = new System.Drawing.Point(365, 295);
+            this.buttonEditAppointment.Location = new System.Drawing.Point(426, 295);
             this.buttonEditAppointment.Margin = new System.Windows.Forms.Padding(2);
             this.buttonEditAppointment.Name = "buttonEditAppointment";
             this.buttonEditAppointment.Size = new System.Drawing.Size(52, 24);
@@ -542,17 +540,6 @@
             this.buttonEditAppointment.Text = "Edit";
             this.buttonEditAppointment.UseVisualStyleBackColor = true;
             this.buttonEditAppointment.Click += new System.EventHandler(this.buttonEditAppointment_Click);
-            // 
-            // buttonDeleteAppointment
-            // 
-            this.buttonDeleteAppointment.Location = new System.Drawing.Point(422, 295);
-            this.buttonDeleteAppointment.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonDeleteAppointment.Name = "buttonDeleteAppointment";
-            this.buttonDeleteAppointment.Size = new System.Drawing.Size(56, 24);
-            this.buttonDeleteAppointment.TabIndex = 3;
-            this.buttonDeleteAppointment.Text = "Delete";
-            this.buttonDeleteAppointment.UseVisualStyleBackColor = true;
-            this.buttonDeleteAppointment.Click += new System.EventHandler(this.buttonDeleteAppointment_Click);
             // 
             // buttonMakeVisit
             // 
@@ -808,17 +795,6 @@
             this.label21.TabIndex = 18;
             this.label21.Text = "Dr.";
             // 
-            // buttonLabs
-            // 
-            this.buttonLabs.Location = new System.Drawing.Point(579, 291);
-            this.buttonLabs.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonLabs.Name = "buttonLabs";
-            this.buttonLabs.Size = new System.Drawing.Size(66, 25);
-            this.buttonLabs.TabIndex = 17;
-            this.buttonLabs.Text = "Labs...";
-            this.buttonLabs.UseVisualStyleBackColor = true;
-            this.buttonLabs.Click += new System.EventHandler(this.buttonLabs_Click);
-            // 
             // labelSymptomsError
             // 
             this.labelSymptomsError.AutoSize = true;
@@ -1046,6 +1022,17 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Date/Time";
             // 
+            // buttonLabs
+            // 
+            this.buttonLabs.Location = new System.Drawing.Point(579, 291);
+            this.buttonLabs.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonLabs.Name = "buttonLabs";
+            this.buttonLabs.Size = new System.Drawing.Size(66, 25);
+            this.buttonLabs.TabIndex = 17;
+            this.buttonLabs.Text = "Labs...";
+            this.buttonLabs.UseVisualStyleBackColor = true;
+            this.buttonLabs.Click += new System.EventHandler(this.buttonLabs_Click);
+            // 
             // PatientInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1123,7 +1110,6 @@
         private System.Windows.Forms.Button buttonSaveAppointment;
         private System.Windows.Forms.ListView listViewAppointments;
         private System.Windows.Forms.Button buttonEditAppointment;
-        private System.Windows.Forms.Button buttonDeleteAppointment;
         private System.Windows.Forms.Button buttonMakeVisit;
         private System.Windows.Forms.Button buttonNewAppointment;
         private System.Windows.Forms.Button buttonCancelAppointmentEdit;

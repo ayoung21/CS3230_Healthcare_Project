@@ -436,7 +436,6 @@ namespace Healthcare_System.View
 
             this.buttonNewAppointment.Enabled = !currentlyEditing;
             this.buttonEditAppointment.Enabled = !currentlyEditing;
-            this.buttonDeleteAppointment.Enabled = !currentlyEditing;
             this.buttonMakeVisit.Enabled = !currentlyEditing;
         }
 
@@ -469,12 +468,6 @@ namespace Healthcare_System.View
             }
         }
 
-        private void buttonDeleteAppointment_Click(object sender, EventArgs e)
-        {
-            //TODO
-            MessageBox.Show("Not implemented yet");
-        }
-
         private void buttonMakeVisit_Click(object sender, EventArgs e)
         {
             this.visitUpdateMode = false;
@@ -482,13 +475,17 @@ namespace Healthcare_System.View
             {
                 MessageBox.Show("You cannot create multiple visits for an appointment");
             }
-            else
+            else if (this.listViewAppointments.SelectedItems.Count > 0)
             {
                 this.currentlyEditingVisit = true;
                 this.tabControlPatientInfo.SelectTab(2);
                 this.comboBoxVisitDoctor.SelectedIndex = this.comboBoxAppointmentDoctor.SelectedIndex;
                 this.groupBoxVisitInfo.Enabled = true;
                 this.dateTimePickerVisit.Value = this.dateTimeAppointmentDate.Value;
+            }
+            else
+            {
+                MessageBox.Show("Please select an appointment to convert to a visit");
             }
         }
         #endregion

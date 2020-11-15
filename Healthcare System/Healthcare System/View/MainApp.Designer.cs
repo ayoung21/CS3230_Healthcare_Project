@@ -40,12 +40,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.buttonEditPatient = new System.Windows.Forms.Button();
             this.buttonDeletePatient = new System.Windows.Forms.Button();
             this.buttonAddPatient = new System.Windows.Forms.Button();
             this.appComponents = new System.Windows.Forms.TabControl();
             this.tabAdmin = new System.Windows.Forms.TabPage();
+            this.butttonViewLabs = new System.Windows.Forms.Button();
             this.listViewAppointmentsBetween = new System.Windows.Forms.ListView();
             this.buttonSearchAppointmentsBetween = new System.Windows.Forms.Button();
             this.dateTimePickerEndDate = new System.Windows.Forms.DateTimePicker();
@@ -55,7 +55,6 @@
             this.labelResult = new System.Windows.Forms.Label();
             this.buttonAdminQuery = new System.Windows.Forms.Button();
             this.textBoxAdminQuery = new System.Windows.Forms.TextBox();
-            this.butttonViewLabs = new System.Windows.Forms.Button();
             this.tabPatients.SuspendLayout();
             this.appComponents.SuspendLayout();
             this.tabAdmin.SuspendLayout();
@@ -94,7 +93,6 @@
             this.tabPatients.Controls.Add(this.label3);
             this.tabPatients.Controls.Add(this.label2);
             this.tabPatients.Controls.Add(this.label1);
-            this.tabPatients.Controls.Add(this.button1);
             this.tabPatients.Controls.Add(this.buttonEditPatient);
             this.tabPatients.Controls.Add(this.buttonDeletePatient);
             this.tabPatients.Controls.Add(this.buttonAddPatient);
@@ -197,15 +195,6 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Last Name";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(1122, 129);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Add Appointment";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // buttonEditPatient
             // 
             this.buttonEditPatient.Location = new System.Drawing.Point(1122, 70);
@@ -264,6 +253,16 @@
             this.tabAdmin.TabIndex = 1;
             this.tabAdmin.Text = "Admin";
             this.tabAdmin.UseVisualStyleBackColor = true;
+            // 
+            // butttonViewLabs
+            // 
+            this.butttonViewLabs.Location = new System.Drawing.Point(563, 521);
+            this.butttonViewLabs.Name = "butttonViewLabs";
+            this.butttonViewLabs.Size = new System.Drawing.Size(75, 23);
+            this.butttonViewLabs.TabIndex = 9;
+            this.butttonViewLabs.Text = "View Labs";
+            this.butttonViewLabs.UseVisualStyleBackColor = true;
+            this.butttonViewLabs.Click += new System.EventHandler(this.butttonViewLabs_Click);
             // 
             // listViewAppointmentsBetween
             // 
@@ -342,16 +341,6 @@
             this.textBoxAdminQuery.Size = new System.Drawing.Size(518, 20);
             this.textBoxAdminQuery.TabIndex = 0;
             // 
-            // butttonViewLabs
-            // 
-            this.butttonViewLabs.Location = new System.Drawing.Point(563, 521);
-            this.butttonViewLabs.Name = "butttonViewLabs";
-            this.butttonViewLabs.Size = new System.Drawing.Size(75, 23);
-            this.butttonViewLabs.TabIndex = 9;
-            this.butttonViewLabs.Text = "View Labs";
-            this.butttonViewLabs.UseVisualStyleBackColor = true;
-            this.butttonViewLabs.Click += new System.EventHandler(this.butttonViewLabs_Click);
-            // 
             // MainApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -387,7 +376,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonEditPatient;
         private System.Windows.Forms.Button buttonDeletePatient;
         private System.Windows.Forms.Button buttonAddPatient;
