@@ -23,13 +23,12 @@ namespace Healthcare_System.View
         private int currentTestCode;
 
         #region Initialization
-        public Labs(int patientId, DateTime visitDateTime)
+        public Labs(int patientId, DateTime visitDateTime, bool forAdminReport = false)
         {
             InitializeComponent();
 
             this.patientId = patientId;
             this.visitDateTime = visitDateTime;
-
             this.dateTimePickerTest.CustomFormat = Constants.Constants.DATE_TIME_PICKER_FORMAT;
 
             this.switchMode(LabTestOrderDAL.HasTestOrder(patientId, visitDateTime));
@@ -37,6 +36,11 @@ namespace Healthcare_System.View
             if (this.orderSubmitted)
             {
                 this.order = LabTestOrderDAL.GetTestOrder(patientId, visitDateTime);
+            }
+
+            if (forAdminReport)
+            {
+                this.groupBoxOrderTest.Visible = false;
             }
 
             this.initializeTestsComboBox();
