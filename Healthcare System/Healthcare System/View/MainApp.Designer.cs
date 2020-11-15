@@ -46,15 +46,16 @@
             this.buttonAddPatient = new System.Windows.Forms.Button();
             this.appComponents = new System.Windows.Forms.TabControl();
             this.tabAdmin = new System.Windows.Forms.TabPage();
+            this.listViewAppointmentsBetween = new System.Windows.Forms.ListView();
+            this.buttonSearchAppointmentsBetween = new System.Windows.Forms.Button();
+            this.dateTimePickerEndDate = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerStartDate = new System.Windows.Forms.DateTimePicker();
             this.labelAdminQuery = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.labelResult = new System.Windows.Forms.Label();
             this.buttonAdminQuery = new System.Windows.Forms.Button();
             this.textBoxAdminQuery = new System.Windows.Forms.TextBox();
-            this.dateTimePickerStartDate = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerEndDate = new System.Windows.Forms.DateTimePicker();
-            this.buttonSearchAppointmentsBetween = new System.Windows.Forms.Button();
-            this.listViewAppointmentsBetween = new System.Windows.Forms.ListView();
+            this.butttonViewLabs = new System.Windows.Forms.Button();
             this.tabPatients.SuspendLayout();
             this.appComponents.SuspendLayout();
             this.tabAdmin.SuspendLayout();
@@ -247,6 +248,7 @@
             // 
             // tabAdmin
             // 
+            this.tabAdmin.Controls.Add(this.butttonViewLabs);
             this.tabAdmin.Controls.Add(this.listViewAppointmentsBetween);
             this.tabAdmin.Controls.Add(this.buttonSearchAppointmentsBetween);
             this.tabAdmin.Controls.Add(this.dateTimePickerEndDate);
@@ -262,6 +264,41 @@
             this.tabAdmin.TabIndex = 1;
             this.tabAdmin.Text = "Admin";
             this.tabAdmin.UseVisualStyleBackColor = true;
+            // 
+            // listViewAppointmentsBetween
+            // 
+            this.listViewAppointmentsBetween.HideSelection = false;
+            this.listViewAppointmentsBetween.Location = new System.Drawing.Point(46, 406);
+            this.listViewAppointmentsBetween.MultiSelect = false;
+            this.listViewAppointmentsBetween.Name = "listViewAppointmentsBetween";
+            this.listViewAppointmentsBetween.Size = new System.Drawing.Size(511, 138);
+            this.listViewAppointmentsBetween.TabIndex = 8;
+            this.listViewAppointmentsBetween.UseCompatibleStateImageBehavior = false;
+            this.listViewAppointmentsBetween.View = System.Windows.Forms.View.Details;
+            // 
+            // buttonSearchAppointmentsBetween
+            // 
+            this.buttonSearchAppointmentsBetween.Location = new System.Drawing.Point(516, 377);
+            this.buttonSearchAppointmentsBetween.Name = "buttonSearchAppointmentsBetween";
+            this.buttonSearchAppointmentsBetween.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearchAppointmentsBetween.TabIndex = 7;
+            this.buttonSearchAppointmentsBetween.Text = "Search";
+            this.buttonSearchAppointmentsBetween.UseVisualStyleBackColor = true;
+            this.buttonSearchAppointmentsBetween.Click += new System.EventHandler(this.buttonSearchAppointmentsBetween_Click);
+            // 
+            // dateTimePickerEndDate
+            // 
+            this.dateTimePickerEndDate.Location = new System.Drawing.Point(287, 380);
+            this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
+            this.dateTimePickerEndDate.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerEndDate.TabIndex = 6;
+            // 
+            // dateTimePickerStartDate
+            // 
+            this.dateTimePickerStartDate.Location = new System.Drawing.Point(46, 380);
+            this.dateTimePickerStartDate.Name = "dateTimePickerStartDate";
+            this.dateTimePickerStartDate.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerStartDate.TabIndex = 5;
             // 
             // labelAdminQuery
             // 
@@ -305,39 +342,15 @@
             this.textBoxAdminQuery.Size = new System.Drawing.Size(518, 20);
             this.textBoxAdminQuery.TabIndex = 0;
             // 
-            // dateTimePickerStartDate
+            // butttonViewLabs
             // 
-            this.dateTimePickerStartDate.Location = new System.Drawing.Point(46, 380);
-            this.dateTimePickerStartDate.Name = "dateTimePickerStartDate";
-            this.dateTimePickerStartDate.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerStartDate.TabIndex = 5;
-            // 
-            // dateTimePickerEndDate
-            // 
-            this.dateTimePickerEndDate.Location = new System.Drawing.Point(287, 380);
-            this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
-            this.dateTimePickerEndDate.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerEndDate.TabIndex = 6;
-            // 
-            // buttonSearchAppointmentsBetween
-            // 
-            this.buttonSearchAppointmentsBetween.Location = new System.Drawing.Point(516, 377);
-            this.buttonSearchAppointmentsBetween.Name = "buttonSearchAppointmentsBetween";
-            this.buttonSearchAppointmentsBetween.Size = new System.Drawing.Size(75, 23);
-            this.buttonSearchAppointmentsBetween.TabIndex = 7;
-            this.buttonSearchAppointmentsBetween.Text = "Search";
-            this.buttonSearchAppointmentsBetween.UseVisualStyleBackColor = true;
-            this.buttonSearchAppointmentsBetween.Click += new System.EventHandler(this.buttonSearchAppointmentsBetween_Click);
-            // 
-            // listViewAppointmentsBetween
-            // 
-            this.listViewAppointmentsBetween.HideSelection = false;
-            this.listViewAppointmentsBetween.Location = new System.Drawing.Point(46, 406);
-            this.listViewAppointmentsBetween.Name = "listViewAppointmentsBetween";
-            this.listViewAppointmentsBetween.Size = new System.Drawing.Size(511, 138);
-            this.listViewAppointmentsBetween.TabIndex = 8;
-            this.listViewAppointmentsBetween.UseCompatibleStateImageBehavior = false;
-            this.listViewAppointmentsBetween.View = System.Windows.Forms.View.Details;
+            this.butttonViewLabs.Location = new System.Drawing.Point(563, 521);
+            this.butttonViewLabs.Name = "butttonViewLabs";
+            this.butttonViewLabs.Size = new System.Drawing.Size(75, 23);
+            this.butttonViewLabs.TabIndex = 9;
+            this.butttonViewLabs.Text = "View Labs";
+            this.butttonViewLabs.UseVisualStyleBackColor = true;
+            this.butttonViewLabs.Click += new System.EventHandler(this.butttonViewLabs_Click);
             // 
             // MainApp
             // 
@@ -390,5 +403,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerEndDate;
         private System.Windows.Forms.DateTimePicker dateTimePickerStartDate;
         private System.Windows.Forms.ListView listViewAppointmentsBetween;
+        private System.Windows.Forms.Button butttonViewLabs;
     }
 }
