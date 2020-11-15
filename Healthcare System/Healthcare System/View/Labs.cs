@@ -40,7 +40,7 @@ namespace Healthcare_System.View
 
             if (forAdminReport)
             {
-                this.groupBoxOrderTest.Visible = false;
+                this.initializeAdminView();
             }
 
             this.initializeTestsComboBox();
@@ -53,6 +53,16 @@ namespace Healthcare_System.View
             this.comboBoxTestOrder.ValueMember = "Code";
             this.comboBoxTestOrder.DisplayMember = "CodeAndName";
             this.comboBoxTestOrder.DataSource = allTests;
+        }
+
+        private void initializeAdminView()
+        {
+            this.groupBoxOrderTest.Visible = false;
+            this.buttonRemoveTest.Visible = false;
+            this.buttonSubmitOrder.Visible = false;
+            this.buttonEditResults.Visible = false;
+            this.buttonCancelEditResults.Visible = false;
+            this.buttonSaveResults.Visible = false;
         }
 
         private void initializeTestsListView()
