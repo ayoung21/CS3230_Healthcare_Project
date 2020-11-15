@@ -90,7 +90,31 @@ namespace Healthcare_System.View
 
         private void buttonDeletePatient_Click(object sender, EventArgs e)
         {
-            //TODO handle deleting patients (must make sure patient has no appointments)
+            var isPatientSelected = (this.listViewPatients.SelectedItems.Count > 0) ? true : false;
+
+            if (isPatientSelected)
+            {
+                // Get patient id
+                var patientId = int.Parse(this.listViewPatients.SelectedItems[0].SubItems[3].Text);
+
+                DialogResult okToProceed = MessageBox.Show("You are about to delete a patient", "Please confirm you would like to continue", MessageBoxButtons.YesNo);
+                if (okToProceed == DialogResult.Yes)
+                {
+                    if (!AppointmentDAL.PatientHasAppointment(patientId))
+                    {
+                        PatientDAL.DeletePatient(patientId);
+                        this.search();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Patient has appointments and cannot be deleted");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a patient if you wish to delete.");
+            }
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
