@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,18 +48,23 @@ namespace Healthcare_System.DAL
             return labTests;
         }
 
+        /// <summary>
+        /// Gets the name of the test that corresponds with the given code.
+        /// </summary>
+        /// <param name="testCode">The test code.</param>
+        /// <returns>the name of the test that corresponds with the given code</returns>
         public static string GetTestName(int testCode)
         {
-            string query = "SELECT name FROM lab_test WHERE code = @code;";
-
             using (MySqlConnection connection = DbConnection.GetConnection())
             {
-                using MySqlCommand cmd = new MySqlCommand(query, connection);
-
-                cmd.Parameters.Add("@code", MySqlDbType.Int32);
-                cmd.Parameters["@code"].Value = testCode;
-
                 connection.Open();
+
+                using MySqlCommand cmd = new MySqlCommand("lab_test_get_name", connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+
+                cmd.Parameters.Add(new MySqlParameter("test_code", testCode));
 
                 object queryResult = cmd.ExecuteScalar();
                 string name = (queryResult == DBNull.Value) ? null : Convert.ToString(queryResult);
