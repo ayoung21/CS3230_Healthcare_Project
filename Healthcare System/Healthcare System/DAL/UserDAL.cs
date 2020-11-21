@@ -150,6 +150,10 @@ namespace Healthcare_System.DAL
             }
         }
 
+
+        /// <summary>Updates the user.</summary>
+        /// <param name="person">The person.</param>
+        /// <returns>true if user has been updated, false otherwise</returns>
         public static bool UpdateUser(Person person)
         {
             var first_name = person.FirstName;

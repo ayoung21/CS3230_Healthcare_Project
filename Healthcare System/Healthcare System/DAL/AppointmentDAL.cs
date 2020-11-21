@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Healthcare_System.DAL
 {
+    /// <summary>
+    /// Manages actions on the appointment table
+    /// </summary>
     static class AppointmentDAL
     {
         public static bool AddAppointment(int patientId, DateTime appointmentDateTime, int doctorId, string reasons)
@@ -37,6 +40,14 @@ namespace Healthcare_System.DAL
             }
         }
 
+
+        /// <summary>Updates the appointment.</summary>
+        /// <param name="patientId">The patient identifier.</param>
+        /// <param name="oldDateTime">The old date time.</param>
+        /// <param name="newDateTime">The new date time.</param>
+        /// <param name="doctorId">The doctor identifier.</param>
+        /// <param name="reasons">The reasons to update.</param>
+        /// <returns></returns>
         public static bool UpdateAppointment(int patientId, DateTime oldDateTime, DateTime newDateTime, int doctorId, string reasons)
         {
             string query = "UPDATE appointment " +
@@ -69,6 +80,14 @@ namespace Healthcare_System.DAL
             }
         }
 
+
+        /// <summary>Determines whether [has matching appointment] [the specified date time].</summary>
+        /// <param name="dateTime">The date time.</param>
+        /// <param name="doctorId">The doctor identifier.</param>
+        /// <param name="patientId">The patient identifier.</param>
+        /// <param name="ignoredAppointment">The ignored appointment.</param>
+        /// <returns>
+        ///   <c>true</c> if [has matching appointment] [the specified date time]; otherwise, <c>false</c>.</returns>
         public static bool HasMatchingAppointment(DateTime dateTime, int? doctorId = null, int? patientId = null, Appointment ignoredAppointment = null)
         {
             string dateTimeFormat = "%Y-%m-%d %H:%i";
@@ -118,6 +137,10 @@ namespace Healthcare_System.DAL
             
         }
 
+
+        /// <summary>Gets all appointments for patient.</summary>
+        /// <param name="patientId">The patient identifier.</param>
+        /// <returns>List of appointments for the patient</returns>
         public static List<Appointment> GetAllAppointmentsForPatient(int patientId)
         {
             string query = "SELECT * FROM appointment WHERE patient_id = @patient_id;";
@@ -151,6 +174,10 @@ namespace Healthcare_System.DAL
             return appointments;
         }
 
+
+        /// <summary>Checks to see if the patient has an appointment.</summary>
+        /// <param name="patientId">The patient identifier.</param>
+        /// <returns>true if patient has appointment, false otherwise</returns>
         public static bool PatientHasAppointment(int patientId)
         {
             string query = "SELECT COUNT(*) FROM appointment WHERE patient_id = @patient_id;";

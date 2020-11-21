@@ -1,15 +1,22 @@
 ﻿using MySql.Data.MySqlClient;
 using Healthcare_System.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Healthcare_System.DAL
 {
+    /// <summary>
+    /// Manages actions on related to lab tests results table.
+    /// </summary>
     static class LabTestResultDAL
     {
+
+        /// <summary>Adds the results.</summary>
+        /// <param name="orderId">The order identifier.</param>
+        /// <param name="testCode">The test code.</param>
+        /// <param name="results">The results.</param>
+        /// <param name="isAbnormal">if set to <c>true</c> [is abnormal].</param>
+        /// <param name="takenOn">The taken on.</param>
+        /// <returns>true if results have been added, false otherwise</returns>
         public static bool AddResults(int orderId, int testCode, string results, bool isAbnormal, DateTime takenOn)
         {
             string query = "INSERT INTO lab_test_result VALUES(@order_id, @test_code, @results, @is_abnormal, @taken_on);";
@@ -40,6 +47,14 @@ namespace Healthcare_System.DAL
             }
         }
 
+
+        /// <summary>Updates the results.</summary>
+        /// <param name="orderId">The order identifier.</param>
+        /// <param name="testCode">The test code.</param>
+        /// <param name="results">The results.</param>
+        /// <param name="isAbnormal">if set to <c>true</c> [is abnormal].</param>
+        /// <param name="takenOn">The taken on.</param>
+        /// <returns>true if results are updated, false otherwise</returns>
         public static bool UpdateResults(int orderId, int testCode, string results, bool isAbnormal, DateTime takenOn)
         {
             string query = "UPDATE lab_test_result " +
@@ -72,6 +87,11 @@ namespace Healthcare_System.DAL
             }
         }
 
+
+        /// <summary>Gets the results.</summary>
+        /// <param name="orderId">The order identifier.</param>
+        /// <param name="testCode">The test code.</param>
+        /// <returns>Lab test results</returns>
         public static LabTestResults GetResults(int orderId, int testCode)
         {
             string query = "SELECT results, is_abnormal, datetime_taken FROM lab_test_result " +

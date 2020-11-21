@@ -8,9 +8,15 @@ using System.Threading.Tasks;
 
 namespace Healthcare_System.DAL
 {
+    /// <summary>
+    /// Manages actions on the doctor table
+    /// </summary>
     static class DoctorDAL
     {
 
+        /// <summary>Gets the doctor user id.</summary>
+        /// <param name="doctor_id">The doctor id.</param>
+        /// <returns>the doctors user id</returns>
         public static string GetDoctorUserId(int doctor_id)
         {
             string query = "SELECT user_id FROM doctor WHERE doctor_id = @doctor_id;";
@@ -32,6 +38,9 @@ namespace Healthcare_System.DAL
             }
         }
 
+
+        /// <summary>Gets all doctors.</summary>
+        /// <returns>List of all doctors</returns>
         public static List<Person> GetAllDoctors()
         {
             string query = "SELECT u.user_id, u.first_name, u.last_name, u.address_line1, " +

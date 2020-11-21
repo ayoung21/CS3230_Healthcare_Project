@@ -9,8 +9,16 @@ using System.Threading.Tasks;
 
 namespace Healthcare_System.DAL
 {
+    /// <summary>
+    /// Manages actrions on the visit table.
+    /// </summary>
     static class VisitDAL
     {
+
+        /// <summary>Gets all visits between.</summary>
+        /// <param name="startDate">The start date.</param>
+        /// <param name="endDate">The end date.</param>
+        /// <returns>List of all visits between</returns>
         public static IList<Visit> GetAllVisitsBetween(DateTime startDate, DateTime endDate)
         {
             var dataTable = new DataTable();
@@ -59,6 +67,21 @@ namespace Healthcare_System.DAL
             return visits;
         }
 
+
+        /// <summary>Adds the visit.</summary>
+        /// <param name="patientId">The patient identifier.</param>
+        /// <param name="dateTime">The date time.</param>
+        /// <param name="bpSystolic">The bp systolic.</param>
+        /// <param name="bpDiastolic">The bp diastolic.</param>
+        /// <param name="temperature">The temperature.</param>
+        /// <param name="weight">The weight.</param>
+        /// <param name="pulse">The pulse.</param>
+        /// <param name="symptoms">The symptoms.</param>
+        /// <param name="nurseUserId">The nurse user identifier.</param>
+        /// <param name="doctorId">The doctor identifier.</param>
+        /// <param name="diagnoses">The diagnoses.</param>
+        /// <param name="finalDiagnosisMade">if set to <c>true</c> [final diagnosis made].</param>
+        /// <returns>true if visit was added, false otherwise</returns>
         public static bool AddVisit(int patientId, DateTime dateTime, int bpSystolic, int bpDiastolic,
             decimal temperature, decimal weight, int pulse, string symptoms, int nurseUserId, int doctorId, 
             string diagnoses, bool finalDiagnosisMade)
@@ -113,6 +136,12 @@ namespace Healthcare_System.DAL
             }
         }
 
+
+        /// <summary>Determines whether [has matching visit] [the specified patient identifier].</summary>
+        /// <param name="patientId">The patient identifier.</param>
+        /// <param name="appointmentDateTime">The appointment date time.</param>
+        /// <returns>
+        ///   <c>true</c> if [has matching visit] [the specified patient identifier]; otherwise, <c>false</c>.</returns>
         public static bool HasMatchingVisit(int patientId, DateTime appointmentDateTime)
         {
             string query = "SELECT COUNT(*) FROM visit WHERE patient_id = @patient_id AND datetime = @datetime;";
@@ -133,6 +162,10 @@ namespace Healthcare_System.DAL
             }
         }
 
+
+        /// <summary>Gets all visits for patient.</summary>
+        /// <param name="patientId">The patient identifier.</param>
+        /// <returns>List of visits</returns>
         public static List<Visit> GetAllVisitsForPatient(int patientId)
         {
             string query = "SELECT * FROM visit WHERE patient_id = @patient_id;";
@@ -174,6 +207,21 @@ namespace Healthcare_System.DAL
             return visits;
         }
 
+
+        /// <summary>Updates the visit.</summary>
+        /// <param name="patientId">The patient identifier.</param>
+        /// <param name="datetime">The datetime.</param>
+        /// <param name="bpSystolic">The bp systolic.</param>
+        /// <param name="bpDiastolic">The bp diastolic.</param>
+        /// <param name="temperature">The temperature.</param>
+        /// <param name="weight">The weight.</param>
+        /// <param name="pulse">The pulse.</param>
+        /// <param name="symptoms">The symptoms.</param>
+        /// <param name="nurseUserId">The nurse user identifier.</param>
+        /// <param name="doctorId">The doctor identifier.</param>
+        /// <param name="diagnoses">The diagnoses.</param>
+        /// <param name="finalDiagnosisMade">if set to <c>true</c> [final diagnosis made].</param>
+        /// <returns>true if visit has been updated, false otherwise</returns>
         public static bool UpdateVisit(int patientId, DateTime datetime, int bpSystolic, int bpDiastolic,
             decimal temperature, decimal weight, int pulse, string symptoms, int nurseUserId, int doctorId, 
             string diagnoses, bool finalDiagnosisMade)

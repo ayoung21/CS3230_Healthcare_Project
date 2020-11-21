@@ -67,18 +67,13 @@ namespace Healthcare_System.View
             this.listViewAppointmentsBetween.Columns.Add("Nurse Name", 100);
         }
 
-        public void initializeAdminTab()
+        private void initializeAdminTab()
         {
             this.labelAdminQuery.Visible = false;
             this.textBoxAdminQuery.Multiline = true;
             this.textBoxAdminQuery.ScrollBars = ScrollBars.Vertical;
             this.textBoxAdminQuery.WordWrap = true;
             this.textBoxAdminQuery.Height = 60;
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void logOut_Click(object sender, EventArgs e)

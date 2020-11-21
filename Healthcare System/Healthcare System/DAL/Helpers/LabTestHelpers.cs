@@ -36,6 +36,10 @@ namespace Healthcare_System.DAL.Helpers
             return orderId;
         }
 
+
+        /// <summary>Gets the tests from order.</summary>
+        /// <param name="orderId">The order identifier.</param>
+        /// <returns>List of lab tests</returns>
         public static List<LabTest> GetTestsFromOrder(int orderId)
         {
             List<int> testCodes = HasTestsDAL.GetTestCodesFromOrder(orderId);

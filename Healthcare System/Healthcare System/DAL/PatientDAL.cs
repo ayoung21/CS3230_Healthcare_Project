@@ -45,6 +45,12 @@ namespace Healthcare_System.DAL
             return UserHelpers.IsUserIdInTable(userId, tableName);
         }
 
+
+        /// <summary>Gets the search results.</summary>
+        /// <param name="lastName">The last name.</param>
+        /// <param name="firstName">The first name.</param>
+        /// <param name="dob">The dob.</param>
+        /// <returns>List of people who match the search query</returns>
         public static List<Person> GetSearchResults(string lastName, string firstName, DateTime? dob)
         {
             StringBuilder query = new StringBuilder("SELECT u.user_id, u.first_name, u.last_name, u.address_line1, " +
@@ -124,6 +130,10 @@ namespace Healthcare_System.DAL
             }
         }
 
+
+        /// <summary>Gets the patient user identifier.</summary>
+        /// <param name="patient_id">The patient identifier.</param>
+        /// <returns>patient user id</returns>
         public static string GetPatientUserId(int patient_id)
         {
             string query = "SELECT user_id FROM patient WHERE patient_id = @patient_id;";
@@ -145,6 +155,11 @@ namespace Healthcare_System.DAL
             }
         }
 
+
+        /// <summary>Gets the patient.</summary>
+        /// <param name="user_id">The user identifier.</param>
+        /// <param name="patient_id">The patient identifier.</param>
+        /// <returns>Patient</returns>
         public static Person GetPatient(int user_id, int patient_id)
         {
             string query = "SELECT * FROM user WHERE user_id = @user_id;";
@@ -200,6 +215,10 @@ namespace Healthcare_System.DAL
             return result;
         }
 
+
+        /// <summary>Deletes the patient.</summary>
+        /// <param name="patientId">The patient identifier.</param>
+        /// <returns>true if patient was deleted, false otherwise</returns>
         public static bool DeletePatient(int patientId)
         {
             string query = $"DELETE FROM {tableName} WHERE patient_id = @patient_id;";

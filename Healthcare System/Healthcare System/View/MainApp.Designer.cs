@@ -401,7 +401,6 @@
             this.Name = "MainApp";
             this.Text = "Healthcare System";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Wrapper_FormClosing);
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabPatients.ResumeLayout(false);
             this.tabPatients.PerformLayout();
             this.appComponents.ResumeLayout(false);

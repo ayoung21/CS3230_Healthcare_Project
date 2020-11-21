@@ -8,8 +8,16 @@ using System.Threading.Tasks;
 
 namespace Healthcare_System.DAL
 {
+    /// <summary>
+    /// Manages actions on related to lab tests order table.
+    /// </summary>
     static class LabTestOrderDAL
     {
+
+        /// <summary>Orders the test.</summary>
+        /// <param name="patientId">The patient identifier.</param>
+        /// <param name="visitDateTime">The visit date time.</param>
+        /// <returns>Order id</returns>
         public static int OrderTest(int patientId, DateTime visitDateTime)
         {
             string query = "INSERT INTO lab_test_order(patient_id, visit_datetime) " +
@@ -34,6 +42,12 @@ namespace Healthcare_System.DAL
             }
         }
 
+
+        /// <summary>Determines whether [has test order] [the specified patient identifier].</summary>
+        /// <param name="patientId">The patient identifier.</param>
+        /// <param name="visitDateTime">The visit date time.</param>
+        /// <returns>
+        ///   <c>true</c> if [has test order] [the specified patient identifier]; otherwise, <c>false</c>.</returns>
         public static bool HasTestOrder(int patientId, DateTime visitDateTime)
         {
             string query = "SELECT COUNT(*) FROM lab_test_order " +
@@ -55,6 +69,11 @@ namespace Healthcare_System.DAL
             }
         }
 
+
+        /// <summary>Gets the test order.</summary>
+        /// <param name="patientId">The patient identifier.</param>
+        /// <param name="visitDateTime">The visit date time.</param>
+        /// <returns>Lab test order</returns>
         public static LabTestOrder GetTestOrder(int patientId, DateTime visitDateTime)
         {
             string query = "SELECT order_id FROM lab_test_order " +

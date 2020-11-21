@@ -9,6 +9,9 @@ namespace Healthcare_System.DAL.Helpers
 {
     static class TransactionHelpers
     {
+
+        /// <summary>Begins the transaction.</summary>
+        /// <returns>My SQL Transaction</returns>
         public static MySqlTransaction BeginTransaction()
         {
             using (MySqlConnection connection = DbConnection.GetConnection())
@@ -18,6 +21,10 @@ namespace Healthcare_System.DAL.Helpers
             }
         }
 
+
+        /// <summary>Commits the transaction.</summary>
+        /// <param name="transaction">The transaction.</param>
+        /// <returns>true if transaction has been committed, false otherwise</returns>
         public static bool CommitTransaction(MySqlTransaction transaction)
         {
             using (MySqlConnection connection = DbConnection.GetConnection())
