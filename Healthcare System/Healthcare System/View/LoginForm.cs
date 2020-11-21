@@ -5,6 +5,7 @@ using Healthcare_System.DAL;
 using Healthcare_System.Messages;
 using Healthcare_System.Model;
 using Healthcare_System.View;
+using MySql.Data.MySqlClient;
 
 namespace Healthcare_System
 {
@@ -64,13 +65,21 @@ namespace Healthcare_System
 
         private void openRegisterIfNoAdministrator()
         {
-            if (AdministratorDAL.GetNumberAdministrators() == 0)
+            try
             {
-                var registerForm = new RegisterForm(PersonRoles.Administrator)
+                if (AdministratorDAL.GetNumberAdministrators() == 0)
                 {
-                    LoginForm = this
-                };
-                registerForm.ShowDialog();
+                    var registerForm = new RegisterForm(PersonRoles.Administrator)
+                    {
+                        LoginForm = this
+                    };
+                    registerForm.ShowDialog();
+                }
+            }
+            catch (MySqlException)
+            {
+                MessageBox.Show("Cannot connect to DB");
+                System.Environment.Exit(1);
             }
         }
 

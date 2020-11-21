@@ -23,7 +23,7 @@ namespace Healthcare_System.View
         private int currentTestCode;
 
         #region Initialization
-        public Labs(int patientId, DateTime visitDateTime, bool forAdminReport = false)
+        public Labs(int patientId, DateTime visitDateTime, bool disableEditing = false)
         {
             InitializeComponent();
 
@@ -38,7 +38,7 @@ namespace Healthcare_System.View
                 this.order = LabTestOrderDAL.GetTestOrder(patientId, visitDateTime);
             }
 
-            if (forAdminReport)
+            if (disableEditing)
             {
                 this.initializeAdminView();
             }

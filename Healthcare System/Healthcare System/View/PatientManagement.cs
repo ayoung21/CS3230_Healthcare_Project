@@ -650,8 +650,16 @@ namespace Healthcare_System.View
 
         private void buttonLabs_Click(object sender, EventArgs e)
         {
-            Labs labsForm = new Labs(this.patient.PatientID.Value, this.dateTimePickerVisit.Value);
-            labsForm.ShowDialog();
+            if (this.currentlyEditingVisit)
+            {
+                MessageBox.Show("Please save or cancel changes before opening labs");
+            }
+            else
+            {
+                Labs labsForm = new Labs(this.patient.PatientID.Value, this.dateTimePickerVisit.Value, this.checkBoxFinalDiagnosis.Checked);
+                labsForm.ShowDialog();
+            }
+            
         }
         #endregion
     }
