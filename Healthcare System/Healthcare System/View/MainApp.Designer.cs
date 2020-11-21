@@ -238,7 +238,7 @@
             this.appComponents.Location = new System.Drawing.Point(12, 41);
             this.appComponents.Name = "appComponents";
             this.appComponents.SelectedIndex = 0;
-            this.appComponents.Size = new System.Drawing.Size(1271, 656);
+            this.appComponents.Size = new System.Drawing.Size(1271, 738);
             this.appComponents.TabIndex = 0;
             // 
             // tabAdmin
@@ -248,7 +248,7 @@
             this.tabAdmin.Controls.Add(this.labelResult);
             this.tabAdmin.Location = new System.Drawing.Point(4, 22);
             this.tabAdmin.Name = "tabAdmin";
-            this.tabAdmin.Size = new System.Drawing.Size(1263, 630);
+            this.tabAdmin.Size = new System.Drawing.Size(1263, 712);
             this.tabAdmin.TabIndex = 1;
             this.tabAdmin.Text = "Admin";
             this.tabAdmin.UseVisualStyleBackColor = true;
@@ -263,7 +263,7 @@
             this.groupBox2.Controls.Add(this.dateTimePickerEndDate);
             this.groupBox2.Controls.Add(this.listViewAppointmentsBetween);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(27, 339);
+            this.groupBox2.Location = new System.Drawing.Point(27, 435);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1189, 260);
             this.groupBox2.TabIndex = 11;
@@ -275,18 +275,18 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(309, 63);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 13);
+            this.label5.Size = new System.Drawing.Size(74, 13);
             this.label5.TabIndex = 11;
-            this.label5.Text = "End Date";
+            this.label5.Text = "Visit End Date";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(13, 64);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 13);
+            this.label4.Size = new System.Drawing.Size(77, 13);
             this.label4.TabIndex = 10;
-            this.label4.Text = "Start Date";
+            this.label4.Text = "Visit Start Date";
             // 
             // buttonSearchAppointmentsBetween
             // 
@@ -342,7 +342,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(27, 18);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1189, 300);
+            this.groupBox1.Size = new System.Drawing.Size(1189, 383);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "SQL Query Search";
@@ -350,7 +350,7 @@
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(16, 122);
+            this.dataGridView.Location = new System.Drawing.Point(16, 216);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.Size = new System.Drawing.Size(1155, 150);
             this.dataGridView.TabIndex = 3;
@@ -376,7 +376,7 @@
             // 
             this.labelAdminQuery.AutoSize = true;
             this.labelAdminQuery.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAdminQuery.Location = new System.Drawing.Point(13, 86);
+            this.labelAdminQuery.Location = new System.Drawing.Point(12, 142);
             this.labelAdminQuery.Name = "labelAdminQuery";
             this.labelAdminQuery.Size = new System.Drawing.Size(45, 16);
             this.labelAdminQuery.TabIndex = 4;
@@ -394,7 +394,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1295, 709);
+            this.ClientSize = new System.Drawing.Size(1295, 791);
             this.Controls.Add(this.logOut);
             this.Controls.Add(this.loggedInUser);
             this.Controls.Add(this.appComponents);

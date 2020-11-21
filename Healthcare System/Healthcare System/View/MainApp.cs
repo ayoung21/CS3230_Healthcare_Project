@@ -44,10 +44,10 @@ namespace Healthcare_System.View
             this.loggedInUser.Text = $"Hello, {UserDAL.GetFullName(this.userId)}! ({username})";
 
             this.initializeColumnHeaders();
+            this.initializeAdminTab();
 
             this.listViewPatients.FullRowSelect = true;
             this.listViewAppointmentsBetween.FullRowSelect = true;
-            this.labelAdminQuery.Visible = false;
         }
 
         private void initializeColumnHeaders()
@@ -65,6 +65,15 @@ namespace Healthcare_System.View
             this.listViewAppointmentsBetween.Columns.Add("Doctor User ID", 100);
             this.listViewAppointmentsBetween.Columns.Add("Doctor Name", 100);
             this.listViewAppointmentsBetween.Columns.Add("Nurse Name", 100);
+        }
+
+        public void initializeAdminTab()
+        {
+            this.labelAdminQuery.Visible = false;
+            this.textBoxAdminQuery.Multiline = true;
+            this.textBoxAdminQuery.ScrollBars = ScrollBars.Vertical;
+            this.textBoxAdminQuery.WordWrap = true;
+            this.textBoxAdminQuery.Height = 60;
         }
 
         private void Form1_Load(object sender, EventArgs e)
