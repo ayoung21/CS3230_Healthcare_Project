@@ -148,6 +148,8 @@ namespace Healthcare_System.View
                     else
                     {
                         this.switchMode(true);
+                        LabTestOrder order = new LabTestOrder(orderId, this.patientId, this.visitDateTime);
+                        this.order = order;
                     }
                 }
             }
