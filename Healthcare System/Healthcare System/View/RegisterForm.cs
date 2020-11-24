@@ -9,6 +9,9 @@ using MySql.Data.MySqlClient;
 
 namespace Healthcare_System
 {
+    /// <summary>
+    /// Valid form types
+    /// </summary>
     public enum FormType
     {
         Register,
@@ -70,6 +73,10 @@ namespace Healthcare_System
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RegisterForm"/> class.
+        /// </summary>
+        /// <param name="person">The person.</param>
         public RegisterForm(Person person)
         {
             InitializeComponent();
@@ -93,6 +100,10 @@ namespace Healthcare_System
             this.populateFields(person);
         }
 
+        /// <summary>
+        /// Populates the fields with a person's info.
+        /// </summary>
+        /// <param name="person">The person.</param>
         public void populateFields(Person person)
         {
             this.textBoxFirstName.Text = person.FirstName;

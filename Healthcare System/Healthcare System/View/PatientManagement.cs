@@ -13,6 +13,10 @@ using Healthcare_System.Model;
 
 namespace Healthcare_System.View
 {
+    /// <summary>
+    /// Controller for the patient management form
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class PatientManagement : Form
     {
         private Person patient;
@@ -23,6 +27,11 @@ namespace Healthcare_System.View
         private bool currentlyEditingAppointment;
         private bool currentlyEditingVisit;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PatientManagement"/> class.
+        /// </summary>
+        /// <param name="patientInfo">The patient information.</param>
+        /// <param name="nurseUserId">The nurse user identifier.</param>
         public PatientManagement(Person patientInfo, int nurseUserId)
         {
             InitializeComponent();
