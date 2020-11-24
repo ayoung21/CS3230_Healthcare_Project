@@ -3,12 +3,6 @@ using Healthcare_System.DAL.Helpers;
 using Healthcare_System.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Healthcare_System.View
@@ -19,8 +13,8 @@ namespace Healthcare_System.View
     /// <seealso cref="System.Windows.Forms.Form" />
     public partial class Labs : Form
     {
-        private int patientId;
-        private DateTime visitDateTime;
+        private readonly int patientId;
+        private readonly DateTime visitDateTime;
         private bool orderSubmitted;
         private LabTestOrder order;
         private bool currentTestHasResults;
@@ -80,7 +74,7 @@ namespace Healthcare_System.View
             this.listViewTests.FullRowSelect = true;
             this.listViewTests.Columns.Add("Code", 100);
             this.listViewTests.Columns.Add("Name", 400);
-            
+
             if (this.orderSubmitted)
             {
                 foreach (LabTest test in LabTestHelpers.GetTestsFromOrder(this.order.OrderId))

@@ -1,7 +1,6 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data;
-using System.Data.Common;
-using MySql.Data.MySqlClient;
 
 namespace Healthcare_System.DAL
 {
@@ -21,13 +20,10 @@ namespace Healthcare_System.DAL
             {
                 connection.Open();
 
-                // 1.  create a command object identifying the stored procedure
                 MySqlCommand cmd = new MySqlCommand("account_authenticate", connection);
 
-                // 2. set the command object so it knows to execute a stored procedure
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                // 3. add parameter to command, which will be passed to the stored procedure
                 cmd.Parameters.Add(new MySqlParameter("givenusername", username));
                 cmd.Parameters.Add(new MySqlParameter("givenpassword", password));
 

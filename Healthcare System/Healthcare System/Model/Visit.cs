@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Healthcare_System.Model
 {
@@ -122,7 +118,7 @@ namespace Healthcare_System.Model
         /// <param name="doctorId">The doctor id.</param>
         /// <param name="diagnoses">The diagnoses.</param>
         /// <param name="finalDiagnosisMade">if set to <c>true</c> final diagnosis is made.</param>
-        public Visit(int patientId, DateTime appoinmentDateTime, int bpSystolic, int bpDiastolic, decimal temperature, 
+        public Visit(int patientId, DateTime appoinmentDateTime, int bpSystolic, int bpDiastolic, decimal temperature,
             decimal weight, int pulse, string symptoms, int nurseUserId, int doctorId, string diagnoses, bool finalDiagnosisMade)
         {
             this.PatientId = patientId;

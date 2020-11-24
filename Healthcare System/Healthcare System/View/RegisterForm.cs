@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Windows.Forms;
-using Healthcare_System.DAL;
+﻿using Healthcare_System.DAL;
 using Healthcare_System.Messages;
 using Healthcare_System.Model;
-using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Healthcare_System
 {
@@ -36,15 +34,15 @@ namespace Healthcare_System
         private string phone;
         private DateTime dob;
         private Gender gender;
-        private PersonRoles roleRegisteringFor;
+        private readonly PersonRoles roleRegisteringFor;
 
         public Form LoginForm { get; set; }
 
-        private IList<string> errorMessages;
+        private readonly IList<string> errorMessages;
 
-        private FormType formType;
+        private readonly FormType formType;
 
-        private Person person;
+        private readonly Person person;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="RegisterForm" /> class.
@@ -142,7 +140,7 @@ namespace Healthcare_System
                 this.displayErrorMessages();
             }
             else
-            { 
+            {
                 person.FirstName = this.firstName;
                 person.LastName = this.lastName;
                 person.Address.StreetAddress = this.address1;
@@ -207,22 +205,25 @@ namespace Healthcare_System
                 if (this.roleRegisteringFor == PersonRoles.Administrator)
                 {
                     bool registrationSuccess = RegistrationHelpers.RegisterAdministrator(firstName, lastName, city, state, zip, phone,
-                        dob, gender, address1, address2, username, password); //TODO do something if false
+                        dob, gender, address1, address2, username, password);
+                    if (!registrationSuccess)
+                    {
+                        MessageBox.Show("Registration unsuccessful");
+                    }
                 }
                 else
                 {
                     bool registrationSuccess = RegistrationHelpers.RegisterPatient(firstName, lastName, city, state, zip, phone,
-                         dob, gender, address1, address2); //TODO do something if false
+                         dob, gender, address1, address2);
+                    if (!registrationSuccess)
+                    {
+                        MessageBox.Show("Registration unsuccessful");
+                    }
                 }
 
                 this.labelErrorMessages.Hide();
                 this.Close();
             }
-        }
-
-        private void formRegister_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void validateFields()

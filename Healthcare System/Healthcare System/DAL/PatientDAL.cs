@@ -121,9 +121,9 @@ namespace Healthcare_System.DAL
                         patient.PatientID = (dataReader["patient_id"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["patient_id"]);
                         matches.Add(patient);
                     }
-                    
+
                 }
-                
+
                 connection.Close();
 
                 return matches;

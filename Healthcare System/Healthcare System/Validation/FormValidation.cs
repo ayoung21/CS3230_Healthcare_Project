@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Healthcare_System.Validation
+﻿namespace Healthcare_System.Validation
 {
 
     /// <summary>

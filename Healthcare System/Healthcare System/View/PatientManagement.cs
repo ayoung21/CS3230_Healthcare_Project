@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Healthcare_System.DAL;
+﻿using Healthcare_System.DAL;
 using Healthcare_System.Messages;
 using Healthcare_System.Model;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Healthcare_System.View
 {
@@ -19,9 +13,9 @@ namespace Healthcare_System.View
     /// <seealso cref="System.Windows.Forms.Form" />
     public partial class PatientManagement : Form
     {
-        private Person patient;
-        private int nurseUserId;
-        private bool detailsTabEditMode;
+        private readonly Person patient;
+        private readonly int nurseUserId;
+        private readonly bool detailsTabEditMode;
         private bool appointmentUpdateMode;
         private bool visitUpdateMode;
         private bool currentlyEditingAppointment;
@@ -160,8 +154,6 @@ namespace Healthcare_System.View
 
                 if (isSuccessful)
                 {
-                    // TODO: Need to refactor -- same logic as cancel button
-                    // NOTE: this needs to be before message box
                     this.populateFields();
                     this.enableDetailsTabAllowEdit(false);
                     this.hideDetailsTabErrorMessages();
@@ -180,13 +172,11 @@ namespace Healthcare_System.View
             var firstName = this.textBoxFirstName.Text;
             var lastName = this.textBoxLastName.Text;
             var addressOne = this.textBoxAddressOne.Text;
-            // var addressTwo = this.textBoxAddressTwo.Text;
             var city = this.textBoxCity.Text;
             var state = (this.comboBoxStates.SelectedItem == null) ? "" : this.comboBoxStates.SelectedItem.ToString();
             var zipCode = (String.IsNullOrEmpty(this.textBoxZipCode.Text) || this.textBoxZipCode.Text.Length != 5) ? Constants.Constants.INVALID_ZIP : Int32.Parse(this.textBoxZipCode.Text);
             var phoneNumber = (String.IsNullOrEmpty(this.textBoxPhoneNumber.Text) || this.textBoxPhoneNumber.Text.Length != 10) ? "" : this.textBoxPhoneNumber.Text;
             var gender = (this.comboBoxGender.SelectedItem == null) ? "" : this.comboBoxGender.SelectedItem.ToString();
-            // var dateOfBirth = this.dateTimeBirthday.Value;
 
             var validFirstName = !String.IsNullOrEmpty(firstName.Trim());
             var validLastName = !String.IsNullOrEmpty(lastName.Trim());
@@ -307,15 +297,16 @@ namespace Healthcare_System.View
                 {
                     return;
                 }
-            } 
+            }
             else if (this.validateAppointmentInfo(appointmentDateTime, patientId, doctorId, reasons))
             {
                 successful = AppointmentDAL.AddAppointment(patientId, appointmentDateTime, doctorId, reasons);
-            } else
+            }
+            else
             {
                 return;
             }
- 
+
             if (successful)
             {
                 this.reloadAppointments();
@@ -376,7 +367,8 @@ namespace Healthcare_System.View
             {
                 MessageBox.Show("Please include appointment reasons.");
                 return false;
-            } else if (reasons.Length > 200)
+            }
+            else if (reasons.Length > 200)
             {
                 MessageBox.Show("Reasons length cannot exceed 200 characters");
                 return false;
@@ -533,12 +525,12 @@ namespace Healthcare_System.View
 
             if (this.visitUpdateMode)
             {
-                isSuccessful = VisitDAL.UpdateVisit(patientId, apptDateTime, bpSystolic, bpDiastolic, temperature, 
+                isSuccessful = VisitDAL.UpdateVisit(patientId, apptDateTime, bpSystolic, bpDiastolic, temperature,
                     weight, pulse, symptoms, nurseUserId, doctorId, diagnoses, finalDiagnosisMade);
             }
             else
             {
-                isSuccessful = VisitDAL.AddVisit(patientId, apptDateTime, bpSystolic, bpDiastolic, temperature, 
+                isSuccessful = VisitDAL.AddVisit(patientId, apptDateTime, bpSystolic, bpDiastolic, temperature,
                     weight, pulse, symptoms, this.nurseUserId, doctorId, diagnoses, finalDiagnosisMade);
             }
 
@@ -651,7 +643,8 @@ namespace Healthcare_System.View
                 this.currentlyEditingVisit = true;
                 this.groupBoxVisitInfo.Enabled = true;
                 this.populateVisitDetails();
-            } else
+            }
+            else
             {
                 MessageBox.Show("Please select a visit to edit");
             }
@@ -668,7 +661,7 @@ namespace Healthcare_System.View
                 Labs labsForm = new Labs(this.patient.PatientID.Value, this.dateTimePickerVisit.Value, this.checkBoxFinalDiagnosis.Checked);
                 labsForm.ShowDialog();
             }
-            
+
         }
         #endregion
     }

@@ -2,10 +2,6 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Healthcare_System.DAL
 {
@@ -29,7 +25,7 @@ namespace Healthcare_System.DAL
         /// <param name="finalDiagnosisMade">if set to <c>true</c> [final diagnosis made].</param>
         /// <returns>true if visit was added, false otherwise</returns>
         public static bool AddVisit(int patientId, DateTime dateTime, int bpSystolic, int bpDiastolic,
-            decimal temperature, decimal weight, int pulse, string symptoms, int nurseUserId, int doctorId, 
+            decimal temperature, decimal weight, int pulse, string symptoms, int nurseUserId, int doctorId,
             string diagnoses, bool finalDiagnosisMade)
         {
             string query = "INSERT INTO visit VALUES(@patient_id, @datetime, @bp_systolic, @bp_diastolic, @temperature, " +
@@ -171,7 +167,7 @@ namespace Healthcare_System.DAL
         /// <param name="finalDiagnosisMade">if set to <c>true</c> [final diagnosis made].</param>
         /// <returns>true if visit has been updated, false otherwise</returns>
         public static bool UpdateVisit(int patientId, DateTime datetime, int bpSystolic, int bpDiastolic,
-            decimal temperature, decimal weight, int pulse, string symptoms, int nurseUserId, int doctorId, 
+            decimal temperature, decimal weight, int pulse, string symptoms, int nurseUserId, int doctorId,
             string diagnoses, bool finalDiagnosisMade)
         {
             string query = "UPDATE visit " +

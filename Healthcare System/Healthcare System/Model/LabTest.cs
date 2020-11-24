@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Healthcare_System.Model
+﻿namespace Healthcare_System.Model
 {
     /// <summary>
     /// Contains information about a lab test
@@ -33,7 +27,7 @@ namespace Healthcare_System.Model
         /// <value>
         /// A combination of the test code and name
         /// </value>
-        public string CodeAndName { get => $"{this.Code} - {this.Name}";  }
+        public string CodeAndName { get => $"{this.Code} - {this.Name}"; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LabTest"/> class.

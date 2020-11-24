@@ -31,10 +31,12 @@ namespace Healthcare_System.Model
             if (gender.ToUpper().Trim() == "M")
             {
                 return Gender.M;
-            } else if (gender.ToUpper().Trim() == "F")
+            }
+            else if (gender.ToUpper().Trim() == "F")
             {
                 return Gender.F;
-            } else
+            }
+            else
             {
                 return null;
             }

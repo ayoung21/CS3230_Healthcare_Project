@@ -2,10 +2,6 @@
 using Healthcare_System.Model;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Healthcare_System.DAL
 {
@@ -30,7 +26,7 @@ namespace Healthcare_System.DAL
         /// <param name="username">The username.</param>
         /// <param name="password">The password.</param>
         /// <returns>true if admin was registered, false otherwise</returns>
-        public static bool RegisterAdministrator(string firstName, string lastName, string city, string state, int zip, 
+        public static bool RegisterAdministrator(string firstName, string lastName, string city, string state, int zip,
             string phone, DateTime dob, Gender gender, string address1, string address2, string username, string password)
         {
             MySqlTransaction transaction = TransactionHelpers.BeginTransaction();

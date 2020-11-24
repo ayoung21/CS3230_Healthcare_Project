@@ -1,6 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Healthcare_System.Model;
+using MySql.Data.MySqlClient;
 using System;
-using Healthcare_System.Model;
 
 namespace Healthcare_System.DAL
 {
@@ -23,7 +23,7 @@ namespace Healthcare_System.DAL
         /// <param name="address1">The address1.</param>
         /// <param name="address2">The address2.</param>
         /// <returns>The generated userId for the new user</returns>
-        public static int Register(string firstName, string lastName, string city, string state, 
+        public static int Register(string firstName, string lastName, string city, string state,
             int zip, string phone, DateTime dob, Gender gender, string address1, string address2)
         {
             string query = "INSERT INTO user(first_name, last_name, address_line1, address_line2, city, " +
@@ -211,7 +211,7 @@ namespace Healthcare_System.DAL
 
                 connection.Open();
                 int result = cmd.ExecuteNonQuery();
-                
+
                 connection.Close();
 
                 return result == 1;

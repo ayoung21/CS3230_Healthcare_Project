@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Healthcare_System.Model
+﻿namespace Healthcare_System.Model
 {
     /// <summary>
     /// Contains enum representations of valid state abbreviations.

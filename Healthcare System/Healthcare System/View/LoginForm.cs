@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using Healthcare_System.DAL;
+﻿using Healthcare_System.DAL;
 using Healthcare_System.Messages;
 using Healthcare_System.Model;
 using Healthcare_System.View;
 using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Healthcare_System
 {
@@ -15,7 +15,7 @@ namespace Healthcare_System
     /// <seealso cref="System.Windows.Forms.Form" />
     public partial class LoginForm : Form
     {
-        private IList<string> errorMessages;
+        private readonly IList<string> errorMessages;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginForm"/> class.

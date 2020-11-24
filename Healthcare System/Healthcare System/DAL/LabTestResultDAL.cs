@@ -1,5 +1,5 @@
-﻿using MySql.Data.MySqlClient;
-using Healthcare_System.Model;
+﻿using Healthcare_System.Model;
+using MySql.Data.MySqlClient;
 using System;
 
 namespace Healthcare_System.DAL

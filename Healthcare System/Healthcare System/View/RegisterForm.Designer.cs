@@ -405,7 +405,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RegisterForm";
             this.Text = "Register";
-            this.Load += new System.EventHandler(this.formRegister_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

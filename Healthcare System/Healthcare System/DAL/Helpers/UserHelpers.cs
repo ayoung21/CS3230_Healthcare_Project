@@ -94,7 +94,7 @@ namespace Healthcare_System.DAL
         /// <param name="table">The table to look in.</param>
         /// <returns>the userId</returns>
         /// <exception cref="ArgumentOutOfRangeException">table name is invalid</exception>
-        public static int GetUserIdFromTable (string username, string table)
+        public static int GetUserIdFromTable(string username, string table)
         {
             if (!isTableNameAllowed(table))
                 throw new ArgumentOutOfRangeException("table name is invalid");

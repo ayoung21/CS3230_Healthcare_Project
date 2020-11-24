@@ -4,7 +4,6 @@ using Healthcare_System.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace Healthcare_System.View
@@ -15,10 +14,10 @@ namespace Healthcare_System.View
     /// <seealso cref="System.Windows.Forms.Form" />
     public partial class MainApp : Form
     {
-        private LoginForm loginForm;
-        private int userId;
-        private bool isNurse;
-        private bool isAdmin;
+        private readonly LoginForm loginForm;
+        private readonly int userId;
+        private readonly bool isNurse;
+        private readonly bool isAdmin;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MainApp"/> class.
@@ -37,7 +36,8 @@ namespace Healthcare_System.View
             {
                 this.userId = UserHelpers.GetUserIdFromTable(username, NurseDAL.tableName);
                 this.appComponents.TabPages.Remove(this.tabAdmin);
-            } else if (this.isAdmin && !this.isNurse)
+            }
+            else if (this.isAdmin && !this.isNurse)
             {
                 this.userId = UserHelpers.GetUserIdFromTable(username, AdministratorDAL.tableName);
                 this.appComponents.TabPages.Remove(this.tabPatients);
