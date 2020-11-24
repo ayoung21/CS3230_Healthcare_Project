@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Healthcare_System.Model
 {
-    enum  StateAbbreviations
+    /// <summary>
+    /// Contains enum representations of valid state abbreviations.
+    /// </summary>
+    enum StateAbbreviations
     {
         /// <summary>Location abbreviation for Alabama</summary>
         AL,
