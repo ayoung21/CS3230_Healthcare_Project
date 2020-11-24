@@ -59,12 +59,12 @@ namespace Healthcare_System.View
             this.listViewPatients.Columns.Add("Date of Birth", 100);
             this.listViewPatients.Columns.Add("Patient ID", 60);
 
-            this.listViewAppointmentsBetween.Columns.Add("Visit Date/Time", 100);
-            this.listViewAppointmentsBetween.Columns.Add("Patient ID", 100);
+            this.listViewAppointmentsBetween.Columns.Add("Visit Date/Time", 200);
+            this.listViewAppointmentsBetween.Columns.Add("Patient ID", 75);
             this.listViewAppointmentsBetween.Columns.Add("Patient Name", 100);
             this.listViewAppointmentsBetween.Columns.Add("Doctor Name", 100);
             this.listViewAppointmentsBetween.Columns.Add("Nurse Name", 100);
-            this.listViewAppointmentsBetween.Columns.Add("Diagnoses", 550);
+            this.listViewAppointmentsBetween.Columns.Add("Diagnoses", 500);
         }
 
         private void initializeAdminTab()
