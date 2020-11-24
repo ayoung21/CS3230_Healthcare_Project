@@ -13,6 +13,10 @@ using System.Windows.Forms;
 
 namespace Healthcare_System.View
 {
+    /// <summary>
+    /// Labs controller
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class Labs : Form
     {
         private int patientId;
@@ -23,6 +27,12 @@ namespace Healthcare_System.View
         private int currentTestCode;
 
         #region Initialization
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Labs"/> class.
+        /// </summary>
+        /// <param name="patientId">The patient's id.</param>
+        /// <param name="visitDateTime">The visit date time.</param>
+        /// <param name="disableEditing">if set to <c>true</c> [disable editing].</param>
         public Labs(int patientId, DateTime visitDateTime, bool disableEditing = false)
         {
             InitializeComponent();
