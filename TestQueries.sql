@@ -1,10 +1,12 @@
 ﻿--1
-SELECT v.datetime AS visit_date_time, v.bp_systolic, v.bp_diastolic, v.temperature, v.weight, v.pulse, 
-	v.symptoms, v.diagnoses, v.nurse_user_id, v.doctor_id,
-	(SELECT CONCAT(first_name, ' ', last_name) FROM user u WHERE u.user_id = v.nurse_user_id) AS nurse_name,
-    (SELECT CONCAT(first_name, ' ', last_name) FROM user u 
-     	WHERE u.user_id = (SELECT user_id FROM doctor d WHERE d.doctor_id = v.doctor_id)) 
-        AS doctor_name,
+SELECT
+	v.datetime AS visit_datetime,
+    v.bp_systolic,
+    v.bp_diastolic,
+    CONCAT(un.last_name, ', ', un.first_name) AS nurse_name,
+    v.nurse_user_id,
+    CONCAT(ud.last_name, ', ', ud.first_name) AS doctor_name,
+    v.doctor_id,
     (SELECT GROUP_CONCAT(h.test_code, ': ',  t.name SEPARATOR ', ') FROM has_tests h
         LEFT OUTER JOIN lab_test t
         	ON h.test_code = t.code
@@ -16,10 +18,15 @@ SELECT v.datetime AS visit_date_time, v.bp_systolic, v.bp_diastolic, v.temperatu
         	ON h.order_id = r.order_id AND h.test_code = r.test_code
         LEFT OUTER JOIN lab_test_order o 
         	ON o.order_id = h.order_id
-        WHERE o.patient_id = v.patient_id AND o.visit_datetime = v.datetime) 
-        AS results
-FROM visit v
-WHERE v.patient_id = (SELECT patient_id FROM patient WHERE user_id = (SELECT user_id FROM user WHERE first_name = 'Li' AND last_name = 'Yang'));
+        WHERE o.patient_id = v.patient_id AND o.visit_datetime = v.datetime) AS results,
+    v.diagnoses
+FROM 
+	visit v, user un, doctor d, user ud
+WHERE 
+	v.nurse_user_id = un.user_id AND 
+    v.doctor_id = d.doctor_id AND 
+    d.user_id = ud.user_id AND
+    v.patient_id = (SELECT patient_id FROM patient WHERE user_id = (SELECT user_id FROM user WHERE first_name = 'Li' AND last_name = 'Yang'));
 
 --2
 SELECT 
