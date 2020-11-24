@@ -70,11 +70,7 @@ namespace Healthcare_System.View
 
         private void initializeAdminTab()
         {
-            this.labelAdminQuery.Visible = false;
-            this.textBoxAdminQuery.Multiline = true;
             this.textBoxAdminQuery.ScrollBars = ScrollBars.Vertical;
-            this.textBoxAdminQuery.WordWrap = true;
-            this.textBoxAdminQuery.Height = 60;
         }
 
         private void logOut_Click(object sender, EventArgs e)
@@ -187,9 +183,6 @@ namespace Healthcare_System.View
             {
                 var query = this.textBoxAdminQuery.Text;
                 var result = AdminPanelQueries.ExecuteCustomQuery(query);
-                this.labelAdminQuery.Text = query;
-                this.labelAdminQuery.Visible = true;
-                this.textBoxAdminQuery.Text = "";
 
                 this.dataGridView.DataSource = result;
             }

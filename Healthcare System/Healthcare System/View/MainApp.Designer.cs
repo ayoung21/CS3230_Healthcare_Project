@@ -57,7 +57,6 @@
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.buttonAdminQuery = new System.Windows.Forms.Button();
             this.textBoxAdminQuery = new System.Windows.Forms.TextBox();
-            this.labelAdminQuery = new System.Windows.Forms.Label();
             this.labelResult = new System.Windows.Forms.Label();
             this.tabPatients.SuspendLayout();
             this.appComponents.SuspendLayout();
@@ -105,7 +104,7 @@
             this.tabPatients.Location = new System.Drawing.Point(4, 22);
             this.tabPatients.Name = "tabPatients";
             this.tabPatients.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPatients.Size = new System.Drawing.Size(1263, 630);
+            this.tabPatients.Size = new System.Drawing.Size(1263, 712);
             this.tabPatients.TabIndex = 0;
             this.tabPatients.Text = "Patients";
             this.tabPatients.UseVisualStyleBackColor = true;
@@ -338,7 +337,6 @@
             this.groupBox1.Controls.Add(this.dataGridView);
             this.groupBox1.Controls.Add(this.buttonAdminQuery);
             this.groupBox1.Controls.Add(this.textBoxAdminQuery);
-            this.groupBox1.Controls.Add(this.labelAdminQuery);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(27, 18);
             this.groupBox1.Name = "groupBox1";
@@ -368,19 +366,10 @@
             // textBoxAdminQuery
             // 
             this.textBoxAdminQuery.Location = new System.Drawing.Point(16, 42);
+            this.textBoxAdminQuery.Multiline = true;
             this.textBoxAdminQuery.Name = "textBoxAdminQuery";
-            this.textBoxAdminQuery.Size = new System.Drawing.Size(1074, 20);
+            this.textBoxAdminQuery.Size = new System.Drawing.Size(1074, 168);
             this.textBoxAdminQuery.TabIndex = 0;
-            // 
-            // labelAdminQuery
-            // 
-            this.labelAdminQuery.AutoSize = true;
-            this.labelAdminQuery.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAdminQuery.Location = new System.Drawing.Point(12, 142);
-            this.labelAdminQuery.Name = "labelAdminQuery";
-            this.labelAdminQuery.Size = new System.Drawing.Size(45, 16);
-            this.labelAdminQuery.TabIndex = 4;
-            this.labelAdminQuery.Text = "label4";
             // 
             // labelResult
             // 
@@ -438,7 +427,6 @@
         private System.Windows.Forms.TextBox textBoxAdminQuery;
         private System.Windows.Forms.Label labelResult;
         private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.Label labelAdminQuery;
         private System.Windows.Forms.Button buttonSearchAppointmentsBetween;
         private System.Windows.Forms.DateTimePicker dateTimePickerEndDate;
         private System.Windows.Forms.DateTimePicker dateTimePickerStartDate;
