@@ -143,7 +143,7 @@
             this.tabControlPatientInfo.Name = "tabControlPatientInfo";
             this.tabControlPatientInfo.SelectedIndex = 0;
             this.tabControlPatientInfo.Size = new System.Drawing.Size(729, 702);
-            this.tabControlPatientInfo.TabIndex = 2;
+            this.tabControlPatientInfo.TabIndex = 0;
             // 
             // tabDetails
             // 
@@ -202,7 +202,7 @@
             this.buttonSavePatient.Location = new System.Drawing.Point(454, 631);
             this.buttonSavePatient.Name = "buttonSavePatient";
             this.buttonSavePatient.Size = new System.Drawing.Size(121, 39);
-            this.buttonSavePatient.TabIndex = 4;
+            this.buttonSavePatient.TabIndex = 6;
             this.buttonSavePatient.Text = "Save";
             this.buttonSavePatient.UseVisualStyleBackColor = true;
             this.buttonSavePatient.Click += new System.EventHandler(this.buttonSavePatient_Click);
@@ -213,7 +213,7 @@
             this.buttonEditPatient.Location = new System.Drawing.Point(327, 631);
             this.buttonEditPatient.Name = "buttonEditPatient";
             this.buttonEditPatient.Size = new System.Drawing.Size(121, 39);
-            this.buttonEditPatient.TabIndex = 3;
+            this.buttonEditPatient.TabIndex = 7;
             this.buttonEditPatient.Text = "Edit";
             this.buttonEditPatient.UseVisualStyleBackColor = true;
             this.buttonEditPatient.Click += new System.EventHandler(this.buttonEditPatient_Click);
@@ -279,7 +279,7 @@
             this.textBoxPhoneNumber.MaxLength = 10;
             this.textBoxPhoneNumber.Name = "textBoxPhoneNumber";
             this.textBoxPhoneNumber.Size = new System.Drawing.Size(137, 26);
-            this.textBoxPhoneNumber.TabIndex = 14;
+            this.textBoxPhoneNumber.TabIndex = 4;
             this.textBoxPhoneNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPhoneNumber_KeyPress);
             // 
             // label9
@@ -299,7 +299,7 @@
             this.dateTimeBirthday.Location = new System.Drawing.Point(398, 22);
             this.dateTimeBirthday.Name = "dateTimeBirthday";
             this.dateTimeBirthday.Size = new System.Drawing.Size(137, 26);
-            this.dateTimeBirthday.TabIndex = 12;
+            this.dateTimeBirthday.TabIndex = 3;
             // 
             // groupBox1
             // 
@@ -374,7 +374,7 @@
             this.textBoxCity.Location = new System.Drawing.Point(15, 176);
             this.textBoxCity.Name = "textBoxCity";
             this.textBoxCity.Size = new System.Drawing.Size(218, 26);
-            this.textBoxCity.TabIndex = 13;
+            this.textBoxCity.TabIndex = 2;
             // 
             // label8
             // 
@@ -396,7 +396,7 @@
             this.comboBoxStates.Location = new System.Drawing.Point(312, 174);
             this.comboBoxStates.Name = "comboBoxStates";
             this.comboBoxStates.Size = new System.Drawing.Size(100, 28);
-            this.comboBoxStates.TabIndex = 12;
+            this.comboBoxStates.TabIndex = 3;
             // 
             // label7
             // 
@@ -414,7 +414,7 @@
             this.textBoxZipCode.MaxLength = 5;
             this.textBoxZipCode.Name = "textBoxZipCode";
             this.textBoxZipCode.Size = new System.Drawing.Size(100, 26);
-            this.textBoxZipCode.TabIndex = 8;
+            this.textBoxZipCode.TabIndex = 4;
             this.textBoxZipCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxZipCode_KeyPress);
             // 
             // label6
@@ -432,14 +432,14 @@
             this.textBoxAddressTwo.Location = new System.Drawing.Point(312, 66);
             this.textBoxAddressTwo.Name = "textBoxAddressTwo";
             this.textBoxAddressTwo.Size = new System.Drawing.Size(245, 26);
-            this.textBoxAddressTwo.TabIndex = 6;
+            this.textBoxAddressTwo.TabIndex = 1;
             // 
             // textBoxAddressOne
             // 
             this.textBoxAddressOne.Location = new System.Drawing.Point(15, 66);
             this.textBoxAddressOne.Name = "textBoxAddressOne";
             this.textBoxAddressOne.Size = new System.Drawing.Size(218, 26);
-            this.textBoxAddressOne.TabIndex = 4;
+            this.textBoxAddressOne.TabIndex = 0;
             // 
             // label3
             // 
@@ -472,7 +472,7 @@
             this.comboBoxGender.Location = new System.Drawing.Point(106, 176);
             this.comboBoxGender.Name = "comboBoxGender";
             this.comboBoxGender.Size = new System.Drawing.Size(138, 28);
-            this.comboBoxGender.TabIndex = 10;
+            this.comboBoxGender.TabIndex = 2;
             // 
             // label5
             // 
@@ -525,7 +525,7 @@
             this.buttonNewAppointment.Margin = new System.Windows.Forms.Padding(2);
             this.buttonNewAppointment.Name = "buttonNewAppointment";
             this.buttonNewAppointment.Size = new System.Drawing.Size(52, 24);
-            this.buttonNewAppointment.TabIndex = 5;
+            this.buttonNewAppointment.TabIndex = 1;
             this.buttonNewAppointment.Text = "New";
             this.buttonNewAppointment.UseVisualStyleBackColor = true;
             this.buttonNewAppointment.Click += new System.EventHandler(this.buttonNewAppointment_Click);
@@ -536,7 +536,7 @@
             this.buttonEditAppointment.Margin = new System.Windows.Forms.Padding(2);
             this.buttonEditAppointment.Name = "buttonEditAppointment";
             this.buttonEditAppointment.Size = new System.Drawing.Size(52, 24);
-            this.buttonEditAppointment.TabIndex = 4;
+            this.buttonEditAppointment.TabIndex = 2;
             this.buttonEditAppointment.Text = "Edit";
             this.buttonEditAppointment.UseVisualStyleBackColor = true;
             this.buttonEditAppointment.Click += new System.EventHandler(this.buttonEditAppointment_Click);
@@ -547,7 +547,7 @@
             this.buttonMakeVisit.Margin = new System.Windows.Forms.Padding(2);
             this.buttonMakeVisit.Name = "buttonMakeVisit";
             this.buttonMakeVisit.Size = new System.Drawing.Size(100, 24);
-            this.buttonMakeVisit.TabIndex = 2;
+            this.buttonMakeVisit.TabIndex = 3;
             this.buttonMakeVisit.Text = "Convert to Visit";
             this.buttonMakeVisit.UseVisualStyleBackColor = true;
             this.buttonMakeVisit.Click += new System.EventHandler(this.buttonMakeVisit_Click);
@@ -560,7 +560,7 @@
             this.listViewAppointments.MultiSelect = false;
             this.listViewAppointments.Name = "listViewAppointments";
             this.listViewAppointments.Size = new System.Drawing.Size(565, 282);
-            this.listViewAppointments.TabIndex = 1;
+            this.listViewAppointments.TabIndex = 0;
             this.listViewAppointments.UseCompatibleStateImageBehavior = false;
             this.listViewAppointments.View = System.Windows.Forms.View.Details;
             this.listViewAppointments.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listViewAppointments_MouseUp);
@@ -589,7 +589,7 @@
             this.buttonCancelAppointmentEdit.Location = new System.Drawing.Point(21, 266);
             this.buttonCancelAppointmentEdit.Name = "buttonCancelAppointmentEdit";
             this.buttonCancelAppointmentEdit.Size = new System.Drawing.Size(98, 46);
-            this.buttonCancelAppointmentEdit.TabIndex = 10;
+            this.buttonCancelAppointmentEdit.TabIndex = 3;
             this.buttonCancelAppointmentEdit.Text = "Cancel";
             this.buttonCancelAppointmentEdit.UseVisualStyleBackColor = true;
             this.buttonCancelAppointmentEdit.Click += new System.EventHandler(this.buttonCancelAppointmentEdit_Click);
@@ -599,7 +599,7 @@
             this.buttonSaveAppointment.Location = new System.Drawing.Point(192, 266);
             this.buttonSaveAppointment.Name = "buttonSaveAppointment";
             this.buttonSaveAppointment.Size = new System.Drawing.Size(346, 46);
-            this.buttonSaveAppointment.TabIndex = 9;
+            this.buttonSaveAppointment.TabIndex = 4;
             this.buttonSaveAppointment.Text = "Schedule Appointment";
             this.buttonSaveAppointment.UseVisualStyleBackColor = true;
             this.buttonSaveAppointment.Click += new System.EventHandler(this.buttonSaveAppointment_Click);
@@ -621,7 +621,7 @@
             this.textBoxAppointmentReasons.Name = "textBoxAppointmentReasons";
             this.textBoxAppointmentReasons.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxAppointmentReasons.Size = new System.Drawing.Size(517, 105);
-            this.textBoxAppointmentReasons.TabIndex = 6;
+            this.textBoxAppointmentReasons.TabIndex = 2;
             // 
             // comboBoxAppointmentDoctor
             // 
@@ -631,7 +631,7 @@
             this.comboBoxAppointmentDoctor.Location = new System.Drawing.Point(306, 64);
             this.comboBoxAppointmentDoctor.Name = "comboBoxAppointmentDoctor";
             this.comboBoxAppointmentDoctor.Size = new System.Drawing.Size(234, 28);
-            this.comboBoxAppointmentDoctor.TabIndex = 5;
+            this.comboBoxAppointmentDoctor.TabIndex = 1;
             // 
             // label13
             // 
@@ -679,7 +679,7 @@
             this.buttonEditVisit.Margin = new System.Windows.Forms.Padding(2);
             this.buttonEditVisit.Name = "buttonEditVisit";
             this.buttonEditVisit.Size = new System.Drawing.Size(56, 25);
-            this.buttonEditVisit.TabIndex = 3;
+            this.buttonEditVisit.TabIndex = 2;
             this.buttonEditVisit.Text = "Edit";
             this.buttonEditVisit.UseVisualStyleBackColor = true;
             this.buttonEditVisit.Click += new System.EventHandler(this.buttonEditVisit_Click);
@@ -692,7 +692,7 @@
             this.listViewVisits.MultiSelect = false;
             this.listViewVisits.Name = "listViewVisits";
             this.listViewVisits.Size = new System.Drawing.Size(687, 277);
-            this.listViewVisits.TabIndex = 2;
+            this.listViewVisits.TabIndex = 0;
             this.listViewVisits.UseCompatibleStateImageBehavior = false;
             this.listViewVisits.View = System.Windows.Forms.View.Details;
             this.listViewVisits.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listViewVisits_MouseUp);
@@ -737,7 +737,7 @@
             this.checkBoxFinalDiagnosis.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxFinalDiagnosis.Name = "checkBoxFinalDiagnosis";
             this.checkBoxFinalDiagnosis.Size = new System.Drawing.Size(177, 24);
-            this.checkBoxFinalDiagnosis.TabIndex = 22;
+            this.checkBoxFinalDiagnosis.TabIndex = 9;
             this.checkBoxFinalDiagnosis.Text = "Final diagnosis made";
             this.checkBoxFinalDiagnosis.UseVisualStyleBackColor = true;
             this.checkBoxFinalDiagnosis.MouseUp += new System.Windows.Forms.MouseEventHandler(this.checkBoxFinalDiagnosis_MouseUp);
@@ -759,7 +759,7 @@
             131072});
             this.numericUpDownWeight.Name = "numericUpDownWeight";
             this.numericUpDownWeight.Size = new System.Drawing.Size(86, 26);
-            this.numericUpDownWeight.TabIndex = 21;
+            this.numericUpDownWeight.TabIndex = 6;
             this.numericUpDownWeight.Value = new decimal(new int[] {
             100,
             0,
@@ -784,7 +784,7 @@
             this.comboBoxVisitDoctor.Location = new System.Drawing.Point(310, 15);
             this.comboBoxVisitDoctor.Name = "comboBoxVisitDoctor";
             this.comboBoxVisitDoctor.Size = new System.Drawing.Size(386, 28);
-            this.comboBoxVisitDoctor.TabIndex = 19;
+            this.comboBoxVisitDoctor.TabIndex = 1;
             // 
             // label21
             // 
@@ -814,7 +814,7 @@
             this.buttonCancelVisitInfo.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCancelVisitInfo.Name = "buttonCancelVisitInfo";
             this.buttonCancelVisitInfo.Size = new System.Drawing.Size(66, 29);
-            this.buttonCancelVisitInfo.TabIndex = 15;
+            this.buttonCancelVisitInfo.TabIndex = 10;
             this.buttonCancelVisitInfo.Text = "Cancel";
             this.buttonCancelVisitInfo.UseVisualStyleBackColor = true;
             this.buttonCancelVisitInfo.Click += new System.EventHandler(this.buttonCancelVisitInfo_Click);
@@ -825,7 +825,7 @@
             this.buttonSaveVisit.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSaveVisit.Name = "buttonSaveVisit";
             this.buttonSaveVisit.Size = new System.Drawing.Size(56, 29);
-            this.buttonSaveVisit.TabIndex = 14;
+            this.buttonSaveVisit.TabIndex = 11;
             this.buttonSaveVisit.Text = "Save";
             this.buttonSaveVisit.UseVisualStyleBackColor = true;
             this.buttonSaveVisit.Click += new System.EventHandler(this.buttonSaveVisit_Click);
@@ -838,7 +838,7 @@
             this.textBoxDiagnoses.Multiline = true;
             this.textBoxDiagnoses.Name = "textBoxDiagnoses";
             this.textBoxDiagnoses.Size = new System.Drawing.Size(488, 178);
-            this.textBoxDiagnoses.TabIndex = 13;
+            this.textBoxDiagnoses.TabIndex = 8;
             // 
             // label20
             // 
@@ -857,7 +857,7 @@
             this.textBoxSymptoms.MaxLength = 200;
             this.textBoxSymptoms.Name = "textBoxSymptoms";
             this.textBoxSymptoms.Size = new System.Drawing.Size(609, 26);
-            this.textBoxSymptoms.TabIndex = 11;
+            this.textBoxSymptoms.TabIndex = 7;
             // 
             // label19
             // 
@@ -885,7 +885,7 @@
             0});
             this.numericUpDownPulse.Name = "numericUpDownPulse";
             this.numericUpDownPulse.Size = new System.Drawing.Size(53, 26);
-            this.numericUpDownPulse.TabIndex = 9;
+            this.numericUpDownPulse.TabIndex = 4;
             this.numericUpDownPulse.Value = new decimal(new int[] {
             100,
             0,
@@ -919,7 +919,7 @@
             131072});
             this.numericUpDownTemperature.Name = "numericUpDownTemperature";
             this.numericUpDownTemperature.Size = new System.Drawing.Size(79, 26);
-            this.numericUpDownTemperature.TabIndex = 7;
+            this.numericUpDownTemperature.TabIndex = 5;
             this.numericUpDownTemperature.Value = new decimal(new int[] {
             100,
             0,
@@ -952,7 +952,7 @@
             0});
             this.numericUpDownDiastolic.Name = "numericUpDownDiastolic";
             this.numericUpDownDiastolic.Size = new System.Drawing.Size(53, 26);
-            this.numericUpDownDiastolic.TabIndex = 5;
+            this.numericUpDownDiastolic.TabIndex = 3;
             this.numericUpDownDiastolic.Value = new decimal(new int[] {
             100,
             0,
@@ -985,7 +985,7 @@
             0});
             this.numericUpDownSystolic.Name = "numericUpDownSystolic";
             this.numericUpDownSystolic.Size = new System.Drawing.Size(53, 26);
-            this.numericUpDownSystolic.TabIndex = 3;
+            this.numericUpDownSystolic.TabIndex = 2;
             this.numericUpDownSystolic.Value = new decimal(new int[] {
             100,
             0,
@@ -1000,7 +1000,7 @@
             this.dateTimePickerVisit.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerVisit.Name = "dateTimePickerVisit";
             this.dateTimePickerVisit.Size = new System.Drawing.Size(170, 26);
-            this.dateTimePickerVisit.TabIndex = 2;
+            this.dateTimePickerVisit.TabIndex = 0;
             // 
             // label15
             // 
@@ -1028,18 +1028,18 @@
             this.buttonLabs.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLabs.Name = "buttonLabs";
             this.buttonLabs.Size = new System.Drawing.Size(66, 25);
-            this.buttonLabs.TabIndex = 17;
+            this.buttonLabs.TabIndex = 1;
             this.buttonLabs.Text = "Labs...";
             this.buttonLabs.UseVisualStyleBackColor = true;
             this.buttonLabs.Click += new System.EventHandler(this.buttonLabs_Click);
             // 
-            // PatientInfo
+            // PatientManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(735, 721);
             this.Controls.Add(this.tabControlPatientInfo);
-            this.Name = "PatientInfo";
+            this.Name = "PatientManagement";
             this.Text = "Manage Patient";
             this.tabControlPatientInfo.ResumeLayout(false);
             this.tabDetails.ResumeLayout(false);

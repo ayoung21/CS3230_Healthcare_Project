@@ -82,7 +82,7 @@
             this.logOut.Location = new System.Drawing.Point(1208, 25);
             this.logOut.Name = "logOut";
             this.logOut.Size = new System.Drawing.Size(75, 23);
-            this.logOut.TabIndex = 1;
+            this.logOut.TabIndex = 0;
             this.logOut.Text = "Log Out";
             this.logOut.UseVisualStyleBackColor = true;
             this.logOut.Click += new System.EventHandler(this.logOut_Click);
@@ -114,7 +114,7 @@
             this.buttonClearSearchFields.Location = new System.Drawing.Point(966, 11);
             this.buttonClearSearchFields.Name = "buttonClearSearchFields";
             this.buttonClearSearchFields.Size = new System.Drawing.Size(133, 23);
-            this.buttonClearSearchFields.TabIndex = 22;
+            this.buttonClearSearchFields.TabIndex = 4;
             this.buttonClearSearchFields.Text = "Clear Search Fields";
             this.buttonClearSearchFields.UseVisualStyleBackColor = true;
             this.buttonClearSearchFields.Click += new System.EventHandler(this.buttonClearSearchFields_Click);
@@ -128,7 +128,7 @@
             this.listViewPatients.MultiSelect = false;
             this.listViewPatients.Name = "listViewPatients";
             this.listViewPatients.Size = new System.Drawing.Size(1083, 525);
-            this.listViewPatients.TabIndex = 21;
+            this.listViewPatients.TabIndex = 5;
             this.listViewPatients.UseCompatibleStateImageBehavior = false;
             this.listViewPatients.View = System.Windows.Forms.View.Details;
             // 
@@ -138,7 +138,7 @@
             this.textBoxFirstName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(113, 20);
-            this.textBoxFirstName.TabIndex = 16;
+            this.textBoxFirstName.TabIndex = 1;
             // 
             // textBoxLastName
             // 
@@ -146,7 +146,7 @@
             this.textBoxLastName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(113, 20);
-            this.textBoxLastName.TabIndex = 14;
+            this.textBoxLastName.TabIndex = 0;
             // 
             // buttonSearch
             // 
@@ -154,7 +154,7 @@
             this.buttonSearch.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(56, 19);
-            this.buttonSearch.TabIndex = 20;
+            this.buttonSearch.TabIndex = 3;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = true;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
@@ -168,7 +168,7 @@
             this.dateTimePickerDob.Name = "dateTimePickerDob";
             this.dateTimePickerDob.ShowCheckBox = true;
             this.dateTimePickerDob.Size = new System.Drawing.Size(99, 20);
-            this.dateTimePickerDob.TabIndex = 19;
+            this.dateTimePickerDob.TabIndex = 2;
             // 
             // label3
             // 
@@ -205,7 +205,7 @@
             this.buttonEditPatient.Location = new System.Drawing.Point(1122, 70);
             this.buttonEditPatient.Name = "buttonEditPatient";
             this.buttonEditPatient.Size = new System.Drawing.Size(110, 23);
-            this.buttonEditPatient.TabIndex = 2;
+            this.buttonEditPatient.TabIndex = 7;
             this.buttonEditPatient.Text = "Manage Patient";
             this.buttonEditPatient.UseVisualStyleBackColor = true;
             this.buttonEditPatient.Click += new System.EventHandler(this.buttonEditPatient_Click);
@@ -215,7 +215,7 @@
             this.buttonDeletePatient.Location = new System.Drawing.Point(1122, 100);
             this.buttonDeletePatient.Name = "buttonDeletePatient";
             this.buttonDeletePatient.Size = new System.Drawing.Size(110, 23);
-            this.buttonDeletePatient.TabIndex = 1;
+            this.buttonDeletePatient.TabIndex = 8;
             this.buttonDeletePatient.Text = "Delete Patient";
             this.buttonDeletePatient.UseVisualStyleBackColor = true;
             this.buttonDeletePatient.Click += new System.EventHandler(this.buttonDeletePatient_Click);
@@ -225,7 +225,7 @@
             this.buttonAddPatient.Location = new System.Drawing.Point(1122, 40);
             this.buttonAddPatient.Name = "buttonAddPatient";
             this.buttonAddPatient.Size = new System.Drawing.Size(110, 23);
-            this.buttonAddPatient.TabIndex = 0;
+            this.buttonAddPatient.TabIndex = 6;
             this.buttonAddPatient.Text = "Add Patient";
             this.buttonAddPatient.UseVisualStyleBackColor = true;
             this.buttonAddPatient.Click += new System.EventHandler(this.buttonAddPerson_Click);
@@ -292,7 +292,7 @@
             this.buttonSearchAppointmentsBetween.Location = new System.Drawing.Point(1027, 13);
             this.buttonSearchAppointmentsBetween.Name = "buttonSearchAppointmentsBetween";
             this.buttonSearchAppointmentsBetween.Size = new System.Drawing.Size(75, 23);
-            this.buttonSearchAppointmentsBetween.TabIndex = 7;
+            this.buttonSearchAppointmentsBetween.TabIndex = 2;
             this.buttonSearchAppointmentsBetween.Text = "Search";
             this.buttonSearchAppointmentsBetween.UseVisualStyleBackColor = true;
             this.buttonSearchAppointmentsBetween.Click += new System.EventHandler(this.buttonSearchAppointmentsBetween_Click);
@@ -302,14 +302,14 @@
             this.dateTimePickerStartDate.Location = new System.Drawing.Point(465, 16);
             this.dateTimePickerStartDate.Name = "dateTimePickerStartDate";
             this.dateTimePickerStartDate.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerStartDate.TabIndex = 5;
+            this.dateTimePickerStartDate.TabIndex = 0;
             // 
             // butttonViewLabs
             // 
             this.butttonViewLabs.Location = new System.Drawing.Point(1108, 231);
             this.butttonViewLabs.Name = "butttonViewLabs";
             this.butttonViewLabs.Size = new System.Drawing.Size(75, 23);
-            this.butttonViewLabs.TabIndex = 9;
+            this.butttonViewLabs.TabIndex = 4;
             this.butttonViewLabs.Text = "View Labs";
             this.butttonViewLabs.UseVisualStyleBackColor = true;
             this.butttonViewLabs.Click += new System.EventHandler(this.butttonViewLabs_Click);
@@ -319,7 +319,7 @@
             this.dateTimePickerEndDate.Location = new System.Drawing.Point(821, 16);
             this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
             this.dateTimePickerEndDate.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerEndDate.TabIndex = 6;
+            this.dateTimePickerEndDate.TabIndex = 1;
             // 
             // listViewAppointmentsBetween
             // 
@@ -328,7 +328,7 @@
             this.listViewAppointmentsBetween.MultiSelect = false;
             this.listViewAppointmentsBetween.Name = "listViewAppointmentsBetween";
             this.listViewAppointmentsBetween.Size = new System.Drawing.Size(1087, 212);
-            this.listViewAppointmentsBetween.TabIndex = 8;
+            this.listViewAppointmentsBetween.TabIndex = 3;
             this.listViewAppointmentsBetween.UseCompatibleStateImageBehavior = false;
             this.listViewAppointmentsBetween.View = System.Windows.Forms.View.Details;
             // 
