@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Healthcare_System.DAL
 {
     /// <summary>
-    /// Manages actrions on the visit table.
+    /// Manages actions on the visit table.
     /// </summary>
     static class VisitDAL
     {
@@ -83,11 +83,13 @@ namespace Healthcare_System.DAL
         }
 
 
-        /// <summary>Determines whether [has matching visit] [the specified patient identifier].</summary>
+        /// <summary>Determines whether there is a visit for the patient on the given date time</summary>
         /// <param name="patientId">The patient identifier.</param>
         /// <param name="appointmentDateTime">The appointment date time.</param>
         /// <returns>
-        ///   <c>true</c> if [has matching visit] [the specified patient identifier]; otherwise, <c>false</c>.</returns>
+        ///   <c>true</c> if there is a visit for the patient on the given date and 
+        ///   time; otherwise, <c>false</c>.
+        /// </returns>
         public static bool HasMatchingVisit(int patientId, DateTime appointmentDateTime)
         {
             string query = "SELECT COUNT(*) FROM visit WHERE patient_id = @patient_id AND datetime = @datetime;";

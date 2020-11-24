@@ -13,6 +13,14 @@ namespace Healthcare_System.DAL
     /// </summary>
     static class AppointmentDAL
     {
+        /// <summary>
+        /// Adds an appointment.
+        /// </summary>
+        /// <param name="patientId">The patient id.</param>
+        /// <param name="appointmentDateTime">The appointment date time.</param>
+        /// <param name="doctorId">The doctor identifier.</param>
+        /// <param name="reasons">The reasons.</param>
+        /// <returns>True if successful, false if not</returns>
         public static bool AddAppointment(int patientId, DateTime appointmentDateTime, int doctorId, string reasons)
         {
             string query = "INSERT INTO appointment VALUES(@patient_id, @datetime, @doctor_id, @reasons);";
@@ -47,7 +55,7 @@ namespace Healthcare_System.DAL
         /// <param name="newDateTime">The new date time.</param>
         /// <param name="doctorId">The doctor identifier.</param>
         /// <param name="reasons">The reasons to update.</param>
-        /// <returns></returns>
+        /// <returns>True if successful, false if not</returns>
         public static bool UpdateAppointment(int patientId, DateTime oldDateTime, DateTime newDateTime, int doctorId, string reasons)
         {
             string query = "UPDATE appointment " +
@@ -87,7 +95,7 @@ namespace Healthcare_System.DAL
         /// <param name="patientId">The patient identifier.</param>
         /// <param name="ignoredAppointment">The ignored appointment.</param>
         /// <returns>
-        ///   <c>true</c> if [has matching appointment] [the specified date time]; otherwise, <c>false</c>.</returns>
+        ///   <c>true</c> if has matching appointment; otherwise, <c>false</c>.</returns>
         public static bool HasMatchingAppointment(DateTime dateTime, int? doctorId = null, int? patientId = null, Appointment ignoredAppointment = null)
         {
             string dateTimeFormat = "%Y-%m-%d %H:%i";

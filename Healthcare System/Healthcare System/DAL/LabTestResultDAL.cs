@@ -14,7 +14,7 @@ namespace Healthcare_System.DAL
         /// <param name="orderId">The order identifier.</param>
         /// <param name="testCode">The test code.</param>
         /// <param name="results">The results.</param>
-        /// <param name="isAbnormal">if set to <c>true</c> [is abnormal].</param>
+        /// <param name="isAbnormal">Whether the results are abnormal/</param>
         /// <param name="takenOn">The taken on.</param>
         /// <returns>true if results have been added, false otherwise</returns>
         public static bool AddResults(int orderId, int testCode, string results, bool isAbnormal, DateTime takenOn)
@@ -52,7 +52,7 @@ namespace Healthcare_System.DAL
         /// <param name="orderId">The order identifier.</param>
         /// <param name="testCode">The test code.</param>
         /// <param name="results">The results.</param>
-        /// <param name="isAbnormal">if set to <c>true</c> [is abnormal].</param>
+        /// <param name="isAbnormal">Whether the results are abnormal/</param>
         /// <param name="takenOn">The taken on.</param>
         /// <returns>true if results are updated, false otherwise</returns>
         public static bool UpdateResults(int orderId, int testCode, string results, bool isAbnormal, DateTime takenOn)

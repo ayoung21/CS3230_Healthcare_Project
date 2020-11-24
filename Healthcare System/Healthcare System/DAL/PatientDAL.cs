@@ -156,10 +156,10 @@ namespace Healthcare_System.DAL
         }
 
 
-        /// <summary>Gets the patient.</summary>
+        /// <summary>Gets the matching patient.</summary>
         /// <param name="user_id">The user identifier.</param>
         /// <param name="patient_id">The patient identifier.</param>
-        /// <returns>Patient</returns>
+        /// <returns>The matching patient</returns>
         public static Person GetPatient(int user_id, int patient_id)
         {
             string query = "SELECT * FROM user WHERE user_id = @user_id;";

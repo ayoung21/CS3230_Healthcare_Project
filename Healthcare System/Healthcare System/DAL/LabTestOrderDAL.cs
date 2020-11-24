@@ -43,11 +43,16 @@ namespace Healthcare_System.DAL
         }
 
 
-        /// <summary>Determines whether [has test order] [the specified patient identifier].</summary>
+        /// <summary>
+        ///     Determines whether there is a test order for the given patient
+        ///     on the given date and time.
+        /// </summary>
         /// <param name="patientId">The patient identifier.</param>
         /// <param name="visitDateTime">The visit date time.</param>
         /// <returns>
-        ///   <c>true</c> if [has test order] [the specified patient identifier]; otherwise, <c>false</c>.</returns>
+        ///   <c>true</c> if there is a test order for the given patient on the given date 
+        ///   and time; otherwise, <c>false</c>.
+        /// </returns>
         public static bool HasTestOrder(int patientId, DateTime visitDateTime)
         {
             string query = "SELECT COUNT(*) FROM lab_test_order " +
@@ -70,10 +75,10 @@ namespace Healthcare_System.DAL
         }
 
 
-        /// <summary>Gets the test order.</summary>
-        /// <param name="patientId">The patient identifier.</param>
+        /// <summary>Gets the test order for the given patient and date/time.</summary>
+        /// <param name="patientId">The patient id.</param>
         /// <param name="visitDateTime">The visit date time.</param>
-        /// <returns>Lab test order</returns>
+        /// <returns>The lab test order</returns>
         public static LabTestOrder GetTestOrder(int patientId, DateTime visitDateTime)
         {
             string query = "SELECT order_id FROM lab_test_order " +
