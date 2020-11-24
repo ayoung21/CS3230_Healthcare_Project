@@ -47,5 +47,50 @@ namespace Healthcare_System.DAL.Helpers
 
             return dataTable;
         }
+
+        /// <summary>
+        /// Generates a report of all visits between the start and end date
+        /// </summary>
+        /// <param name="startDate">The start date.</param>
+        /// <param name="endDate">The end date.</param>
+        /// <returns>A DataTable containing the admin report data</returns>
+        public static DataTable GenerateReport(DateTime startDate, DateTime endDate)
+        {
+            var dataTable = new DataTable();
+            string query = "SELECT " +
+                "v.datetime AS visit_datetime, " +
+                "v.patient_id, " +
+                "CONCAT(up.last_name, ', ', up.first_name) AS patient_name, " +
+                "CONCAT(ud.last_name, ', ', ud.first_name) AS doctor_name, " +
+                "CONCAT(un.last_name, ', ', un.first_name) AS nurse_name, " +
+                "v.diagnoses " +
+                "FROM visit v, patient p, user up, doctor d, user ud, user un " +
+                "WHERE " +
+                "v.patient_id = p.patient_id AND " +
+                "up.user_id = p.user_id AND " +
+                "v.doctor_id = d.doctor_id AND " +
+                "ud.user_id = d.user_id AND " +
+                "v.nurse_user_id = un.user_id AND " +
+                "v.datetime BETWEEN DATE(@start_date) AND DATE(@end_date) " +
+                "ORDER BY DATE(v.datetime), up.last_name";
+
+            using (MySqlConnection connection = DbConnection.GetConnection())
+            {
+                using MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                cmd.Parameters.Add("@start_date", MySqlDbType.DateTime);
+                cmd.Parameters["@start_date"].Value = $"{startDate.Year}-{startDate.Month}-{startDate.Day} 00:00:00";
+
+                cmd.Parameters.Add("@end_date", MySqlDbType.DateTime);
+                cmd.Parameters["@end_date"].Value = $"{endDate.Year}-{endDate.Month}-{endDate.Day} 23:59:59";
+
+                connection.Open();
+
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+                dataTable.Load(dataReader);
+            }
+
+            return dataTable;
+        }
     }
 }

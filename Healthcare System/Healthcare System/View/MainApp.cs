@@ -3,6 +3,7 @@ using Healthcare_System.DAL.Helpers;
 using Healthcare_System.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -58,14 +59,12 @@ namespace Healthcare_System.View
             this.listViewPatients.Columns.Add("Date of Birth", 100);
             this.listViewPatients.Columns.Add("Patient ID", 60);
 
-            this.listViewAppointmentsBetween.Columns.Add("Date / Time", 100);
+            this.listViewAppointmentsBetween.Columns.Add("Visit Date/Time", 100);
             this.listViewAppointmentsBetween.Columns.Add("Patient ID", 100);
-            this.listViewAppointmentsBetween.Columns.Add("First Name", 100);
-            this.listViewAppointmentsBetween.Columns.Add("Last Name", 100);
-            this.listViewAppointmentsBetween.Columns.Add("Doctor ID", 100);
-            this.listViewAppointmentsBetween.Columns.Add("Doctor User ID", 100);
+            this.listViewAppointmentsBetween.Columns.Add("Patient Name", 100);
             this.listViewAppointmentsBetween.Columns.Add("Doctor Name", 100);
             this.listViewAppointmentsBetween.Columns.Add("Nurse Name", 100);
+            this.listViewAppointmentsBetween.Columns.Add("Diagnoses", 550);
         }
 
         private void initializeAdminTab()
@@ -192,31 +191,21 @@ namespace Healthcare_System.View
         {
             var dateTimeStart = this.dateTimePickerStartDate.Value;
             var dateTimeEnd = this.dateTimePickerEndDate.Value;
-            var results = VisitDAL.GetAllVisitsBetween(dateTimeStart, dateTimeEnd);
+            DataTable results = AdminPanelQueries.GenerateReport(dateTimeStart, dateTimeEnd);
 
             this.listViewAppointmentsBetween.Items.Clear();
-            results = results.OrderBy(x => x.AppointmentDateTime).ToList();
-            foreach (Visit currentVisit in results)
+            foreach (DataRow resultRow in results.Rows)
             {
-                var patientUserId = Convert.ToInt32(PatientDAL.GetPatientUserId(currentVisit.PatientId));
-                var patient = PatientDAL.GetPatient(patientUserId, currentVisit.PatientId);
-                var doctorUserId = Convert.ToInt32(DoctorDAL.GetDoctorUserId(currentVisit.DoctorId));
-                var doctorFullName = UserDAL.GetFullName(doctorUserId);
-                var nurseFullName = UserDAL.GetFullName(currentVisit.NurseUserId);
-
                 ListViewItem row = new ListViewItem(new[]
                 {
-                    currentVisit.AppointmentDateTime.ToString(),
-                    currentVisit.PatientId.ToString(),
-                    patient.FirstName,
-                    patient.LastName,
-                    currentVisit.DoctorId.ToString(),
-                    doctorUserId.ToString(),
-                    doctorFullName,
-                    nurseFullName
+                    (resultRow["visit_datetime"]).ToString(),
+                    (resultRow["patient_id"]).ToString(),
+                    (resultRow["patient_name"]).ToString(),
+                    (resultRow["doctor_name"]).ToString(),
+                    (resultRow["nurse_name"]).ToString(),
+                    (resultRow["diagnoses"]).ToString()
 
                 });
-                row.Tag = currentVisit;
                 this.listViewAppointmentsBetween.Items.Add(row);
             }
 
@@ -226,8 +215,9 @@ namespace Healthcare_System.View
         {
             if (this.listViewAppointmentsBetween.SelectedIndices.Count > 0)
             {
-                var visit = (Visit) this.listViewAppointmentsBetween.SelectedItems[0].Tag;
-                Labs labsForm = new Labs(visit.PatientId, visit.AppointmentDateTime, true);
+                int patientId = Convert.ToInt32(this.listViewAppointmentsBetween.SelectedItems[0].SubItems[1].Text);
+                DateTime visitDateTime = Convert.ToDateTime(this.listViewAppointmentsBetween.SelectedItems[0].SubItems[0].Text);
+                Labs labsForm = new Labs(patientId, visitDateTime, true);
                 labsForm.ShowDialog();
             }
             else

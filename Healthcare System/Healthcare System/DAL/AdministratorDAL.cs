@@ -46,7 +46,6 @@ namespace Healthcare_System.DAL
 
                 connection.Open();
                 cmd.ExecuteNonQuery();
-                connection.Close();
             }
 
             return UserHelpers.IsUserIdInTable(userId, tableName);
@@ -66,7 +65,6 @@ namespace Healthcare_System.DAL
 
                 connection.Open();
                 int count = Convert.ToInt32(cmd.ExecuteScalar());
-                connection.Close();
                 return count;
             }
         }

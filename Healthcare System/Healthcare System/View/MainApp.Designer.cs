@@ -272,7 +272,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(309, 63);
+            this.label5.Location = new System.Drawing.Point(741, 19);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(74, 13);
             this.label5.TabIndex = 11;
@@ -281,7 +281,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 64);
+            this.label4.Location = new System.Drawing.Point(382, 19);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 13);
             this.label4.TabIndex = 10;
@@ -289,7 +289,7 @@
             // 
             // buttonSearchAppointmentsBetween
             // 
-            this.buttonSearchAppointmentsBetween.Location = new System.Drawing.Point(617, 87);
+            this.buttonSearchAppointmentsBetween.Location = new System.Drawing.Point(1027, 13);
             this.buttonSearchAppointmentsBetween.Name = "buttonSearchAppointmentsBetween";
             this.buttonSearchAppointmentsBetween.Size = new System.Drawing.Size(75, 23);
             this.buttonSearchAppointmentsBetween.TabIndex = 7;
@@ -299,14 +299,14 @@
             // 
             // dateTimePickerStartDate
             // 
-            this.dateTimePickerStartDate.Location = new System.Drawing.Point(16, 90);
+            this.dateTimePickerStartDate.Location = new System.Drawing.Point(465, 16);
             this.dateTimePickerStartDate.Name = "dateTimePickerStartDate";
             this.dateTimePickerStartDate.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerStartDate.TabIndex = 5;
             // 
             // butttonViewLabs
             // 
-            this.butttonViewLabs.Location = new System.Drawing.Point(698, 231);
+            this.butttonViewLabs.Location = new System.Drawing.Point(1108, 231);
             this.butttonViewLabs.Name = "butttonViewLabs";
             this.butttonViewLabs.Size = new System.Drawing.Size(75, 23);
             this.butttonViewLabs.TabIndex = 9;
@@ -316,7 +316,7 @@
             // 
             // dateTimePickerEndDate
             // 
-            this.dateTimePickerEndDate.Location = new System.Drawing.Point(309, 90);
+            this.dateTimePickerEndDate.Location = new System.Drawing.Point(821, 16);
             this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
             this.dateTimePickerEndDate.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerEndDate.TabIndex = 6;
@@ -324,10 +324,10 @@
             // listViewAppointmentsBetween
             // 
             this.listViewAppointmentsBetween.HideSelection = false;
-            this.listViewAppointmentsBetween.Location = new System.Drawing.Point(15, 116);
+            this.listViewAppointmentsBetween.Location = new System.Drawing.Point(15, 42);
             this.listViewAppointmentsBetween.MultiSelect = false;
             this.listViewAppointmentsBetween.Name = "listViewAppointmentsBetween";
-            this.listViewAppointmentsBetween.Size = new System.Drawing.Size(677, 138);
+            this.listViewAppointmentsBetween.Size = new System.Drawing.Size(1087, 212);
             this.listViewAppointmentsBetween.TabIndex = 8;
             this.listViewAppointmentsBetween.UseCompatibleStateImageBehavior = false;
             this.listViewAppointmentsBetween.View = System.Windows.Forms.View.Details;

@@ -14,60 +14,6 @@ namespace Healthcare_System.DAL
     /// </summary>
     static class VisitDAL
     {
-
-        /// <summary>Gets all visits between.</summary>
-        /// <param name="startDate">The start date.</param>
-        /// <param name="endDate">The end date.</param>
-        /// <returns>List of all visits between</returns>
-        public static IList<Visit> GetAllVisitsBetween(DateTime startDate, DateTime endDate)
-        {
-            var dataTable = new DataTable();
-            string query = "SELECT * FROM visit WHERE datetime BETWEEN @startDate AND @endDate;";
-
-            List<Visit> visits = new List<Visit>();
-
-            using (MySqlConnection connection = DbConnection.GetConnection())
-            {
-                using MySqlCommand cmd = new MySqlCommand(query, connection);
-
-                cmd.Parameters.Add("@startDate", MySqlDbType.DateTime);
-                cmd.Parameters["@startDate"].Value = $"{startDate.Year}-{startDate.Month}-{startDate.Day} 00:00:00";
-
-                cmd.Parameters.Add("@endDate", MySqlDbType.DateTime);
-                cmd.Parameters["@endDate"].Value = $"{endDate.Year}-{endDate.Month}-{endDate.Day} 23:59:59";
-
-                connection.Open();
-
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-
-                if (dataReader.HasRows)
-                {
-                    while (dataReader.Read())
-                    {
-                        int patientId = (dataReader["patient_id"] == DBNull.Value)
-                            ? default
-                            : Convert.ToInt32(dataReader["patient_id"]);
-                        DateTime dateTime = (dataReader["datetime"] == DBNull.Value) ? default : Convert.ToDateTime(dataReader["datetime"]);
-                        int bpSystolic = (dataReader["bp_systolic"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["bp_systolic"]);
-                        int bpDiastolic = (dataReader["bp_diastolic"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["bp_diastolic"]);
-                        decimal temperature = (dataReader["temperature"] == DBNull.Value) ? default : Convert.ToDecimal(dataReader["temperature"]);
-                        decimal weight = (dataReader["weight"] == DBNull.Value) ? default : Convert.ToDecimal(dataReader["weight"]);
-                        int pulse = (dataReader["pulse"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["pulse"]);
-                        string symptoms = (dataReader["symptoms"] == DBNull.Value) ? default : Convert.ToString(dataReader["symptoms"]);
-                        string diagnoses = (dataReader["diagnoses"] == DBNull.Value) ? null : Convert.ToString(dataReader["diagnoses"]);
-                        int nurseUserId = (dataReader["nurse_user_id"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["nurse_user_id"]);
-                        int doctorId = (dataReader["doctor_id"] == DBNull.Value) ? default : Convert.ToInt32(dataReader["doctor_id"]);
-                        bool finalDiagnosis = (dataReader["final_diagnosis"] == DBNull.Value) ? false : Convert.ToBoolean(dataReader["final_diagnosis"]);
-
-                        visits.Add(new Visit(patientId, dateTime, bpSystolic, bpDiastolic, temperature, weight, pulse, symptoms, nurseUserId, doctorId, diagnoses, finalDiagnosis));
-                    }
-                }
-            }
-
-            return visits;
-        }
-
-
         /// <summary>Adds the visit.</summary>
         /// <param name="patientId">The patient identifier.</param>
         /// <param name="dateTime">The date time.</param>
