@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace Healthcare_System.DAL
 {
+    /// <summary>
+    /// Contains various helper methods involving multiple registration-related
+    /// tables and queries
+    /// </summary>
     static class RegistrationHelpers
     {
 

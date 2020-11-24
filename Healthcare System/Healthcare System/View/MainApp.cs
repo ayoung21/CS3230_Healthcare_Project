@@ -1,4 +1,5 @@
 ﻿using Healthcare_System.DAL;
+using Healthcare_System.DAL.Helpers;
 using Healthcare_System.Model;
 using System;
 using System.Collections.Generic;
@@ -185,7 +186,7 @@ namespace Healthcare_System.View
             else
             {
                 var query = this.textBoxAdminQuery.Text;
-                var result = AdministratorDAL.Query(query);
+                var result = AdminPanelQueries.ExecuteCustomQuery(query);
                 this.labelAdminQuery.Text = query;
                 this.labelAdminQuery.Visible = true;
                 this.textBoxAdminQuery.Text = "";

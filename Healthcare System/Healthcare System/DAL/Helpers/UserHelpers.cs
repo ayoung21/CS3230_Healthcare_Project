@@ -6,7 +6,7 @@ namespace Healthcare_System.DAL
 {
 
     /// <summary>
-    /// Helper methods used in various DAL classes
+    /// Helper methods involving various user-related tables
     /// </summary>
     static class UserHelpers
     {

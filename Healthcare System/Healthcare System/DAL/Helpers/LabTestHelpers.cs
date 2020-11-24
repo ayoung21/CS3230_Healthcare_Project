@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Healthcare_System.DAL.Helpers
 {
+    /// <summary>
+    /// Contains various helper methods involving multiple lab tables
+    /// </summary>
     static class LabTestHelpers
     {
         /// <summary>

@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\HasTestsDAL.cs" />
+    <Compile Include="DAL\Helpers\AdminPanelQueries.cs" />
     <Compile Include="DAL\Helpers\LabTestHelpers.cs" />
     <Compile Include="DAL\Helpers\RegistrationHelpers.cs" />
     <Compile Include="DAL\DbConnection.cs" />
@@ -158,10 +159,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\user-icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="ReadMe.txt" />
-    <Content Include="TestQueries.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

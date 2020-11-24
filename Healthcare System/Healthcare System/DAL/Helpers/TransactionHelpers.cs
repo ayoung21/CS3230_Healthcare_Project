@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Healthcare_System.DAL.Helpers
 {
+    /// <summary>
+    /// Helpers for using transactions in queries
+    /// </summary>
     static class TransactionHelpers
     {
 

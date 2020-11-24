@@ -16,34 +16,6 @@ namespace Healthcare_System.DAL
     {
         public static readonly string tableName = "administrator";
 
-        public static DataTable Query(string queryInput)
-        {
-            var dataTable = new DataTable();
-            try
-            {
-                using (var connection = DbConnection.GetConnection())
-                {
-                    connection.Open();
-                    var cmd = connection.CreateCommand();
-                    var query = $@"{queryInput}";
-
-                    cmd.CommandText = query;
-
-                    using (var dataAdapter = new MySqlDataAdapter(cmd))
-                    {
-                        dataAdapter.Fill(dataTable);
-                    }
-                }
-            }
-            catch (MySqlException e)
-            {
-                return null;
-            }
-
-            return dataTable;
-        }
-
-
         /// <summary>
         ///     Registers a new administrator
         /// </summary>
